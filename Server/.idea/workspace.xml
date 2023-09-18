@@ -5,7 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4918519-2d20-4428-8256-05ac7cd6fda0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/FirstApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/service/FirstApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/FileStore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/Project.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/UploadFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/ProjectForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/TestForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/ProjectRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/TestRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/service/ProjectService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/service/TestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/main" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/first/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/controller/UploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/controller/UploadTestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/FirstApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/FirstApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,14 +56,19 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2V5oexTD1I7KvpHt8GPdCPrqHi5" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -58,8 +82,9 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "SP1",
+    "git-widget-placeholder": "sprint2",
     "last_opened_file_path": "/Users/seojuyeong/Documents/GitHub/ABTest/Server",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -68,13 +93,21 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "spring.configuration.checksum": "d2255874d4844abbd5fa3739a2d23ad3",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
   <component name="RunManager">
-    <configuration name="FirstApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="FirstApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="first.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.abtest.service.FirstApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.abtest.first.FirstApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -89,6 +122,12 @@
       <option name="presentableId" value="Default" />
       <updated>1694135400752</updated>
       <workItem from="1694135401775" duration="11043000" />
+      <workItem from="1694396709305" duration="1883000" />
+      <workItem from="1694404476481" duration="44000" />
+      <workItem from="1694420814101" duration="879000" />
+      <workItem from="1694568413348" duration="150000" />
+      <workItem from="1694568580289" duration="604000" />
+      <workItem from="1695000365489" duration="15479000" />
     </task>
     <servers />
   </component>
