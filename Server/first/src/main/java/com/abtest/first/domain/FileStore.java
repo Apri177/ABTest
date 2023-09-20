@@ -6,7 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +13,7 @@ import java.util.UUID;
 @Component
 public class FileStore {
 
-    // 루트 경로
+    // 루트 경로 + 본인 경로 설정 필요
     private final String rootPath = "/Users/seojuyeong";
 
     private final String fileDir = rootPath + "/Pictures/";
@@ -53,6 +52,11 @@ public class FileStore {
     private String extractExt(String originalFilename) {
         int pos = originalFilename.lastIndexOf(".");
         return originalFilename.substring(pos + 1);
+    }
+
+    private String extractName(String originalFilename) {
+        int pos = originalFilename.lastIndexOf(".");
+        return originalFilename.substring(0, pos);
     }
 
 }

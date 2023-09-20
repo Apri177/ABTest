@@ -13,6 +13,7 @@ repositories {
 	mavenCentral()
 }
 
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -27,8 +28,11 @@ dependencies {
 	// Json
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 
-	// MongoDB
-	implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+
+	//swagger-ui localhost:8080/swagger-ui/index.html
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+
+
 }
 
 tasks.named('test') {

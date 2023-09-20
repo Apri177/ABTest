@@ -5,25 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4918519-2d20-4428-8256-05ac7cd6fda0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/FileStore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/Project.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/UploadFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/ProjectForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/TestForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/ProjectRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/TestRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/service/ProjectService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/service/TestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front/main" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/ProjectRep.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/TestRep.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/service/TestProjectService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/first/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/first/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/controller/UploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/controller/UploadTestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/FirstApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/FirstApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/FileStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/FileStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/UploadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/UploadFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/ProjectForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/ProjectForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/TestForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/TestForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/first/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +47,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -77,26 +74,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "sprint2",
-    "last_opened_file_path": "/Users/seojuyeong/Documents/GitHub/ABTest/Server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "spring.configuration.checksum": "d2255874d4844abbd5fa3739a2d23ad3",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sprint2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/seojuyeong/Documents/GitHub/ABTest/Server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;d2255874d4844abbd5fa3739a2d23ad3&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -105,7 +106,9 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="FirstApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="start" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-20" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="first.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.abtest.first.FirstApplication" />
       <method v="2">
@@ -128,6 +131,8 @@
       <workItem from="1694568413348" duration="150000" />
       <workItem from="1694568580289" duration="604000" />
       <workItem from="1695000365489" duration="15479000" />
+      <workItem from="1695187386207" duration="8506000" />
+      <workItem from="1695198551377" duration="142000" />
     </task>
     <servers />
   </component>

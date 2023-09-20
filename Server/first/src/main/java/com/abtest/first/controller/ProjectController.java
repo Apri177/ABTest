@@ -1,26 +1,33 @@
 package com.abtest.first.controller;
 
-import com.abtest.first.domain.FileStore;
 import com.abtest.first.domain.Project;
 import com.abtest.first.domain.dto.ProjectForm;
 import com.abtest.first.service.ProjectService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 @RequestMapping("")
+
+//@Api(tags = { "1. Project Api "}) // Project API 일단 test
+//@ApiIgnore // 제외처리
 public class ProjectController {
 
     private final ProjectService projectService;
 
-    @GetMapping({"", "/"})
+//    @ApiOperation(value = "Get 통신", notes = "Get 통신 Note", response = String.class)
+//    @ApiResponses(value = {
+//            @ApiResponse(code = 404, message = "페이지 없음"),
+//            @ApiResponse(code = 500, message = "서버 에러")
+//    })
+    @GetMapping(value = {"", "/"})
     public String home(Model model) {
         model.addAttribute("projects", projectService.getAllProjects());
         return "/home";
