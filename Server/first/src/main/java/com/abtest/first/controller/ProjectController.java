@@ -6,6 +6,7 @@ import com.abtest.first.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 
 import java.io.IOException;
@@ -22,11 +23,7 @@ public class ProjectController {
 
     private final ProjectService projectService;
 
-//    @ApiOperation(value = "Get 통신", notes = "Get 통신 Note", response = String.class)
-//    @ApiResponses(value = {
-//            @ApiResponse(code = 404, message = "페이지 없음"),
-//            @ApiResponse(code = 500, message = "서버 에러")
-//    })
+    @ApiIgnore
     @GetMapping(value = {"", "/"})
     public String home(Model model) {
         model.addAttribute("projects", projectService.getAllProjects());
