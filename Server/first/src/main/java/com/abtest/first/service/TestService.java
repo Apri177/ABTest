@@ -15,7 +15,7 @@ public class TestService {
 
     private final TestRepository testRepository;
 
-    public void createTest(Test test) { testRepository.save(test);}
+    public void createTest(Test test) { testRepository.create(test);}
 
     public void editTest(int id, String name, String password, int maxParticipants) {
         Test test = testRepository.findById(id);

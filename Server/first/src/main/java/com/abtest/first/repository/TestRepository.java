@@ -2,6 +2,10 @@ package com.abtest.first.repository;
 
 
 import com.abtest.first.domain.Test;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -12,27 +16,35 @@ import java.util.List;
 public class TestRepository {
 
     // 해쉬맵을 사용한 저장 방식 -> MongoDB 컬렉션으로 직 변환
-    private static HashMap<Integer, Test> tests = new HashMap<>();
+    private MongoTemplate mongoTemplate;
+
+    private Query query;
+    private Update update;
 
     private static int sequence = 0;
 
-    public void save(Test test) {
+    public void create(Test test) {
         test.setId(++sequence);
-        tests.put(test.getId(), test);
+        mongoTemplate.insert(test);
     }
 
-    public void edit(int id, Test test) { tests.put(id, test); }
+    public void edit(int id, Test test) {
+        query.addCriteria(Criteria.where("id").is(id));
 
-    public void delete(int id) { tests.remove(id); }
+        update.set("name", test.getName());
+        update.set("maxParticipants", test.getMaxParticipants());
+        update.set("imageFiles", test.getImageFiles());
+        update.set("updateDate", test.getUpdateDate());
 
-    public List<Test> findAll() { return new ArrayList<>(tests.values()); }
-
-    public Test findById(int id) { return tests.get(id); }
-
-    public void deleteAll() {
-        tests = new HashMap<>();
-        sequence = 0;
+        mongoTemplate.updateMulti(query, update, "tests");
     }
 
+    public void delete(int id) {
+        query.addCriteria(Criteria.where("id").is(id));
+        mongoTemplate.remove(query, "tests");
+    }
 
+    public List<Test> findAll() { return mongoTemplate.findAll(Test.class); }
+
+    public Test findById(int id) { return mongoTemplate.findById(id, Test.class); }
 }

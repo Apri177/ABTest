@@ -16,7 +16,7 @@ public class ProjectService {
 
     private final ProjectRepository projectRepository;
 
-    public void createProject(Project project) { projectRepository.save(project); }
+    public void createProject(Project project) { projectRepository.create(project); }
 
     public void editProject(int id, String name, String content, String adminCode) {
         Project project = projectRepository.findById(id);
@@ -47,7 +47,6 @@ public class ProjectService {
             System.out.println("비밀번호가 틀렸습니다.");
             return;
         }
-
         projectRepository.delete(id);
     }
 

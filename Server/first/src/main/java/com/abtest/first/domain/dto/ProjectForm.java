@@ -1,13 +1,10 @@
 package com.abtest.first.domain.dto;
 
 import lombok.Data;
-//import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-//@Document(collection = "project")
+@Document(collection = "project")
 public class ProjectForm {
 
     private int id;

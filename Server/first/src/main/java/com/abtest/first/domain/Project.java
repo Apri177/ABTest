@@ -1,12 +1,10 @@
 package com.abtest.first.domain;
 
 import lombok.Data;
-//import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-//@Document(collection = "projects")
+@Document(collection = "projects")
 public class Project {
 
     private int id;

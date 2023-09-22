@@ -4,6 +4,8 @@ import com.abtest.first.domain.Project;
 import com.abtest.first.domain.dto.ProjectForm;
 import com.abtest.first.service.ProjectService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
@@ -22,6 +24,9 @@ import java.time.format.DateTimeFormatter;
 public class ProjectController {
 
     private final ProjectService projectService;
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @ApiIgnore
     @GetMapping(value = {"", "/"})
@@ -54,13 +59,13 @@ public class ProjectController {
         return "/project_detail";
     }
 
-    @PostMapping("/project/{id}")
+    @PatchMapping("/project/{id}")
     public String editContent(@PathVariable int id, Project project) {
         projectService.editProject(id, project.getName(), project.getContent(), project.getAdminCode());
         return "redirect:/";
     }
 
-    @PostMapping("/project/delete/{id}")
+    @DeleteMapping("/project/delete/{id}")
     public String deleteProject(@PathVariable int id, Project project) {
         projectService.deleteProject(id, project.getAdminCode());
         return "redirect:/";
