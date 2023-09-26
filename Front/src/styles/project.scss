@@ -1,0 +1,33 @@
+.project-item {
+    width: 20vw;
+    height: 25vh;
+    border-radius: 0.625rem;
+    border: 1px solid var(--default-ui-active-stroke, #D9D9D9);
+    background: var(--default-ui-active, #FFF);
+
+    &:hover{
+        background: var(--default-ui-selected, #E1E1E1);
+    }
+
+    flex-shrink: 0;
+
+    margin-top: 2vmax;
+    margin-left: 1.5vmax;
+
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+
+    .project-name {
+        font-weight: 700;
+        font-size: 3vmin;
+        margin-bottom: 4vh;
+    }
+
+    .project-desc {
+        font-weight: 400;
+        font-size: 2vmin;
+        margin-bottom: 10vh;
+    }
+}

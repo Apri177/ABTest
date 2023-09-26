@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4918519-2d20-4428-8256-05ac7cd6fda0" name="Changes" comment="zip 파일 압축 풀어서 저장 및 spring 버전 변경">
-      <change afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/MongoDBConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/ProjectForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/ProjectForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/ProjectRep.java" beforeDir="false" />
+    <list default="true" id="a4918519-2d20-4428-8256-05ac7cd6fda0" name="Changes" comment="MongoTemplate 및 MongoRepository로 CRUD 변환">
       <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/ProjectRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/TestRep.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/TestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/TestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/service/TestProjectService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/service/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/service/TestService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +133,7 @@
       <workItem from="1695187386207" duration="8506000" />
       <workItem from="1695198551377" duration="142000" />
       <workItem from="1695198727365" duration="835000" />
-      <workItem from="1695258407262" duration="11536000" />
+      <workItem from="1695258407262" duration="12336000" />
     </task>
     <task id="LOCAL-00001" summary="swagger-ui 적용">
       <option name="closed" value="true" />
@@ -163,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695276359205</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="MongoTemplate 및 MongoRepository로 CRUD 변환">
+      <option name="closed" value="true" />
+      <created>1695348213283</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1695348213283</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +170,7 @@
     <MESSAGE value="project and test CRUD (NO DB)" />
     <MESSAGE value="swagger-ui 적용" />
     <MESSAGE value="zip 파일 압축 풀어서 저장 및 spring 버전 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="zip 파일 압축 풀어서 저장 및 spring 버전 변경" />
+    <MESSAGE value="MongoTemplate 및 MongoRepository로 CRUD 변환" />
+    <option name="LAST_COMMIT_MESSAGE" value="MongoTemplate 및 MongoRepository로 CRUD 변환" />
   </component>
 </project>
