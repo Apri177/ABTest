@@ -1,7 +1,15 @@
+import { useState } from 'react'
 import ProjectItem from '../Components/Project/ProjectItem'
 
 
 const ProjectContainer = () => {
+
+    const [ visibility, setVisibility ] = useState(false)
+
+    const popupCloseHandler = (e) => {
+        setVisibility(e)
+    }
+
     return (
         <div className="project-container">
             <div className="project-contents-container">

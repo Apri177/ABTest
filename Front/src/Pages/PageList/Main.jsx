@@ -1,9 +1,18 @@
+import { useState } from "react"
 import Sidebar from "../../Components/Main/SideBar"
 import InfoBarContainer from "../../Container/InfoBarContainer"
 import ProjectContainer from "../../Container/ProjectContainer"
 
 
 const Main = () => {
+    
+    const [ visibility, setVisibility ] = useState(false)
+
+    const popupCloseHandler = (e) => {
+        setVisibility(e)
+    }
+
+
     return (
         <div className="main-container">
             <Sidebar/>
