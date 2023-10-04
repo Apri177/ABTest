@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getState, setState } from "../../store/PopupState"
+import { setState } from "../../store/popupStore"
+import '../../styles/popup.scss'
 
 
 const Popup = () => {
@@ -9,36 +10,45 @@ const Popup = () => {
 
     const dispatch = useDispatch()
 
-    const { popup } = useSelector(state => state.popup)
-
-    const setPopup = () => {
-        dispatch(setState(popup))
-    }
-
-    const [ show, setShow ] = useState(false)
-
-    const closeHandler = (e) => {
-        setShow(false)
-        popup.onClose(false)
+    const state = useSelector(state => state.popup)
+    const closeHandler = () => {
+        dispatch(setState())
     }
 
     useEffect(() => {
-        setShow(show)
-    }, [show])
-
+        console.log(state.popup.show);
+    }, [state.popup.show])
 
     return(
         <div
         style={{
-            visibility: show ? "visible" : "hidden",
-            opacity: show ? "1" : "0"
+            // visibility: state.popup.show ? "visible" : "hidden", 
+            visibility: "visible",
+            opacity: 1
         }} className="overlay">
             <div className="popup">
-                <h2>Popup title</h2>
-                <span className="close" onClick={closeHandler}>
-                    asdfadsf
-                </span>
-                <div> ;lkjfdal;kfjdsa;ljk </div>
+                <div className="popup-title">
+                    New Project
+                </div>
+                
+                <div className="sec1">
+                    <div className="insert-info">
+                        admin code
+                    </div>
+                    <input className="popup-admin-code">
+
+                    </input>
+                </div>
+
+
+                <div className="sec2">
+                    <button onClick={closeHandler} className="popup-cancel">
+                        cancel
+                    </button>
+                    <button className="popup-general">
+                        NEXT
+                    </button>
+                </div>
             </div>
         </div>
     )

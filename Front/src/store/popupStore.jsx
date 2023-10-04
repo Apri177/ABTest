@@ -7,7 +7,6 @@ import { createSlice } from "@reduxjs/toolkit"
 export const initialState = {
     popup: {
         show: false,
-        onClose: () => {}
     }
 }
 
@@ -16,11 +15,10 @@ const popupData = createSlice({
     initialState,
     reducers: {
         getState: (state, action) => {
-            state.popup = action.payload
+            return state
         },
         setState: (state, action) => {
-            console.log(action.payload);
-            state.popup = action.payload
+            state.popup.show = !state.popup.show
         }
     }
 })

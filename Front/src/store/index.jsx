@@ -9,7 +9,7 @@ export const initialState = {
             adminCode: "",
             updateDate: "",
         }
-    ],    
+    ]
 }
 
 const projectData = createSlice({

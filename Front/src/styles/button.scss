@@ -1,0 +1,84 @@
+
+.create-button {
+    width: 10vw;
+    height: 5vh;
+
+    position: absolute;
+    right: 5vw;
+    top: 20vh;
+    border-radius: 1.5625rem;
+    
+    background: white;
+    border: 1px solid var(--default-ui-active-stroke, #D9D9D9);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    padding-right: 1.5vw;
+
+
+    &:hover {
+        background: #D9D9D9;
+    }
+
+    img {
+        width: 1.75vw;
+        height: 3vh;
+    }
+
+    p {
+        font-family: Noto Sans;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 1vmax;
+        letter-spacing: -0.04rem;
+    }
+
+}
+
+.popup-cancel {
+    width: 5vw;
+    height: 5vh;
+
+    background: white;
+
+    border-radius: 2rem;
+    border: 1px solid var(--default-ui-active-stroke, #D9D9D9);
+
+    margin-right: 1vw;
+
+    font-family: Noto Sans;
+    font-size: 1vmax;
+    font-weight: 300;
+    letter-spacing: -0.04rem;
+    position: absolute;
+    bottom: 2vh;
+    right: 6vw;
+    
+}
+
+.popup-general {
+
+    width: 5vw;
+    height: 5vh;
+
+    background: var(--hero-button-active, #FFAD33);
+    border-radius: 2rem;
+
+    border: 0;
+
+    color: var(--hero-button-font-and-icon-active, var(--common-white-main, #FFF));
+
+    margin-right: 1vw;
+    
+    position: absolute;
+    bottom: 2vh;
+
+    font-family: Noto Sans;
+    font-size: 1vmax;
+    font-weight: 700;
+    letter-spacing: -0.04rem;
+
+}
