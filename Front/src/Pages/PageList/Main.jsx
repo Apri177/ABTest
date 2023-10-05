@@ -2,7 +2,7 @@ import { useState } from "react"
 import Sidebar from "../../Components/Main/SideBar"
 import InfoBarContainer from "../../Container/InfoBarContainer"
 import ProjectContainer from "../../Container/ProjectContainer"
-import Popup from "../../Components/popup/Popup"
+import ProjectPopup from "../../Components/popup/ProjectPopup"
 
 
 const Main = () => {
@@ -10,7 +10,7 @@ const Main = () => {
 
     return (
         <div className="main-container">   
-            <Popup></Popup>
+            <ProjectPopup></ProjectPopup>
             
             <Sidebar/>
             <div style={{

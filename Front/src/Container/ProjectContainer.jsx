@@ -23,8 +23,8 @@ const ProjectContainer = () => {
             <Search>
                 
             </Search>
-            <CreateButton content={"new project"}/>
 
+            <CreateButton content={"new project"}/>
             <div className="project-contents-container">
 
                 <ProjectItem name={"1234"} content={"asdflkjasdflkjadsflkj"} updateDate={"11:00, 2022-10-20"}/>

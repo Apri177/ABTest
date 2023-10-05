@@ -1,0 +1,94 @@
+
+.test-container {
+    
+    width: 80vw;
+    height: 95vh;
+
+    border-radius: 0.75rem;
+    background: var(--common-white-main, #FFF);
+
+    margin-left: 2.75vw;
+    margin-top: 2.5vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .project-name {
+        width: 100%;
+        height: 10vh;
+        
+        border-bottom: 1px solid #D9D9D9;;
+
+        display: flex;
+        align-items: center;
+
+        font-family: Noto Sans;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 1.5vmax;
+    }
+
+    .test-content-container {
+        
+        width: 95%;
+        height: 75%;
+
+        margin-top: 10vh;
+
+        border-radius: 0.25rem;
+        border: 1px solid var(--default-ui-active-stroke, #D9D9D9);
+
+        #content-header {
+            width: 100%;
+            height: 5vh;
+
+            border-radius: 0.25rem 0.25rem 0rem 0rem;
+            border-bottom: 1px solid var(--default-ui-active-stroke, #D9D9D9);
+            background: var(--list-header-active, #F7F7F7);
+
+            display: flex;
+            align-items: flex-start;
+            flex-direction: row;
+            justify-content: center;
+
+            font-family: Noto Sans;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: -0.03rem;
+            text-transform: uppercase;
+            
+
+
+
+            #name {
+                position: absolute;
+                left: 27.5vw;
+            }
+
+            #dir1 {
+                position: absolute;
+                left: 40vw;
+            }
+
+            #dir2 {
+                position: absolute;
+                left: 55vw;
+            }
+
+            #partic {
+                position: absolute;
+                right: 25vw;
+            }
+
+            #date {
+                position: absolute;
+                right: 17vw;
+            }
+
+            
+        }
+    }
+
+}
+

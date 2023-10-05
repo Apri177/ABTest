@@ -17,31 +17,14 @@
 .popup {
     background: #fff;
     border-radius: 1rem;
-    width: 30vw;
-    height: 40vh;
+    width: 40vw;
+    height: 60vh;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
     transition: all 1s ease-in-out;
-
-    h2 {
-        margin-top: 0;
-        color: #333;
-        font-family: Tahoma, Arial, sans-serif;
-    }
-    
-    .close {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        transition: all 200ms;
-        font-size: 30px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #333;
-    }
 
     .popup-title {
         border-bottom: 1px solid var(--default-ui-active-stroke, #D9D9D9);
@@ -56,9 +39,25 @@
         
     }
 
+
+    // 팝업
+    
+    .desc-insert {
+
+        position: absolute;
+        top: 17.5vh;
+
+    }
+
+    #test-files {
+        top: 15vh;
+    }
+
+
+
     .insert-info {
         background-color: #fff;
-        width: 6vw;
+        width: max-content;
         height: max-content;
 
         display: flex;
@@ -68,43 +67,152 @@
         font-size: 1vmax;
         font-weight: 300;
 
-        position: absolute;
-        bottom: 16.75vh;
-        left: 3.5vw;
-        
         z-index: 99;
     }
 
-    .popup-admin-code {
+    #admin-code {
+        position: absolute;
+        bottom: 16.75vh;
+        left: 3vw;
+    }
+    
+    #project-name {
+        position: absolute;
+        top: 12vh;
+        left: 3vw;
+    }
 
-        
-        width: 25vw;
-        height: 5vh;
+    #notes {
+        position: absolute;
+        left: 3vw;
+        top: 20.5vh;
+    }
+
+    #test-name {
+        position: absolute;
+        left: 3vw;
+        top: 11vh;
+    }
+
+    #test-max-part {
+        position: absolute;
+        left: 3vw;
+        top: 19vh;
+    }
+
+    #test-password {
+        position: absolute;
+        left: 3vw;
+        top: 27vh;
+    }
+
+    #test-admin-code {
+        position: absolute;
+        left: 3vw;
+        top: 35vh;
+    }
+
+    #test-dir1 {
+        position: absolute;
+        left: 3vw;
+        top: 20vh;
+    }
+
+    #test-dir2 {
+        position: absolute;
+        left: 3vw;
+        top: 28vh;
+    }
+
+    #test-csv {
+        position: absolute;
+        left: 3vw;
+        top: 36vh;
+    }
+
+
+    .popup-input {
+
+        width: 35vw;
+        height: 4vh;
         border-radius: 0.25rem;
         border: 1px solid var(--default-ui-active-stroke, #D9D9D9);
-
-        position: absolute;
-
-        bottom: 12.5vh;
-
+        
         &:focus {
             outline: none !important;
             border-color: #FFAA00;
         }
+    }
+
+    #popup-admin-code {
+        position: absolute;
+        bottom: 12.5vh;
+    }
+
+    #popup-project-name {
+        position: absolute;
+        top: 13vh;
+    }
+
+    #popup-notes {
+        position: absolute;
+        top: 21.5vh;
+    }
+
+    #popup-test-name {
+        position: absolute;
+        top: 12vh;
+    }
+
+    #popup-max-part {
+        position: absolute;
+        top: 20vh;
+    }
+
+    #popup-test-password {
+        position: absolute;
+        top: 28vh;
+
+        width: 32vw;
 
     }
 
+    #popup-test-admin-code {
+        position: absolute;
+        top: 36vh;
 
+        width: 32vw;
+    }
+
+    #popup-test-dir1 {
+        position: absolute;
+        top: 21vh;
+    }
+
+    #popup-test-dir2 {
+        position: absolute;
+        top: 29vh;
+    }
+
+    #popup-test-csv {
+        position: absolute;
+        top: 37vh;
+    }
+
+
+    // popup-section
 
     .sec1 {
         width: 100%;
         height: 20vh;
 
         display: flex;
-        justify-content: center;
+        justify-content: start;
 
         margin-top: 3vh;        
 
+        box-sizing: border-box;
+        padding-left: 2vw;
     }
 
     .sec2 {
@@ -115,6 +223,25 @@
         
     }
 
+
+    // images
+    #upload1 {
+        position: absolute;
+        right: 3vw;
+        top: 21.5vh;
+    }
+
+    #upload2 {
+        position: absolute;
+        right: 3vw;
+        top: 29.5vh;
+    }
+
+    #upload3 {
+        position: absolute;
+        right: 3vw;
+        top: 37.5vh;
+    }
 
 }
   

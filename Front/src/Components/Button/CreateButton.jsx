@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import '../../styles/button.scss'
-import { getState, setState } from '../../store/popupStore';
+import { open } from '../../store/popupStore';
 
 const CreateButton = ({ content }) => {
 
@@ -9,13 +9,13 @@ const CreateButton = ({ content }) => {
 
     const touch = () => {
         if(!state.popup.show) {
-            dispatch(setState())
+            dispatch(open())
         }
     }
 
     return (
-        <button className="create-button" onClick={touch}>
-            <img src={`/images/button-icon-add.png`} alt="plsus" />
+        <button className="create-button" onClick={touch} >
+            <img src={`/images/button-icon-add.svg`} alt="plsus" />
             <p>
                 {content}
             </p>

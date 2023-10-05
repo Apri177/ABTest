@@ -1,5 +1,6 @@
 import {Route, BrowserRouter, Routes } from "react-router-dom";
 import Main from "./Pages/PageList/Main";
+import Test from "./Pages/PageList/Test";
 
 
 function App() {

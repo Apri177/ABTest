@@ -14,14 +14,14 @@ const popupData = createSlice({
     name: "popup",
     initialState,
     reducers: {
-        getState: (state, action) => {
-            return state
+        open: (state, action) => {
+            state.popup.show = true
         },
-        setState: (state, action) => {
-            state.popup.show = !state.popup.show
+        close: (state, action) => {
+            state.popup.show = false
         }
     }
 })
 
-export const { getState, setState } = popupData.actions
+export const { open, close } = popupData.actions
 export default popupData.reducer
