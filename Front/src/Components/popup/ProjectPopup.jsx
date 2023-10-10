@@ -10,7 +10,10 @@ const ProjectPopup = () => {
 
     const dispatch = useDispatch()
 
-    const state = useSelector(state => state.popup)
+    const popupState = useSelector(state => state.popup)
+
+
+
     const closeHandler = () => {
         dispatch(close())
     }
@@ -26,14 +29,18 @@ const ProjectPopup = () => {
         setPage(page - 1)
     }
 
+
+
     return(
         <div
         style={{
-            visibility: state.popup.show ? "visible" : "hidden", 
-            opacity:  state.popup.show ? 1 : 0
+            // visibility: popupState.popup.show ? "visible" : "hidden", 
+            // opacity:  popupState.popup.show ? 1 : 0
+            visibility: "visible",
+            opacity: 1
         }} className="overlay">
             <div className="popup" style={{
-                height: page ? "40vh" : "50vh"
+                height: page ? "50vh" : "40vh"
             }}>
                 <div className="popup-title">
                     New Project
@@ -43,7 +50,7 @@ const ProjectPopup = () => {
                     page === 0
                     ?
                     <div className="sec1">
-                        <div className="desc-insert">
+                        <div className="desc-insert" id="admincode">
                             Enter admin code
                         </div>
                         <div className="insert-info" id="admin-code">

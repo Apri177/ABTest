@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import '../../styles/button.scss'
 import { open } from '../../store/popupStore';
+import { createProject } from '../../util/api';
 
 const CreateButton = ({ content }) => {
 
@@ -8,9 +9,10 @@ const CreateButton = ({ content }) => {
     const state = useSelector(state => state.popup)
 
     const touch = () => {
-        if(!state.popup.show) {
-            dispatch(open())
-        }
+        // if(!state.popup.show) {
+        //     dispatch(open())
+        // }
+        createProject()
     }
 
     return (
@@ -21,7 +23,6 @@ const CreateButton = ({ content }) => {
             </p>
         </button>
     );
-
 };
 
 

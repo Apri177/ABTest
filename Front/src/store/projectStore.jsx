@@ -16,16 +16,15 @@ const projectData = createSlice({
     name: "project",
     initialState,
     reducers: {
-        getState: (state, action) => {
+        getProjectState: (state, action) => {
             state.projects = action.payload
         }, 
-        setState: (state, action) => {
-            console.log(action.payload);
-            state.projects = action.payload
+        setProjectState: (state, action, projects) => {
+            state.projects = projects
         }
     }
 })
 
 
-export const {getState, setState}  = projectData.actions
+export const {getProjectState, setProjectState}  = projectData.actions
 export default projectData.reducer

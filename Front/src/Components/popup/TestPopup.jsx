@@ -103,8 +103,42 @@ const TestPopup = () => {
 
                 } */}
                 
+                {/* <div className="sec1">
+                    <div className="insert-info">
+                        number of sets
+                    </div>
+
+                    <input type="text" className="popup-input" />
+
+                    <div className="desc-insert">
+                        Comparison method
+                    </div>
+
+                    <img src="" alt="comparison" />
+
+                    <div className="desc-insert">
+                        Test configuration
+                    </div>
+
+                    <img src="" alt="mixed" />
+
+                    <img src="" alt="identical" />
+                </div> */}
+
                 <div className="sec1">
+                    <div className="insert-info" id="criteria sel">
+                        selection criteria
+                    </div>
+
+                    <input type="text" className="popup-input" id="criteria"/>
+
+                    <div className="desc-insert" id="method sel">
+                        Selection method
+                    </div>
+
+                    <img src="" alt="vs" id="vs"/>
                     
+                    <img src="" alt="likert" id="likert"/>
                 </div>
 
 

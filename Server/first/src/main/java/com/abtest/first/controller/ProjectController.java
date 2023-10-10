@@ -6,6 +6,8 @@ import com.abtest.first.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
@@ -14,6 +16,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,31 +34,38 @@ public class ProjectController {
     @ApiIgnore
     @GetMapping(value = {"", "/"})
     public String home(Model model) {
-        model.addAttribute("projects", projectService.getAllProjects());
-        return "/home";
+        return "/";
     }
 
-    @PostMapping("/project/create")
-    public String createProject(ProjectForm form) throws IOException {
-        Project project = new Project();
-        project.setName(form.getName());
-        project.setContent(form.getContent());
-        project.setAdminCode(form.getAdminCode());
+    // test 성공 (Front-end)와 API 연동하기
+    @GetMapping("/api/test")
+    public String tete() {
+        return "Test code 입니다.";
+    }
 
-        LocalDateTime now = LocalDateTime.now();
-        String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm, yyyy-MM-dd"));
-        project.setUpdateDate(formattedDate);
+    @GetMapping("/api/project/all")
+    public List<Project> getProjectAll() {
+        return projectService.getAllProjects();
+    }
+    private Long sequence;
 
-        projectService.createProject(project);
+    @PostMapping("/api/project/create")
+    public Project createProject(@RequestBody ProjectForm form) throws IOException {
 
-        return "redirect:/";
+        Project project = Project.builder()
+                .adminCode(form.getAdminCode())
+                .name(form.getName())
+                .content(form.getContent())
+                .build();
+
+
+        return projectService.createProject(project);
     }
 
     @GetMapping("/project/{id}")
-    public String showProject(@PathVariable int id, Model model){
+    public String showProject(@PathVariable int id){
         Project project = projectService.getProject(id);
 
-        model.addAttribute("project", project);
         return "/project_detail";
     }
 

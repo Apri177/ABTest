@@ -16,7 +16,7 @@ public class ProjectService {
 
     private final ProjectRepository projectRepository;
 
-    public void createProject(Project project) { projectRepository.create(project); }
+    public Project createProject(Project project) { return projectRepository.create(project); }
 
     public void editProject(int id, String name, String content, String adminCode) {
         Project project = projectRepository.findById(id);

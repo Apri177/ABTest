@@ -2,6 +2,8 @@ package com.abtest.first.repository;
 
 
 import com.abtest.first.domain.Project;
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -11,16 +13,19 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
+@Getter
 public class ProjectRepository {
 
+    @Autowired
     private MongoTemplate mongoTemplate;
+
     private Query query = new Query();
     private Update update = new Update();
-    private static int sequence = 0;
 
-    public void create(Project project) {
-        project.setId(++sequence);
-        mongoTemplate.insert(project);
+    public Project create(Project project) {
+        mongoTemplate.save(project);
+
+        return mongoTemplate.findOne(query, Project.class, "projects");
     }
 
     public void edit(int id, Project project) {

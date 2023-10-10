@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
-import projectData from "./index"
+import projectData from "./projectStore"
 import popupData from "./popupStore"
 
 export default configureStore({

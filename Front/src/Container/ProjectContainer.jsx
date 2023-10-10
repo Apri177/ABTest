@@ -6,18 +6,6 @@ import Search from '../Components/Project/Search'
 
 const ProjectContainer = () => {
 
-    const [ visibility, setVisibility ] = useState(true)
-
-    const popupOpenHandler = () => {
-        setVisibility(true)
-        console.log("popup open");
-    }
-
-    const popupCloseHandler = (e) => {
-        setVisibility(false)
-        console.log("popup close");
-    }
-
     return (
         <div className="project-container">
             <Search>
