@@ -11,24 +11,24 @@ import { getProjectState, setProjectState } from "../../store/projectStore"
 const Main = () => {
 
     const dispatch = useDispatch();
-    const projects = useSelector(state => state.project)
+    const projects = useSelector(state => state.project.projects)
 
     useEffect(() => {
-        (
-            async () => {
-                await getProjects()
-                .then((res) => {
-                    console.log(res.data[0]);
-                    dispatch(setProjectState(res.data[0]))
-                })
-            }
-        ) ()
+        // (
+        //     async () => {
+        //         await getProjects()
+        //         .then((res) => {
+        //             dispatch(setProjectState(res))
+                    
+        //         })
+        //     }
+        // ) ()
 
-        console.log(dispatch(getProjectState()));
+        // dispatch(getProjectState())
     }, [])
 
     return (
-        <div className="main-container">   
+        <div className="main-container">
             {/* <ProjectPopup></ProjectPopup> */}
             
             <Sidebar/>

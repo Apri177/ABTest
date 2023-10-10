@@ -8,8 +8,8 @@ export const initialState = {
             content: "",
             adminCode: "",
             updateDate: "",
-        }
-    ]
+        },
+    ],
 }
 
 const projectData = createSlice({
@@ -17,10 +17,19 @@ const projectData = createSlice({
     initialState,
     reducers: {
         getProjectState: (state, action) => {
+            console.log(state.projects);
+        },
+
+        setProjectState: (state, action) => {
+            console.log(action);
             state.projects = action.payload
-        }, 
-        setProjectState: (state, action, projects) => {
-            state.projects = projects
+        },
+        deleteProjectState: (state, action) => {
+            console.log(action.payload);
+            setProjectState()
+        },
+        initProjectState: (state, action) => {
+            state.projects = initialState
         }
     }
 })

@@ -20,19 +20,17 @@ async() => {
     const res = await axios.get(
         `/api/project/all`
     )
-
-    console.log(res.data[0]);
-    return res.data[0]
+    return res.data
 }
 
 export const createProject = 
-async() => {
+async(adminCode, name, content) => {
     const res = await axios.post(
         `/api/project/create`,
         {
-            "adminCode" : "qwer",
-            "name" : "Second project",
-            "content" : "두 번쨰 프로젝트임",
+            "adminCode" : adminCode,
+            "name" : name,
+            "content" : content,
         }
     )
     .then((res) => {
@@ -41,7 +39,6 @@ async() => {
     .catch((err) => {
         console.log(err, "실패");
     })
-    
 }
 
 
