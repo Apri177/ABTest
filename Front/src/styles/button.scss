@@ -38,7 +38,7 @@
 
 }
 
-.popup-cancel {
+.common-button {
     width: 5vw;
     height: 5vh;
 
@@ -53,26 +53,16 @@
     font-size: 1vmax;
     font-weight: 300;
     letter-spacing: -0.04rem;
+
+}
+
+.popup-cancel {
     position: absolute;
     bottom: 2vh;
     right: 6vw;
-    
 }
 
-.popup-general {
-
-    width: 5vw;
-    height: 5vh;
-
-    background: var(--hero-button-active, #FFAD33);
-    border-radius: 2rem;
-
-    border: 0;
-
-    color: var(--hero-button-font-and-icon-active, var(--common-white-main, #FFF));
-
-    margin-right: 1vw;
-    
+.popup-done {
     position: absolute;
     bottom: 2vh;
 
@@ -81,4 +71,40 @@
     font-weight: 700;
     letter-spacing: -0.04rem;
 
+    border: 0;
+    background: var(--hero-button-active, #FFAD33);
+
+}
+
+.popup-next {
+    position: absolute;
+    bottom: 2vh;
+
+    font-family: Noto Sans;
+    font-size: 1vmax;
+    font-weight: 700;
+    letter-spacing: -0.04rem;
+
+    border: 0;
+    background: var(--hero-button-active, #FFAD33);
+}
+
+#test-back {
+    position: absolute;
+    left: 5vw;
+    bottom: 4vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#test-next {
+    position: absolute;
+    right: 5vw;
+    bottom: 4vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

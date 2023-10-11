@@ -29,6 +29,10 @@ const TestPopup = () => {
         setPage(page - 1)
     }
 
+    useEffect(() => {
+        console.log(page);
+    }, [page])
+
     return(
         <div
         style={{
@@ -44,8 +48,8 @@ const TestPopup = () => {
                     New Test
                 </div>
                 
-                {/* {
-                page == 1 ? 
+                {
+                page === 0 ? 
                     <div className="sec1">
                         <div className="insert-info" id="test-name">
                             test name
@@ -67,7 +71,7 @@ const TestPopup = () => {
                         </div>
                         <input type="text" name="admin-code" id="popup-test-admin-code" className="popup-input"/>
                     </div>
-                    : page == 2 ?
+                    : page === 1 ?
                     <div className="sec1">
                         <div className="desc-insert" id="test-files">
                             Files
@@ -77,7 +81,7 @@ const TestPopup = () => {
                             directory 1
                         </div>
                         <input type="text" name="dir1" id="popup-test-dir1" className="popup-input" disabled/>
-                        <img src="images/icon-upload-file.svg" alt="file upload" style={{
+                        <img src="/images/icon-upload-file.svg" alt="file upload" style={{
                             maxWidth:"2vw",
                         }} id="upload1"/>
 
@@ -86,7 +90,7 @@ const TestPopup = () => {
                             directory 2
                         </div>
                         <input type="text" name="dir2" id="popup-test-dir2" className="popup-input" disabled/>
-                        <img src="images/icon-upload-file.svg" alt="file upload" style={{
+                        <img src="/images/icon-upload-file.svg" alt="file upload" style={{
                             maxWidth:"2vw",
                         }} id="upload2"/>
 
@@ -94,73 +98,73 @@ const TestPopup = () => {
                             prompt csv
                         </div>
                         <input type="text" name="prom-csv" id="popup-test-csv" className="popup-input" disabled/>
-                        <img src="images/icon-upload-file.svg" alt="file upload" style={{
+                        <img src="/images/icon-upload-file.svg" alt="file upload" style={{
                             maxWidth:"2vw",
                         }} id="upload3"/>
                     </div>
-                    : page == 3 ?
+                    : page === 2 ?
+                    <div className="sec1">
+                        <div className="insert-info" id="number-of-sets">
+                            number of sets
+                        </div>
+    
+                        <input type="text" className="popup-input" id="popup-num-of-sets"/>
+    
+                        <div className="desc-insert" id="comparison-method">
+                            Comparison method
+                        </div>
+    
+                        <img src="/images/comparison.svg" alt="comparison" id="comparison"/>
+    
+                        <div className="desc-insert" id="test-configuration">
+                            Test configuration
+                        </div>
+    
+                        <img src="/images/mixed.svg" alt="mixed" id="mixed"/>
+    
+                        <img src="/images/identical.svg" alt="identical" id="identical"/>
+                    </div>
+                    :
+                    <div className="sec1">
+                        <div className="insert-info" id="criteria-sel">
+                            selection criteria
+                        </div>
+    
+                        <input type="text" className="popup-input" id="popup-criteria"/>
+    
+                        <div className="desc-insert" id="method-sel">
+                            Selection method
+                        </div>
+    
+                        <img src="/images/vs.svg" alt="vs" id="vs"/>
+                        
+                        <img src="/images/likert.svg" alt="likert" id="likert"/>
+                    </div>
 
-
-                } */}
+                }
                 
-                {/* <div className="sec1">
-                    <div className="insert-info">
-                        number of sets
-                    </div>
 
-                    <input type="text" className="popup-input" />
-
-                    <div className="desc-insert">
-                        Comparison method
-                    </div>
-
-                    <img src="" alt="comparison" />
-
-                    <div className="desc-insert">
-                        Test configuration
-                    </div>
-
-                    <img src="" alt="mixed" />
-
-                    <img src="" alt="identical" />
-                </div> */}
-
-                <div className="sec1">
-                    <div className="insert-info" id="criteria sel">
-                        selection criteria
-                    </div>
-
-                    <input type="text" className="popup-input" id="criteria"/>
-
-                    <div className="desc-insert" id="method sel">
-                        Selection method
-                    </div>
-
-                    <img src="" alt="vs" id="vs"/>
-                    
-                    <img src="" alt="likert" id="likert"/>
-                </div>
 
 
 
                 <div className="sec2">
                     {
                         page < 1 ? 
-                        <button className="popup-cancel" onClick={closeHandler}>
+                        <button className="common-button popup-cancel" onClick={closeHandler}>
                             cancel
                         </button>
                         :
-                        <button className="popup-cancel" onClick={back}>
+                        <button className="common-button popup-cancel" onClick={back}>
                             back
                         </button>
 
                     }
                     {
                         page < 3 ? 
-                    <button className="popup-general" onClick={next}>
+                    <button className="common-button popup-next" onClick={next}>
                         NEXT
                     </button> :
-                    <button className="popup-general" type="submit">
+                    <button className="common-button popup-done" type="submit">
                         DONE
                     </button>
                     }

@@ -1,9 +1,11 @@
 package com.abtest.first.domain.dto;
 
 import lombok.Data;
+import lombok.Getter;
 import org.springframework.data.annotation.Id;
 
 @Data
+@Getter
 public class ProjectForm {
     private int id;
 

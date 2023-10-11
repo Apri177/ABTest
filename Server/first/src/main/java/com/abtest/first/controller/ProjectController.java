@@ -28,6 +28,7 @@ public class ProjectController {
 
     private final ProjectService projectService;
 
+
     @Autowired
     private MongoTemplate mongoTemplate;
 
@@ -37,18 +38,10 @@ public class ProjectController {
         return "/";
     }
 
-    // test 성공 (Front-end)와 API 연동하기
-    @GetMapping("/api/test")
-    public String tete() {
-        return "Test code 입니다.";
-    }
-
     @GetMapping("/api/project/all")
     public List<Project> getProjectAll() {
         return projectService.getAllProjects();
     }
-
-    private Long sequence;
 
     @PostMapping("/api/project/create")
     public Project createProject(@RequestBody ProjectForm form) throws IOException {
@@ -58,19 +51,19 @@ public class ProjectController {
                 .name(form.getName())
                 .content(form.getContent())
                 .build();
-
+        project.setId(form.getId());
 
         return projectService.createProject(project);
     }
 
-    @GetMapping("/project/{id}")
-    public String showProject(@PathVariable int id){
+    @GetMapping("/api/project/{id}")
+    public Project showProject(@PathVariable int id){
         Project project = projectService.getProject(id);
 
-        return "/project_detail";
+        return project;
     }
 
-    @PatchMapping("/project/{id}")
+    @PatchMapping("api/project/{id}")
     public String editContent(@PathVariable int id, Project project) {
         projectService.editProject(id, project.getName(), project.getContent(), project.getAdminCode());
         return "redirect:/";

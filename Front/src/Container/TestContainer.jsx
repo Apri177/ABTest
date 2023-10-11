@@ -1,17 +1,24 @@
 import '../styles/test.scss'
 import CreateButton from '../Components/Button/CreateButton'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const TestContainer = () => {
+
+    const projectState = useSelector(state => state.project)
+
+
     return (
         <div className="test-container">
             <div className="project-name">
-                <img src="images/back-icon.svg" alt="back_icon" style={{
-                    marginLeft: "3vw",
-                    marginRight: "1vw"
-                }}/>
-                proejct name
+                <Link to={'/'}>
+                    <img src="/images/back-icon.svg" alt="back_icon" style={{
+                        marginLeft: "3vw",
+                        marginRight: "1vw"
+                    }}/>
+                </Link>
+                {projectState.preProject.name}
             </div>
-
             <CreateButton content={"new test"}/>
 
             <div className='test-content-container'>

@@ -9,10 +9,9 @@ const CreateButton = ({ content }) => {
     const state = useSelector(state => state.popup)
 
     const touch = () => {
-        // if(!state.popup.show) {
-        //     dispatch(open())
-        // }
-        createProject()
+        if(!state.popup.show) {
+            dispatch(open())
+        }
     }
 
     return (

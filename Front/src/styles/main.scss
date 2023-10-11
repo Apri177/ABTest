@@ -64,7 +64,7 @@ body {
 
 .project-container {
     width: 95%;
-    height: 82.5%;
+    max-height: 82.5vh;
     
     background: var(--common-white-main, #FFF);
     border-radius: 0.75rem;
@@ -80,6 +80,8 @@ body {
         height: 85%;
 
         display: flex;
+        flex-flow: row wrap;
+        overflow-y: scroll;
     }
 }
 

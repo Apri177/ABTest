@@ -22,8 +22,15 @@ public class ProjectRepository {
     private Query query = new Query();
     private Update update = new Update();
 
+    private static int sequence = 0;
+
+
     public Project create(Project project) {
-        mongoTemplate.save(project);
+        mongoTemplate.insert(project);
+
+//        Criteria criteria = new Criteria("id");
+//        criteria.is(sequence);
+//        Query query = new Query(criteria);
 
         return mongoTemplate.findOne(query, Project.class, "projects");
     }
@@ -43,6 +50,8 @@ public class ProjectRepository {
         query.addCriteria(Criteria.where("id").is(id));
         mongoTemplate.remove(query, "projects");
     }
+
+
 
     public List<Project> findAll() { return mongoTemplate.findAll(Project.class); }
 

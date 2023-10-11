@@ -1,39 +1,28 @@
 import {createSlice} from "@reduxjs/toolkit"
+import { getProjects } from "../util/api";
+import { useDispatch } from "react-redux";
 
 export const initialState = {
-    projects: [
-        {
-            id: 0,
-            name: "",
-            content: "",
-            adminCode: "",
-            updateDate: "",
-        },
-    ],
+    projects: [],
+    preProject: {},
 }
 
 const projectData = createSlice({
     name: "project",
     initialState,
     reducers: {
-        getProjectState: (state, action) => {
-            console.log(state.projects);
+        getProjectState: (state) => {
+            return state.projects
         },
-
         setProjectState: (state, action) => {
-            console.log(action);
             state.projects = action.payload
         },
-        deleteProjectState: (state, action) => {
-            console.log(action.payload);
-            setProjectState()
+        setPreProjectState: (state, action) => {
+            state.preProject = action.payload
         },
-        initProjectState: (state, action) => {
-            state.projects = initialState
-        }
     }
 })
 
 
-export const {getProjectState, setProjectState}  = projectData.actions
+export const {getProjectState, setProjectState, setPreProjectState}  = projectData.actions
 export default projectData.reducer
