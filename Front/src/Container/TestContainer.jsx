@@ -2,6 +2,7 @@ import '../styles/test.scss'
 import CreateButton from '../Components/Button/CreateButton'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import TestItem from '../Components/Test/TestItem'
 
 const TestContainer = () => {
 
@@ -21,29 +22,29 @@ const TestContainer = () => {
             </div>
             <CreateButton content={"new test"}/>
 
-            <div className='test-content-container'>
-                <div id='content-header'>
-                    <dl>
-                        <dt id='name'>
-                            name
-                        </dt>
-                        <dt id='dir1'>
-                            directory 1
-                        </dt>
-                        <dt id='dir2'>
-                            directory 2
-                        </dt>
-                        <dt id='partic'>
-                            participants
-                        </dt>
-                        <dt id='date'>
-                            created
-                        </dt>
-                    </dl>
-                    
-                </div>
+            <div id='content-header'>
+                <dl>
+                    <dt id='name'>
+                        name
+                    </dt>
+                    <dt id='dir1'>
+                        directory 1
+                    </dt>
+                    <dt id='dir2'>
+                        directory 2
+                    </dt>
+                    <dt id='partic'>
+                        participants
+                    </dt>
+                    <dt id='date'>
+                        created
+                    </dt>
+                </dl>    
             </div>
-
+            <div className='test-content-container'>
+                <TestItem name={"name"} dir1={"asdf"} dir2={"asdf"} updateDate={"1234"}/>
+                <TestItem name={"asdasd"}/>
+            </div>
         </div>
     )
 }

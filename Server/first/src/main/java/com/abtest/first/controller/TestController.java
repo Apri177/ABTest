@@ -25,18 +25,18 @@ public class TestController {
 
     @PostMapping("/project/{id}/test/create")
     public String createTest(TestForm form) throws IOException {
-        Test test = new Test();
+        Test test = new Test(form.getName(),form.getPassword());
         test.setName(form.getName());
         test.setPassword(form.getPassword());
         test.setMaxParticipants(form.getMaxParticipants());
-        test.setProject(form.getProject());
 
         LocalDateTime now = LocalDateTime.now();
         String formattedDate = now.format(DateTimeFormatter.ofPattern("HH-mm MM/dd"));
         test.setUpdateDate(formattedDate);
 
-        List<UploadFile> imageFiles = fileStore.storeFiles(form.getImageFiles());
-        test.setImageFiles(imageFiles);
+        List<UploadFile> imageFiles1 = fileStore.storeFiles(form.getImageFiles1());
+        List<UploadFile> imageFiles2 = fileStore.storeFiles(form.getImageFiles2());
+        test.setImageFiles1(imageFiles1);
 
         testService.createTest(test);
 
@@ -54,13 +54,13 @@ public class TestController {
     @PostMapping("/project/{id}/test/{tid}")
     public String editTest(@PathVariable int tid, Test test) {
         testService.editTest(tid, test.getName(), test.getPassword(), test.getMaxParticipants());
-        return "redirect:/project/{" + test.getProject().getId() + "}";
+        return "redirect:/project/{" + "}";
     }
 
     @PostMapping("/project/{id}/test/delete/{tid}")
     public String deleteTest(@PathVariable int tid, Test test) {
         testService.deleteTest(tid, test.getPassword());
-        return "redirect:/project/{" + test.getProject().getId() + "}";
+        return "redirect:/project/{"  + "}";
     }
 
 }

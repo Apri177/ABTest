@@ -55,17 +55,26 @@ const ProjectPopup = () => {
         res.then((res) => {
             dispatch(setProjectState(res.data))
         })
-    },[])
+    }, [])
 
     const create = async () => {
-
-        if(adminCode.length !== 0 
-            && 
-            name.length !== 0
-            &&
-            content.length !== 0) {
-                await createProject(projectState.projects.at(-1).id + 1, adminCode, name, content)
-            }
+        try{
+            if(adminCode.length !== 0 
+                && 
+                name.length !== 0
+                &&
+                content.length !== 0) {
+                    await createProject(projectState.projects.at(-1).id + 1, adminCode, name, content)
+                }
+        } catch (e) {
+            if(adminCode.length !== 0 
+                && 
+                name.length !== 0
+                &&
+                content.length !== 0) {
+                    await createProject(0, adminCode, name, content)
+                }
+        }
         const res = getProjects()
         res.then((res) => {
             dispatch(setProjectState(res.data))
@@ -88,7 +97,6 @@ const ProjectPopup = () => {
                 <div className="popup-title">
                     New Project
                 </div>
-                
                 {
                     page === 0
                     ?
@@ -134,6 +142,7 @@ const ProjectPopup = () => {
 
 
                 <div className="sec2">
+                    
                     {
                         page === 0 ? 
                         <button className="common-button popup-cancel"
@@ -145,8 +154,8 @@ const ProjectPopup = () => {
                         onClick={back}>
                             back
                         </button>
-
                     }
+
                     {
                         page === 0 ? 
                     <button className="common-button popup-next" onClick={next}>

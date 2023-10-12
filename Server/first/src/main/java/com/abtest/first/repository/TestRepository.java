@@ -33,7 +33,8 @@ public class TestRepository {
 
         update.set("name", test.getName());
         update.set("maxParticipants", test.getMaxParticipants());
-        update.set("imageFiles", test.getImageFiles());
+        update.set("imageFiles1", test.getImageFiles1());
+        update.set("imageFiles2", test.getImageFiles2());
         update.set("updateDate", test.getUpdateDate());
 
         mongoTemplate.updateMulti(query, update, "tests");

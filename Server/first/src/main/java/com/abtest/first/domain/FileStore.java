@@ -47,10 +47,12 @@ public class FileStore {
 
             // 폴더 지정 후 하나하나 꺼내기
             File[] files = fileDir.listFiles();
+
             for (File tmp : files) {
                 MultipartFile Mfile = FileUtil.Mconvert(tmp);
                 storeFile(Mfile);
             }
+
             FileUtil.remove(fileDir); // 파일을 다 꺼낸 후 폴더는 삭제
 
             return null;
@@ -61,7 +63,6 @@ public class FileStore {
         multipartFile.transferTo(new File(getFullPath(storeFilename)));
 
         return new UploadFile(originalFilename, storeFilename);
-
     }
 
     public List<UploadFile> storeFiles(List<MultipartFile> multipartFiles) throws IOException {

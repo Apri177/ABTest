@@ -1,6 +1,7 @@
 package com.abtest.first.controller;
 
 import com.abtest.first.domain.Project;
+import com.abtest.first.domain.Test;
 import com.abtest.first.domain.dto.ProjectForm;
 import com.abtest.first.service.ProjectService;
 import lombok.RequiredArgsConstructor;
@@ -58,9 +59,7 @@ public class ProjectController {
 
     @GetMapping("/api/project/{id}")
     public Project showProject(@PathVariable int id){
-        Project project = projectService.getProject(id);
-
-        return project;
+        return projectService.getProject(id);
     }
 
     @PatchMapping("api/project/{id}")

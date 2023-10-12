@@ -22,5 +22,6 @@ public class TestForm {
 
     private String updateDate;
 
-    private List<MultipartFile> imageFiles;
+    private List<MultipartFile> imageFiles1;
+    private List<MultipartFile> imageFiles2;
 }

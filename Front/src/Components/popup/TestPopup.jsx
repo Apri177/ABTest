@@ -33,6 +33,32 @@ const TestPopup = () => {
         console.log(page);
     }, [page])
 
+    const [test, setTest] = useState({
+
+    })
+
+
+    const setName = (e) => {
+        setTest({...test, name: e.target.value})
+    }
+
+    const setMaxPart = (e) => {
+        setTest({...test, maxPart : e.target.value})
+    }
+
+    const setPassword = (e) => {
+        setTest({...test, password : e.target.value})
+    }
+
+    const setAdminCode = (e) => {
+        setTest({...test, adminCode : e.target.value})
+    }
+
+
+
+
+
+
     return(
         <div
         style={{
@@ -47,29 +73,28 @@ const TestPopup = () => {
                 <div className="popup-title">
                     New Test
                 </div>
-                
                 {
                 page === 0 ? 
                     <div className="sec1">
                         <div className="insert-info" id="test-name">
                             test name
                         </div>
-                        <input type="text" name="test-name" id="popup-test-name" className="popup-input" />
+                        <input type="text" name="test-name" id="popup-test-name" className="popup-input" onChange={setName}/>
 
                         <div className="insert-info" id="test-max-part">
                             max participants
                         </div>
-                        <input type="text" name="max-participants" id="popup-max-part" className="popup-input"/>
+                        <input type="text" name="max-participants" id="popup-max-part" className="popup-input" onChange={setMaxPart}/>
 
                         <div className="insert-info" id="test-password">
                             password
                         </div>
-                        <input type="text" name="password" id="popup-test-password" className="popup-input"/>
+                        <input type="text" name="password" id="popup-test-password" className="popup-input" onChange={setPassword}/>
 
                         <div className="insert-info" id="test-admin-code">
                             admin code
                         </div>
-                        <input type="text" name="admin-code" id="popup-test-admin-code" className="popup-input"/>
+                        <input type="text" name="admin-code" id="popup-test-admin-code" className="popup-input" onChange={setAdminCode}/>
                     </div>
                     : page === 1 ?
                     <div className="sec1">
@@ -84,7 +109,6 @@ const TestPopup = () => {
                         <img src="/images/icon-upload-file.svg" alt="file upload" style={{
                             maxWidth:"2vw",
                         }} id="upload1"/>
-
 
                         <div className="insert-info" id="test-dir2">
                             directory 2
