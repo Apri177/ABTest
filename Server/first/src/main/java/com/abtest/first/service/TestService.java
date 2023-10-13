@@ -31,11 +31,11 @@ public class TestService {
         }
 
         test.setName(name);
-        test.setMaxParticipants(maxParticipants);
+//        test.setMaxParticipants(maxParticipants);
 
         LocalDateTime now = LocalDateTime.now();
         String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm MM/dd"));
-        test.setUpdateDate(formattedDate);
+//        test.setUpdateDate(formattedDate);
 
         testRepository.edit(id, test);
     }

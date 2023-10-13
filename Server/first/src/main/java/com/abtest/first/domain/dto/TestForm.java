@@ -3,6 +3,7 @@ package com.abtest.first.domain.dto;
 import com.abtest.first.domain.Project;
 import lombok.Data;
 //import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -11,17 +12,18 @@ import java.util.List;
 //@Document(collection = "test")
 public class TestForm {
 
-    private Project project;
+//    @Id
+//    private int id;
 
-    private int id;
+//    private String adminCode;
 
     private String name;
     private String password;
 
-    private int maxParticipants;
+    private int maxPart;
 
-    private String updateDate;
+//    private String updateDate;
 
-    private List<MultipartFile> imageFiles1;
-    private List<MultipartFile> imageFiles2;
+    private List<MultipartFile> images1;
+    private List<MultipartFile> images2;
 }

@@ -12,27 +12,28 @@ import java.util.List;
 //@Document(collection = "tests")
 public class Test {
 
-    private int id;
+//    private int id;
 
     private String name;
     private String password;
 
-    private int maxParticipants;
+    private int maxPart;
 
-    private String updateDate;
+//    private String updateDate;
 
-    private UploadFile csvFile;
+//    private UploadFile csvFile;
 
-    private List<UploadFile> imageFiles1;
-    private List<UploadFile> imageFiles2;
+    private List<UploadFile> image1;
+    private List<UploadFile> images2;
 
     @Builder
-    public Test(String name, String password) {
+    public Test(String name, String password, int maxPart) {
         this.name = name;
         this.password = password;
+        this.maxPart = maxPart;
 
-        LocalDateTime now = LocalDateTime.now();
-        String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm, yyyy-MM-dd"));
-        this.updateDate = formattedDate;
+//        LocalDateTime now = LocalDateTime.now();
+//        String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm, yyyy-MM-dd"));
+//        this.updateDate = formattedDate;
     }
 }

@@ -24,7 +24,7 @@ public class TestRepository {
     private static int sequence = 0;
 
     public void create(Test test) {
-        test.setId(++sequence);
+//        test.setId(++sequence);
         mongoTemplate.insert(test);
     }
 
@@ -32,10 +32,10 @@ public class TestRepository {
         query.addCriteria(Criteria.where("id").is(id));
 
         update.set("name", test.getName());
-        update.set("maxParticipants", test.getMaxParticipants());
-        update.set("imageFiles1", test.getImageFiles1());
-        update.set("imageFiles2", test.getImageFiles2());
-        update.set("updateDate", test.getUpdateDate());
+//        update.set("maxParticipants", test.getMaxParticipants());
+//        update.set("imageFiles1", test.getImageFiles1());
+//        update.set("imageFiles2", test.getImageFiles2());
+//        update.set("updateDate", test.getUpdateDate());
 
         mongoTemplate.updateMulti(query, update, "tests");
     }

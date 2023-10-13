@@ -9,10 +9,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -23,24 +27,32 @@ public class TestController {
     private final TestService testService;
     private final FileStore fileStore;
 
-    @PostMapping("/project/{id}/test/create")
-    public String createTest(TestForm form) throws IOException {
-        Test test = new Test(form.getName(),form.getPassword());
-        test.setName(form.getName());
-        test.setPassword(form.getPassword());
-        test.setMaxParticipants(form.getMaxParticipants());
+    @PostMapping("/api/project/{id}/test/create")
+    public TestForm testFilesStore(
+//            HttpServletRequest httpServletRequest,
+//            @RequestParam(value = "images", required = false)MultipartFile[] multipartFiles, @RequestParam(value = "body") TestForm form
+            TestForm form
+    ) throws IOException, ServletException {
 
-        LocalDateTime now = LocalDateTime.now();
-        String formattedDate = now.format(DateTimeFormatter.ofPattern("HH-mm MM/dd"));
-        test.setUpdateDate(formattedDate);
+//        System.out.println(Arrays.toString(multipartFiles));
+        System.out.println(form);
 
-        List<UploadFile> imageFiles1 = fileStore.storeFiles(form.getImageFiles1());
-        List<UploadFile> imageFiles2 = fileStore.storeFiles(form.getImageFiles2());
-        test.setImageFiles1(imageFiles1);
-
-        testService.createTest(test);
-
-        return "redirect:/project/{" + form.getProject().getId() +"}";
+//        Test test = new Test(form.getName(),form.getPassword());
+//        test.setName(form.getName());
+//        test.setPassword(form.getPassword());
+//        test.setMaxParticipants(form.getMaxParticipants());
+//
+//        LocalDateTime now = LocalDateTime.now();
+//        String formattedDate = now.format(DateTimeFormatter.ofPattern("HH-mm MM/dd"));
+//        test.setUpdateDate(formattedDate);
+//
+//        List<UploadFile> imageFiles1 = fileStore.storeFiles(form.getImageFiles1());
+//        List<UploadFile> imageFiles2 = fileStore.storeFiles(form.getImageFiles2());
+//        test.setImageFiles1(imageFiles1);
+//        test.setImageFiles2(imageFiles2);
+//
+//        testService.createTest(test);
+        return form;
     }
 
     @GetMapping("/project/{id}/test/{tid}")
@@ -53,7 +65,7 @@ public class TestController {
 
     @PostMapping("/project/{id}/test/{tid}")
     public String editTest(@PathVariable int tid, Test test) {
-        testService.editTest(tid, test.getName(), test.getPassword(), test.getMaxParticipants());
+//        testService.editTest(tid, test.getName(), test.getPassword(), test.getMaxParticipants());
         return "redirect:/project/{" + "}";
     }
 
@@ -61,6 +73,18 @@ public class TestController {
     public String deleteTest(@PathVariable int tid, Test test) {
         testService.deleteTest(tid, test.getPassword());
         return "redirect:/project/{"  + "}";
+    }
+
+    @PostMapping("/api/project/{id}/test/{tid}/result")
+    public int resultTest(@PathVariable int tid, Test test) {
+        // test 결과 받는 코드
+        return 0;
+    }
+
+    @GetMapping("/api/project/{id}/test/{tid}/result")
+    public int showResultTest(@PathVariable int tid, Test test) {
+        // test 결과 주는 코드
+        return 0;
     }
 
 }
