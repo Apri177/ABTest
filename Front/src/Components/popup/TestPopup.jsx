@@ -52,21 +52,21 @@ const TestPopup = () => {
         // formdata.append("images", e.target.files.length && e.target.files[0])
         setImages({...images, imageFiles1 : e.target.files[0]})
         // setTest({...test, file1: e.target.files[0]})
-        console.log(e.target.files[0]);
+        console.log(e.target.files);
     }
     
     const setFile2 = (e) => {
         // formdata.append("images", e.target.files.length && e.target.files[0])
         setImages({...images, imageFiles2 : e.target.files[0]})
         // setTest({...test, file2: e.target.files[0]})
-        console.log(e.target.files[0]);
+        console.log(e.target.files);
     }
     
     const setFile3 = (e) => {
         // formdata.append("images", e.target.files.length && e.target.files[0])
         setImages({...images, promptFile : e.target.files[0]})
         // setTest({...test, file2: e.target.files[0]})
-        console.log(e.target.files[0]);
+        console.log(e.target.files);
     }
     
     const closeHandler = () => {
@@ -78,12 +78,10 @@ const TestPopup = () => {
     const next = () => {
         setPage(page + 1)
         if(page === 1) {
-            formdata.append("body", JSON.stringify(test))
-            formdata.append("images", JSON.stringify(images))
-            for(let key of formdata.keys()) {
-                console.log( key + " : "+formdata.get(key) );
-            }
-
+            console.log(test);
+            console.log(images);
+            formdata.append("body", test)
+            formdata.append("images", images)
         }
     }
 
@@ -94,8 +92,10 @@ const TestPopup = () => {
     const param = useParams()
 
     const create = async() => {
-        const res = await createTest(param.id, test, images)
+
+        const res = await createTest(param.id, formdata)
         console.log(res);
+
     }
     
     return(

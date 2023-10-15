@@ -18,24 +18,19 @@ async(project_id) => {
 }
 
 export const createTest =
-async(project_id, data, images) => {
-    console.log(data);
-    console.log(images);
+async(project_id, data) => {
+    // file upload 위한 spring-boot의 라이브러리 및 bean 설정이 안되어 있었음
 
     const res = await axios.post(
         `/api/project/${project_id}/test/create`,
+        data,
         {
-            name: data.name,
-            maxPart: data.maxPart,
-            password: data.password,
-            images1: images.imageFiles1,
-            images2: images.imageFiles2
-        },
-        {
-            headers: {
-            "Content-Type" : "multipart/form-data",
-            }
-        },
+            headers : {
+                "Content-Type" : "multipart/form-data",
+            },
+        }
+        // content-type 없어야 한다고 해서 제거함
+        // form-data/multipart, application/json
     )
     return res
 }
