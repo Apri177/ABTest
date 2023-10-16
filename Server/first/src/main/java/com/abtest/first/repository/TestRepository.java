@@ -30,8 +30,8 @@ public class TestRepository {
         mongoTemplate.insert(test);
     }
 
-    public void edit(int id, Test test) {
-        query.addCriteria(Criteria.where("id").is(id));
+    public void edit(String tname, Test test) {
+        query.addCriteria(Criteria.where("name").is(tname));
 
         update.set("name", test.getName());
 //        update.set("maxParticipants", test.getMaxParticipants());
@@ -42,12 +42,12 @@ public class TestRepository {
         mongoTemplate.updateMulti(query, update, "tests");
     }
 
-    public void delete(int id) {
-        query.addCriteria(Criteria.where("id").is(id));
+    public void delete(String tname) {
+        query.addCriteria(Criteria.where("id").is(tname));
         mongoTemplate.remove(query, "tests");
     }
 
     public List<Test> findAll() { return mongoTemplate.findAll(Test.class); }
 
-    public Test findById(int id) { return mongoTemplate.findById(id, Test.class); }
+    public Test findById(String tname) { return mongoTemplate.findById(tname, Test.class); }
 }

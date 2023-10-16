@@ -83,29 +83,36 @@ public class TestController {
         return test;
     }
 
-    @GetMapping("/project/{id}/test/{tid}")
-    public String showTest(@PathVariable int id, @PathVariable int tid) {
-        Test test = testService.getTest(tid);
+    @GetMapping("/project/{id}/test/{tname}")
+    public String getTests(@PathVariable int id, @PathVariable String tname) {
+        Test test = testService.getTestById(tname);
         return "redirect:/project/{id}/test/{tid}";
     }
 
-    @PostMapping("/project/{id}/test/{tid}")
-    public String editTest(@PathVariable int tid, Test test) {
+    @PostMapping("/project/{id}/test/{tname}")
+    public String editTest(@PathVariable String tname, Test test) {
 //        testService.editTest(tid, test.getName(), test.getPassword(), test.getMaxParticipants());
         return "redirect:/project/{" + "}";
     }
 
-    @PostMapping("/project/{id}/test/delete/{tid}")
-    public String deleteTest(@PathVariable int tid, Test test) {
-        testService.deleteTest(tid, test.getPassword());
+    @PostMapping("/project/{id}/test/delete/{tname}")
+    public String deleteTest(@PathVariable String tname, Test test) {
+        testService.deleteTest(tname, test.getPassword());
         return "redirect:/project/{"  + "}";
     }
 
-    @PostMapping("/api/project/{id}/test/{tid}/result")
-    public int resultTest(@PathVariable int tid, Test test) {
-        // test 결과 받는 코드
-        return 0;
+    @PostMapping("/project/{id}/test/vs/up")
+    public void scoreUp() {
+        // 전체 셋 개수에서 스코어 업 한 거 만큼 빼서 통계 정리
     }
+
+    @PostMapping("project/{id}/test/likert/")
+    public void likertUp() {
+        // 첫 번째 세트 기준으로 점수 매긴 후 전체 점수에서 빼서 유효성 검증
+    }
+
+    // param에 vs 나 liker넣어서 구분 할 수도 있겠다
+
 
     @GetMapping("/api/project/{id}/test/{tid}/result")
     public int showResultTest(@PathVariable int tid, Test test) {

@@ -17,8 +17,8 @@ public class TestService {
 
     public void createTest(Test test) { testRepository.create(test);}
 
-    public void editTest(int id, String name, String password, int maxParticipants) {
-        Test test = testRepository.findById(id);
+    public void editTest(String name, String password, int maxPart) {
+        Test test = testRepository.findById(name);
 
         if(test == null) {
             System.out.println("프로젝트를 찾을 수 없습니다.");
@@ -30,32 +30,31 @@ public class TestService {
             return;
         }
 
-        test.setName(name);
 //        test.setMaxParticipants(maxParticipants);
 
         LocalDateTime now = LocalDateTime.now();
         String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm MM/dd"));
 //        test.setUpdateDate(formattedDate);
 
-        testRepository.edit(id, test);
+        testRepository.edit(name, test);
     }
 
 
-    public void deleteTest(int id, String password) {
-        Test test = testRepository.findById(id);
+    public void deleteTest(String tname, String password) {
+        Test test = testRepository.findById(tname);
 
         if(!test.getPassword().equals(password)) {
             System.out.println("비밀번호가 틀렸습니다.");
             return;
         }
 
-        testRepository.delete(id);
+        testRepository.delete(tname);
     }
 
     public List<Test> getAllTests() { return testRepository.findAll(); }
 
-    public Test getTest(int id) {
-        return testRepository.findById(id);
+    public Test getTestById(String tname) {
+        return testRepository.findById(tname);
     }
 
 }
