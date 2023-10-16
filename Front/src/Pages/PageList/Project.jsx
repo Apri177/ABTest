@@ -15,7 +15,7 @@ const Project = () => {
     const projectState = useSelector(state => state.project)
 
     useEffect(() => {
-        const res = getProjectById(param.id)
+        const res = getProjectById(param.project_id)
         res.then((res) => {
             dispatch(setPreProjectState(res.data))
         })

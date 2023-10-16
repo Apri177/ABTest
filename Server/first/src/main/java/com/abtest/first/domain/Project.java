@@ -26,10 +26,12 @@ public class Project {
     private String updateDate;
 
     @Builder
-    public Project(String adminCode, String name, String content) {
+    public Project(String adminCode, String name, String content, List<Test> tests) {
         this.adminCode = adminCode;
         this.name = name;
         this.content = content;
+
+        this.tests = tests;
 
         LocalDateTime now = LocalDateTime.now();
         String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm, yyyy-MM-dd"));

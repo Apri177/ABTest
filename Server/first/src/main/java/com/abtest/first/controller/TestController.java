@@ -1,11 +1,18 @@
 package com.abtest.first.controller;
 
 import com.abtest.first.domain.FileStore;
+import com.abtest.first.domain.Project;
 import com.abtest.first.domain.Test;
 import com.abtest.first.domain.UploadFile;
 import com.abtest.first.domain.dto.TestForm;
+import com.abtest.first.service.ProjectService;
 import com.abtest.first.service.TestService;
+import com.fasterxml.jackson.core.JsonParser;
 import lombok.RequiredArgsConstructor;
+import nonapi.io.github.classgraph.json.JSONUtils;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,48 +31,61 @@ import java.util.List;
 @RequestMapping("")
 public class TestController {
 
+    private final ProjectService projectService;
     private final TestService testService;
     private final FileStore fileStore;
 
     @PostMapping("/api/project/{id}/test/create")
-    public TestForm testFilesStore(
+    public Test createTest(
+            @PathVariable int id,
             HttpServletRequest request,
-            @RequestPart(value = "body") TestForm temp,
-            @RequestPart(value = "images") MultipartFile[] multipartFiles
-            // Request Body로 받으면 될 듯????
-            // Request Part나 Param으로 받아야하나..
-
-    ) throws IOException, ServletException {
-
-//        System.out.println(Arrays.toString(multipartFiles));
+            @RequestParam(name = "body") String body,
+            @RequestParam(name = "image1") MultipartFile image1,
+            @RequestParam(name = "image2") MultipartFile image2
+    ) throws IOException, ServletException, ParseException {
         System.out.println(request);
-        System.out.println(temp);
-        System.out.println(multipartFiles);
+        System.out.println(image1);
+        System.out.println();
 
-//        Test test = new Test(form.getName(),form.getPassword());
-//        test.setName(form.getName());
-//        test.setPassword(form.getPassword());
-//        test.setMaxParticipants(form.getMaxParticipants());
-//
+
+        JSONParser parser = new JSONParser();
+        Object obj = parser.parse(body);
+        JSONObject form = (JSONObject) obj;
+
+        Test test = Test.builder()
+                .maxPart(Integer.parseInt(String.valueOf(form.get("maxPart"))))
+                .name((String) form.get("name"))
+                .password((String) form.get("password"))
+                .build();
+
+
+
 //        LocalDateTime now = LocalDateTime.now();
 //        String formattedDate = now.format(DateTimeFormatter.ofPattern("HH-mm MM/dd"));
 //        test.setUpdateDate(formattedDate);
-//
-//        List<UploadFile> imageFiles1 = fileStore.storeFiles(form.getImageFiles1());
-//        List<UploadFile> imageFiles2 = fileStore.storeFiles(form.getImageFiles2());
-//        test.setImageFiles1(imageFiles1);
-//        test.setImageFiles2(imageFiles2);
-//
-//        testService.createTest(test);
 
-        return null;
+
+        UploadFile imageFiles1 = fileStore.storeFile(image1, (String) form.get("name"));
+        UploadFile imageFiles2 = fileStore.storeFile(image2, (String) form.get("name"));
+        test.setImage1(imageFiles1);
+        test.setImage2(imageFiles2);
+
+        testService.createTest(test);
+
+        Project setProject = projectService.getProject(id);
+        setProject.getTests().add(test);
+        projectService.editProject(id,
+                setProject.getName(),
+                setProject.getAdminCode(),
+                setProject.getContent(),
+                setProject.getTests());
+
+        return test;
     }
 
     @GetMapping("/project/{id}/test/{tid}")
-    public String showTest(@PathVariable int tid, Model model) {
+    public String showTest(@PathVariable int id, @PathVariable int tid) {
         Test test = testService.getTest(tid);
-
-        model.addAttribute("test", test);
         return "redirect:/project/{id}/test/{tid}";
     }
 

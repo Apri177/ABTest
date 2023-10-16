@@ -22,9 +22,6 @@ public class TestForm {
 
     private String maxPart;
 
-    private List<MultipartFile> image1;
-    private List<MultipartFile> image2;
-
 
     public TestForm(String name, String password, String maxPart) {
         this.name = name;

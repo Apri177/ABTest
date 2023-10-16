@@ -2,6 +2,7 @@ package com.abtest.first.repository;
 
 
 import com.abtest.first.domain.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -16,6 +17,7 @@ import java.util.List;
 public class TestRepository {
 
     // 해쉬맵을 사용한 저장 방식 -> MongoDB 컬렉션으로 직 변환
+    @Autowired
     private MongoTemplate mongoTemplate;
 
     private Query query;
@@ -24,7 +26,7 @@ public class TestRepository {
     private static int sequence = 0;
 
     public void create(Test test) {
-//        test.setId(++sequence);
+        test.setId(++sequence);
         mongoTemplate.insert(test);
     }
 

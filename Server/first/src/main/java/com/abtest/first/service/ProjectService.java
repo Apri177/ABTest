@@ -1,6 +1,7 @@
 package com.abtest.first.service;
 
 import com.abtest.first.domain.Project;
+import com.abtest.first.domain.Test;
 import com.abtest.first.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ public class ProjectService {
 
     public Project createProject(Project project) { return projectRepository.create(project); }
 
-    public void editProject(int id, String name, String content, String adminCode) {
+    public void editProject(int id, String name, String content, String adminCode, List<Test> tests) {
         Project project = projectRepository.findById(id);
 
         if(project == null) {
@@ -33,6 +34,7 @@ public class ProjectService {
 
         project.setName(name);
         project.setContent(content);
+        project.setTests(tests);
 
         LocalDateTime now = LocalDateTime.now();
         String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm, yyyy-MM-dd"));

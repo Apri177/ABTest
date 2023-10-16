@@ -64,7 +64,7 @@ public class ProjectController {
 
     @PatchMapping("api/project/{id}")
     public String editContent(@PathVariable int id, Project project) {
-        projectService.editProject(id, project.getName(), project.getContent(), project.getAdminCode());
+        projectService.editProject(id, project.getName(), project.getContent(), project.getAdminCode(), project.getTests());
         return "redirect:/";
     }
 

@@ -3,6 +3,11 @@ import { createSlice } from "@reduxjs/toolkit"
 
 export const initialState = {
     tests: [],
+    preTest: {
+        name : String,
+        password : String,
+        maxPart : String,
+    }
 }
 
 

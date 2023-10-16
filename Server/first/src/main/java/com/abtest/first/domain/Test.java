@@ -2,19 +2,22 @@ package com.abtest.first.domain;
 
 import lombok.Builder;
 import lombok.Data;
-//import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Data
-//@Document(collection = "tests")
+@Document(collection = "tests")
 public class Test {
 
-//    private int id;
+//    @Id
+    private int id;
 
     private String name;
+
     private String password;
 
     private int maxPart;
@@ -23,8 +26,8 @@ public class Test {
 
 //    private UploadFile csvFile;
 
-    private List<UploadFile> image1;
-    private List<UploadFile> images2;
+    private UploadFile image1;
+    private UploadFile image2;
 
     @Builder
     public Test(String name, String password, int maxPart) {
