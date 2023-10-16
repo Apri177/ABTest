@@ -33,7 +33,7 @@ async(project_id, data, images) => {
         },
         {
             headers: {
-            "Content-Type" : "multipart/form-data",
+                "Content-Type" : "multipart/form-data",
             }
         },
     )

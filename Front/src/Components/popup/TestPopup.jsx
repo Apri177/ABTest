@@ -81,9 +81,8 @@ const TestPopup = () => {
             formdata.append("body", JSON.stringify(test))
             formdata.append("images", JSON.stringify(images))
             for(let key of formdata.keys()) {
-                console.log( key + " : "+formdata.get(key) );
+                console.log( key + " : " + formdata.get(key) );
             }
-
         }
     }
 

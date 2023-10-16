@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a4918519-2d20-4428-8256-05ac7cd6fda0" name="Changes" comment="MongoTemplate 및 MongoRepository로 CRUD 변환">
       <change beforePath="$PROJECT_DIR$/../Front/src/Components/popup/TestPopup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Components/popup/TestPopup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/TestForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/TestForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/TestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/TestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/service/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/service/TestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +135,7 @@
       <workItem from="1695198727365" duration="835000" />
       <workItem from="1695258407262" duration="12336000" />
       <workItem from="1696900287903" duration="33900000" />
-      <workItem from="1697090489438" duration="12924000" />
+      <workItem from="1697090489438" duration="13567000" />
     </task>
     <task id="LOCAL-00001" summary="swagger-ui 적용">
       <option name="closed" value="true" />
