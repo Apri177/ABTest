@@ -123,7 +123,7 @@ const TestPopup = () => {
                             id="popup-test-name" 
                             className="popup-input" 
                             onChange={setName} 
-                            value={test.name}/>
+                            value={test.name || ""}/>
 
                             <div className="insert-info" id="test-max-part">
                                 max participants
@@ -133,7 +133,7 @@ const TestPopup = () => {
                             id="popup-max-part" 
                             className="popup-input" 
                             onChange={setMaxPart}
-                            value={test.maxPart}/>
+                            value={test.maxPart || ""}/>
 
                             <div className="insert-info" id="test-password">
                                 password
@@ -143,7 +143,7 @@ const TestPopup = () => {
                             id="popup-test-password" 
                             className="popup-input" 
                             onChange={setPassword} 
-                            value={test.password}/>
+                            value={test.password || ""}/>
 
                             <div className="insert-info" id="test-admin-code">
                                 admin code
@@ -163,7 +163,7 @@ const TestPopup = () => {
                             <div className="insert-info" id="test-dir1">
                                 directory 1
                             </div>
-                            <input type="text" id="popup-test-dir1" className="popup-input" disabled />
+                            <input type="text" id="popup-test-dir1" className="popup-input" disabled/>
                             
                             <label htmlFor="file-upload1">
                                 <img src="/images/icon-upload-file.svg" alt="file upload" style={{

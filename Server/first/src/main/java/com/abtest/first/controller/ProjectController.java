@@ -62,13 +62,13 @@ public class ProjectController {
         return projectService.getProject(id);
     }
 
-    @PatchMapping("api/project/{id}")
+    @PatchMapping("/api/project/{id}")
     public String editContent(@PathVariable int id, Project project) {
         projectService.editProject(id, project.getName(), project.getContent(), project.getAdminCode(), project.getTests());
         return "redirect:/";
     }
 
-    @DeleteMapping("/project/delete/{id}")
+    @DeleteMapping("/api/project/delete/{id}")
     public String deleteProject(@PathVariable int id, Project project) {
         projectService.deleteProject(id, project.getAdminCode());
         return "redirect:/";

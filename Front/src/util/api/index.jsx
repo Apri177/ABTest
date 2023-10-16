@@ -32,11 +32,22 @@ async(id, adminCode, name, content) => {
 
 
 export const patchProject = 
-async () => {
-    
+async (id, adminCode, name, content, tests) => {
+    const res = await axios.patch(
+        `/api/project/{id}`,
+        {
+            "id": id,
+            "adminCode" : adminCode,
+            "name": name,
+            "content" : content,
+            "tests" : tests
+        }
+    )
+    return res
 }
-
 export const deleteProject = 
-async () => {
-
+async (id) => {
+    await axios.delete(
+        `/api/project/delete/{id}`,
+    )
 }

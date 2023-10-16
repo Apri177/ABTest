@@ -28,10 +28,6 @@ public class ProjectRepository {
     public Project create(Project project) {
         mongoTemplate.insert(project);
 
-//        Criteria criteria = new Criteria("id");
-//        criteria.is(sequence);
-//        Query query = new Query(criteria);
-
         return mongoTemplate.findOne(query, Project.class, "projects");
     }
 
@@ -42,6 +38,7 @@ public class ProjectRepository {
         update.set("content", project.getContent());
         update.set("adminCode", project.getAdminCode());
         update.set("updateDate", project.getUpdateDate());
+        update.set("tests", project.getTests());
 
         mongoTemplate.updateMulti(query, update, "projects");
     }

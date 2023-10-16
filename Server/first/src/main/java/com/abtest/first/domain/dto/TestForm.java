@@ -9,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @Data
-//@Document(collection = "test")
 public class TestForm {
 
 //    @Id
@@ -22,12 +21,10 @@ public class TestForm {
 
     private String maxPart;
 
-
     public TestForm(String name, String password, String maxPart) {
         this.name = name;
         this.password = password;
         this.maxPart = maxPart;
     }
 
-//    private String updateDate;
 }
