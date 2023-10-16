@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4918519-2d20-4428-8256-05ac7cd6fda0" name="Changes" comment="MongoTemplate 및 MongoRepository로 CRUD 변환">
-      <change beforePath="$PROJECT_DIR$/../Front/src/Components/popup/TestPopup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Components/popup/TestPopup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/first/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/TestForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/TestForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +62,9 @@
         <option name="url" value="https://github.com/archi7274-S/ABTest.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.3.23/94793c1edac695de5dca72844fc41d02eb2822e1/spring-web-5.3.23-sources.jar!/org/springframework/web/multipart/support/StandardMultipartHttpServletRequest.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -135,7 +142,8 @@
       <workItem from="1695198727365" duration="835000" />
       <workItem from="1695258407262" duration="12336000" />
       <workItem from="1696900287903" duration="33900000" />
-      <workItem from="1697090489438" duration="13567000" />
+      <workItem from="1697090489438" duration="12924000" />
+      <workItem from="1697365137994" duration="9540000" />
     </task>
     <task id="LOCAL-00001" summary="swagger-ui 적용">
       <option name="closed" value="true" />

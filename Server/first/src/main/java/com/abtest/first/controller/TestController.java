@@ -29,13 +29,18 @@ public class TestController {
 
     @PostMapping("/api/project/{id}/test/create")
     public TestForm testFilesStore(
-//            HttpServletRequest httpServletRequest,
-//            @RequestParam(value = "images", required = false)MultipartFile[] multipartFiles, @RequestParam(value = "body") TestForm form
-            TestForm form
+            HttpServletRequest request,
+            @RequestPart(value = "body") TestForm temp,
+            @RequestPart(value = "images") MultipartFile[] multipartFiles
+            // Request Body로 받으면 될 듯????
+            // Request Part나 Param으로 받아야하나..
+
     ) throws IOException, ServletException {
 
 //        System.out.println(Arrays.toString(multipartFiles));
-        System.out.println(form);
+        System.out.println(request);
+        System.out.println(temp);
+        System.out.println(multipartFiles);
 
 //        Test test = new Test(form.getName(),form.getPassword());
 //        test.setName(form.getName());
@@ -52,7 +57,8 @@ public class TestController {
 //        test.setImageFiles2(imageFiles2);
 //
 //        testService.createTest(test);
-        return form;
+
+        return null;
     }
 
     @GetMapping("/project/{id}/test/{tid}")
