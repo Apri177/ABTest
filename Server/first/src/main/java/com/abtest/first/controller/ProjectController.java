@@ -4,6 +4,8 @@ import com.abtest.first.domain.Project;
 import com.abtest.first.domain.Test;
 import com.abtest.first.domain.dto.ProjectForm;
 import com.abtest.first.service.ProjectService;
+import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.UpdateResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -63,15 +65,17 @@ public class ProjectController {
     }
 
     @PatchMapping("/api/project/{id}")
-    public String editContent(@PathVariable int id, Project project) {
-        projectService.editProject(id, project.getName(), project.getContent(), project.getAdminCode(), project.getTests());
-        return "redirect:/";
+    public UpdateResult editContent(@PathVariable int id, @RequestBody ProjectForm form) {
+        return projectService.editProject(id,
+                form.getName(),
+                form.getContent(),
+                form.getAdminCode(),
+                form.getTests());
     }
 
     @DeleteMapping("/api/project/delete/{id}")
-    public String deleteProject(@PathVariable int id, Project project) {
-        projectService.deleteProject(id, project.getAdminCode());
-        return "redirect:/";
+    public DeleteResult deleteProject(@PathVariable int id) {
+        return projectService.deleteProject(id);
     }
 
 

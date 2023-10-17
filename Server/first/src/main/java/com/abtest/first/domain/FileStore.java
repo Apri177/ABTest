@@ -21,17 +21,20 @@ public class FileStore {
         return path + filename;
     }
 
-    public UploadFile storeFile(MultipartFile multipartFile, String testName) throws IOException {
+    public UploadFile storeFile(MultipartFile multipartFile, String testName) throws IOException, NullPointerException {
 
         if(multipartFile.isEmpty()) {
             return null;
         }
 
-        File dir = new File(rootPath, testName);
+        File dir = new File(rootPath + testName);
         if (!dir.exists()) {
             dir.mkdir();
         }
-        String dirPath = dir.getPath();
+
+        String dirPath = dir.getPath() + '/';
+
+        System.out.println(dirPath);
 
         String originalFilename = multipartFile.getOriginalFilename();
         System.out.println(getFullPath(dirPath ,originalFilename));
@@ -44,8 +47,8 @@ public class FileStore {
             ZipFile zipFile = new ZipFile(file);
 
             // zip 압축 해제 후 zip 파일 삭제
-            zipFile.extractAll(rootPath);
-            FileUtil.remove(file);
+            zipFile.extractAll(dirPath);
+//            FileUtil.remove(file);
 
             // 압축 해제한 폴더에서 파일들을 꺼내는 코드
             File fileDir = new File(getFullPath(dirPath,extractName(originalFilename)));
@@ -53,20 +56,20 @@ public class FileStore {
             // 폴더 지정 후 하나하나 꺼내기
             File[] files = fileDir.listFiles();
 
-            for (File tmp : files) {
-                MultipartFile Mfile = FileUtil.Mconvert(tmp);
-                storeFile(Mfile, testName);
+            if (files != null) {
+                for (File tmp : files) {
+                    MultipartFile Mfile = FileUtil.Mconvert(tmp);
+                    storeFile(Mfile, testName);
+                }
             }
 
-            FileUtil.remove(fileDir); // 파일을 다 꺼낸 후 폴더는 삭제
-
-            return null;
+//            FileUtil.remove(fileDir); // 파일을 다 꺼낸 후 폴더는 삭제
         }
 
         String storeFilename = UUID.randomUUID() + "." + extractExt(originalFilename);
         System.out.println(storeFilename);
 
-//        multipartFile.transferTo(new File(getFullPath(storeFilename)));
+//        multipartFile.transferTo(new File(getFullPath(dirPath, storeFilename)));
 
         return new UploadFile(originalFilename, storeFilename);
     }

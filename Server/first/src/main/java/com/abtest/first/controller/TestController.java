@@ -43,9 +43,6 @@ public class TestController {
             @RequestParam(name = "image1") MultipartFile image1,
             @RequestParam(name = "image2") MultipartFile image2
     ) throws IOException, ServletException, ParseException {
-        System.out.println(request);
-        System.out.println(image1);
-        System.out.println();
 
 
         JSONParser parser = new JSONParser();
@@ -57,7 +54,7 @@ public class TestController {
                 .name((String) form.get("name"))
                 .password((String) form.get("password"))
                 .build();
-
+        test.setId(id);
 
 
 //        LocalDateTime now = LocalDateTime.now();
@@ -71,37 +68,37 @@ public class TestController {
         test.setImage2(imageFiles2);
 
         testService.createTest(test);
-
-        System.out.println(test);
-
-        Project setProject = projectService.getProject(id);
-        setProject.getTests().add(test);
-        projectService.editProject(id,
-                setProject.getName(),
-                setProject.getAdminCode(),
-                setProject.getContent(),
-                setProject.getTests());
+        projectService.insert(id, test);
 
         return test;
     }
 
     @GetMapping("/api/project/{id}/test/{tname}")
     public String getTestByName(@PathVariable int id, @PathVariable String tname) {
-        Test test = testService.getTestById(tname);
+        Test test = testService.getTestByName(id, tname);
         System.out.println(test);
         return "test 조회";
     }
 
-    @PostMapping("/api/project/{id}/test/{tname}")
-    public String editTest(@PathVariable String tname, Test test) {
+    @GetMapping("/api/project/{id}/test/all")
+    public List<Test> getTests(@PathVariable int id) {
+        List<Test> tests = testService.getAllTests(id);
+        return tests;
+    }
+
+    @PatchMapping("/api/project/{id}/test/{tname}")
+    public String editTest(@PathVariable int id, @PathVariable String tname, Test test) {
 //        testService.editTest(tid, test.getName(), test.getPassword(), test.getMaxParticipants());
         return "redirect:/project/{" + "}";
     }
 
-    @PostMapping("/api/project/{id}/test/delete/{tname}")
-    public String deleteTest(@PathVariable String tname, Test test) {
-        testService.deleteTest(tname, test.getPassword());
-        return "redirect:/project/{"  + "}";
+    @DeleteMapping("/api/project/{id}/test/delete/{tname}")
+    public String deleteTest(
+            @PathVariable int id
+            ,@PathVariable String tname
+            ) {
+        testService.deleteTest(tname, id);
+        return "삭제됨";
     }
 
     @PostMapping("/api/project/{id}/test/vs/up")
