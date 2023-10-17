@@ -49,5 +49,9 @@ public class TestRepository {
 
     public List<Test> findAll() { return mongoTemplate.findAll(Test.class); }
 
-    public Test findById(String tname) { return mongoTemplate.findById(tname, Test.class); }
+    public Test findById(String tname) {
+        query.addCriteria(Criteria.where("name").is(tname));
+
+        return mongoTemplate.findOne(query, Test.class);
+    }
 }
