@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4918519-2d20-4428-8256-05ac7cd6fda0" name="Changes" comment="MongoTemplate 및 MongoRepository로 CRUD 변환">
-      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/ProjectRepository.java" afterDir="false" />
-    </list>
+    <list default="true" id="a4918519-2d20-4428-8256-05ac7cd6fda0" name="Changes" comment="MongoTemplate 및 MongoRepository로 CRUD 변환" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,6 +132,10 @@
       <workItem from="1695198551377" duration="142000" />
       <workItem from="1695198727365" duration="835000" />
       <workItem from="1695258407262" duration="12336000" />
+      <workItem from="1696900287903" duration="33900000" />
+      <workItem from="1697090489438" duration="12924000" />
+      <workItem from="1697365137994" duration="9540000" />
+      <workItem from="1697466393979" duration="3775000" />
     </task>
     <task id="LOCAL-00001" summary="swagger-ui 적용">
       <option name="closed" value="true" />
