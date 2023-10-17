@@ -48,7 +48,7 @@ public class FileStore {
 
             // zip 압축 해제 후 zip 파일 삭제
             zipFile.extractAll(dirPath);
-//            FileUtil.remove(file);
+            FileUtil.remove(file);
 
             // 압축 해제한 폴더에서 파일들을 꺼내는 코드
             File fileDir = new File(getFullPath(dirPath,extractName(originalFilename)));
@@ -62,8 +62,6 @@ public class FileStore {
                     storeFile(Mfile, testName);
                 }
             }
-
-//            FileUtil.remove(fileDir); // 파일을 다 꺼낸 후 폴더는 삭제
         }
 
         String storeFilename = UUID.randomUUID() + "." + extractExt(originalFilename);
@@ -83,6 +81,7 @@ public class FileStore {
 //        }
 //        return storeFileResult;
 //    }
+
 
     private String extractExt(String originalFilename) {
         int pos = originalFilename.lastIndexOf(".");

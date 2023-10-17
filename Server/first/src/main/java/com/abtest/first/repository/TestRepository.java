@@ -21,10 +21,7 @@ public class TestRepository {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    private static int sequence = 0;
-
     public void create(Test test) {
-        test.setId(++sequence);
         mongoTemplate.insert(test);
     }
 
@@ -47,21 +44,21 @@ public class TestRepository {
         Query query = new Query();
 
         query.addCriteria(Criteria.where("name").is(tname));
-        query.addCriteria(Criteria.where("_id").is(projectId));
+        query.addCriteria(Criteria.where("projectId").is(projectId));
         mongoTemplate.remove(query, "tests");
     }
 
     public List<Test> findAll(int projectId) {
         Query query = new Query();
 
-        query.addCriteria(Criteria.where("_id").is(projectId));
+        query.addCriteria(Criteria.where("projectId").is(projectId));
         return mongoTemplate.find(query,Test.class);
     }
 
     public Test findById(int id,String tname) {
         Query query = new Query();
 
-        query.addCriteria(Criteria.where("_id").is(id));
+        query.addCriteria(Criteria.where("projectId").is(id));
         query.addCriteria(Criteria.where("name").is(tname));
 
         return mongoTemplate.findOne(query, Test.class);

@@ -54,7 +54,7 @@ public class TestController {
                 .name((String) form.get("name"))
                 .password((String) form.get("password"))
                 .build();
-        test.setId(id);
+        test.setProjectId(id);
 
 
 //        LocalDateTime now = LocalDateTime.now();
@@ -82,7 +82,7 @@ public class TestController {
 
     @GetMapping("/api/project/{id}/test/all")
     public List<Test> getTests(@PathVariable int id) {
-        List<Test> tests = testService.getAllTests(id);
+        List<Test> tests = projectService.getProject(id).getTests();
         return tests;
     }
 

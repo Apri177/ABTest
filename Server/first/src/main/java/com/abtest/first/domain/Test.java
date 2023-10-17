@@ -16,7 +16,7 @@ import java.util.List;
 public class Test {
 
 //    @Id
-    private int id;
+    private int projectId;
 
     private String name;
 
