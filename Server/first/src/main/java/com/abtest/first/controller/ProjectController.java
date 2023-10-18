@@ -19,6 +19,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -55,6 +56,8 @@ public class ProjectController {
                 .content(form.getContent())
                 .build();
         project.setId(form.getId());
+        List<Test> test = new ArrayList<>();
+        project.setTests(test);
 
         return projectService.createProject(project);
     }

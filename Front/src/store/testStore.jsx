@@ -1,15 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-
 export const initialState = {
     tests: [],
     preTest: {
         name : String,
         password : String,
         maxPart : String,
+        file1 : String,
+        file2: String,
+        updatedDate : String,
     }
 }
-
 
 const testData = createSlice({
     name: "test",

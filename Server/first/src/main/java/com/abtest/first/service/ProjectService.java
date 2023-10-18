@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -49,10 +48,18 @@ public class ProjectService {
         return projectRepository.findById(id);
     }
 
-    public UpdateResult insert(int id, Test test) {
-        List<Test> tests = new ArrayList<>();
+    public void insert(int id, Test test) {
+        Project project = getProject(id);
+
+        List<Test> tests = project.getTests();
         tests.add(test);
-        return projectRepository.insertTest(id, tests);
+        projectRepository.insertTest(id, tests);
+    }
+
+    public void delete(int id, List<Test> tests) {
+        Project project = getProject(id);
+        project.setTests(tests);
+        projectRepository.edit(id, project);
     }
 
 }

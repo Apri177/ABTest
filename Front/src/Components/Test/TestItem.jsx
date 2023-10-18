@@ -1,7 +1,11 @@
+import { Link, useParams } from 'react-router-dom'
 import '../../styles/test.scss'
 
 
-const TestItem = ({name, dir1, dir2, updateDate}) => {
+const TestItem = ({name, dir1, dir2, maxPart, updateDate}) => {
+
+    const param = useParams()
+
     return (
         <div className="test-item">
 
@@ -20,8 +24,10 @@ const TestItem = ({name, dir1, dir2, updateDate}) => {
             <div className="update-date" id="date">
                 {updateDate}
             </div>
-            
-            <img src="/images/play.svg" alt="play" id='play'/>
+
+            <Link to={`/project/${param.project_id}/test/${name}/play`}>
+                <img src="/images/play.svg" alt="play" id='play'/>
+            </Link>
 
             <img src="/images/result.svg" alt="result" id="result"/>
         </div>

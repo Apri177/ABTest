@@ -34,17 +34,17 @@ public class FileStore {
 
         String dirPath = dir.getPath() + '/';
 
-        System.out.println(dirPath);
-
         String originalFilename = multipartFile.getOriginalFilename();
-        System.out.println(getFullPath(dirPath ,originalFilename));
 
-        //zip 파일 처리 필요
+        multipartFile.transferTo(new File(getFullPath(dirPath, originalFilename)));
+
         if (extractExt(originalFilename).equals("zip")) {
-            multipartFile.transferTo(new File(getFullPath(dirPath, originalFilename)));
 
             File file = new File(getFullPath(dirPath, originalFilename));
             ZipFile zipFile = new ZipFile(file);
+
+            String folderName = zipFile.getFile().getName();
+            System.out.println(folderName);
 
             // zip 압축 해제 후 zip 파일 삭제
             zipFile.extractAll(dirPath);
@@ -62,25 +62,14 @@ public class FileStore {
                     storeFile(Mfile, testName);
                 }
             }
+
+            String storeFilename = UUID.randomUUID() + "." + extractExt(originalFilename);
+            return new UploadFile(originalFilename, storeFilename, dirPath + folderName + "/");
         }
 
         String storeFilename = UUID.randomUUID() + "." + extractExt(originalFilename);
-        System.out.println(storeFilename);
-
-//        multipartFile.transferTo(new File(getFullPath(dirPath, storeFilename)));
-
-        return new UploadFile(originalFilename, storeFilename);
+        return new UploadFile(originalFilename, storeFilename, dirPath);
     }
-
-//    public List<UploadFile> storeFiles(List<MultipartFile> multipartFiles) throws IOException {
-//        List<UploadFile> storeFileResult = new ArrayList<>();
-//        for (MultipartFile multipartFile : multipartFiles) {
-//            if(!multipartFile.isEmpty()) {
-//                storeFileResult.add(storeFile(multipartFile));
-//            }
-//        }
-//        return storeFileResult;
-//    }
 
 
     private String extractExt(String originalFilename) {

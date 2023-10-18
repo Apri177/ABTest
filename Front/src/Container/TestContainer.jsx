@@ -1,13 +1,27 @@
 import '../styles/test.scss'
 import CreateButton from '../Components/Button/CreateButton'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
 import TestItem from '../Components/Test/TestItem'
+import { useEffect } from 'react'
+import { getTests } from '../util/api/test'
+import { getPreProjectState, setPreProjectState, setTests } from '../store/projectStore'
+import { getProjectById } from '../util/api'
 
 const TestContainer = () => {
 
+    const dispatch = useDispatch()
     const projectState = useSelector(state => state.project)
+    const param = useParams()
 
+    useEffect(() => {        
+        const res = getProjectById(param.project_id)
+        res.then((res) => {
+            dispatch(setPreProjectState(res.data))
+            dispatch(setTests(projectState.preProject.tests))
+            
+        })
+    }, [])
 
     return (
         <div className="test-container">
@@ -21,7 +35,6 @@ const TestContainer = () => {
                 {projectState.preProject.name}
             </div>
             <CreateButton content={"new test"}/>
-
             <div id='content-header'>
                 <dl>
                     <dt id='name'>
@@ -42,8 +55,13 @@ const TestContainer = () => {
                 </dl>    
             </div>
             <div className='test-content-container'>
-                <TestItem name={"name"} dir1={"asdf"} dir2={"asdf"} updateDate={"1234"}/>
-                <TestItem name={"asdasd"}/>
+                {
+                    projectState.preProject.tests && projectState.preProject.tests.map((item, temp) => {
+                        return (
+                            <TestItem name={item.name} dir1={item.image1.uploadFilename} dir2={item.image2.uploadFilename} key={temp}/>
+                        )
+                    })
+                }
             </div>
         </div>
     )

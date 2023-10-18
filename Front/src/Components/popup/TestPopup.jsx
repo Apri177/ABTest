@@ -9,29 +9,30 @@ import { setTestState } from "../../store/testStore"
 const TestPopup = () => {
 
 
-    useEffect(() => {
-
-    }, [])
-
+    
     // reducer 작성하긴했는데 수정해야 함
-
+    
     const dispatch = useDispatch()
-
+    
     const state = useSelector(state => state.popup)
-
+    
     const testState = useSelector(state => state.test.tests)
     
-    const [page, setPage] = useState(0)
+    useEffect(() => {
+        
+    }, [])
 
+    const [page, setPage] = useState(0)
+    
     const [test, setTest] = useState({
         name : "",
         maxPart : "",
         password : "",
     })
-
+    
     const [code, setCode] = useState("")
-
-
+    
+    
     const [images1, setImages1] = useState(null);
     const [images2, setImages2] = useState(null);
     const [images3, setImages3] = useState(null);
@@ -90,10 +91,11 @@ const TestPopup = () => {
         
         formdata.append("image1", images1)
         formdata.append("image2", images2)
+        formdata.append("prompt", images3)
 
-        const res = await createTest(param.project_id, formdata)
-        // dispatch(setTestState([...testState]))
-        console.log(res);
+        await createTest(param.project_id, formdata)
+        closeHandler()
+        window.location.reload()
     }
 
     const param = useParams()

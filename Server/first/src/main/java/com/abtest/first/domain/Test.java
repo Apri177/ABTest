@@ -3,16 +3,11 @@ package com.abtest.first.domain;
 import com.mongodb.lang.Nullable;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 @Data
 @Document(collection = "tests")
+
 public class Test {
 
 //    @Id

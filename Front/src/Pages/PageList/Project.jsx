@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"
 import { useEffect } from "react"
 import { getProjectById } from "../../util/api"
 import { useDispatch, useSelector } from "react-redux"
-import { setPreProjectState } from "../../store/projectStore"
+import { getPreProjectState, setPreProjectState, setTests } from "../../store/projectStore"
 
 const Project = () => {
 
@@ -15,10 +15,7 @@ const Project = () => {
     const projectState = useSelector(state => state.project)
 
     useEffect(() => {
-        const res = getProjectById(param.project_id)
-        res.then((res) => {
-            dispatch(setPreProjectState(res.data))
-        })
+        getPreProjectState()
     }, [])
 
     return (

@@ -58,7 +58,9 @@ public class ProjectRepository {
 
     public List<Project> findAll() { return mongoTemplate.findAll(Project.class); }
 
-    public Project findById(int id) { return mongoTemplate.findById(id, Project.class); }
+    public Project findById(int id) {
+        return mongoTemplate.findById(id, Project.class);
+    }
 
     // 검색할 때 사용할 쿼리
     public List<Project> findBytitle(String name) {
@@ -68,14 +70,14 @@ public class ProjectRepository {
         return mongoTemplate.find(query, Project.class);
     }
 
-    public UpdateResult insertTest(int id, List<Test> tests) {
+    public void insertTest(int id, List<Test> tests) {
         Query query = new Query();
         Update update = new Update();
 
         query.addCriteria(Criteria.where("_id").is(id));
         update.set("tests", tests);
 
-        return mongoTemplate.updateMulti(query, update, Project.class);
+        mongoTemplate.updateMulti(query, update, Project.class);
     }
 
 }

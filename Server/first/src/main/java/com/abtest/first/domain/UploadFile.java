@@ -10,9 +10,4 @@ public class UploadFile {
     private String storeFilename;   // 서버 내부에서 관리하는 파일명
 
     private String path; // 저장한 파일 경로
-
-    public UploadFile(String originalFilename, String storeFilename) {
-        this.uploadFilename = originalFilename;
-        this.storeFilename = storeFilename;
-    }
 }

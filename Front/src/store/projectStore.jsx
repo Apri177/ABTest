@@ -1,10 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit"
-import { getProjects } from "../util/api";
-import { useDispatch } from "react-redux";
 
 export const initialState = {
     projects: [],
     preProject: {},
+    tests : [],
 }
 
 const projectData = createSlice({
@@ -18,11 +17,18 @@ const projectData = createSlice({
             state.projects = action.payload
         },
         setPreProjectState: (state, action) => {
+            // console.log(action.payload);
             state.preProject = action.payload
+        },
+        getPreProjectState : (state) => {
+            return state.preProject
+        },
+        setTests: (state, action) => {
+            state.tests = action.payload
         },
     }
 })
 
 
-export const {getProjectState, setProjectState, setPreProjectState}  = projectData.actions
+export const {getProjectState, setProjectState, setPreProjectState, getPreProjectState, setTests}  = projectData.actions
 export default projectData.reducer

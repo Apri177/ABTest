@@ -111,36 +111,43 @@
             #name {
                 position: absolute;
                 left: 4vw;
+                font-size: 0.9vmax;
             }
     
             #dir1 {
                 position: absolute;
-                left: 21.5vw;
+                left: 17vw;
+                font-size: 0.9vmax;
             }
     
             #dir2 {
                 position: absolute;
-                left: 35vw;
+                left: 30.5vw;
+                font-size: 0.9vmax;
             }
     
             #partic {
                 position: absolute;
                 right: 25vw;
+                font-size: 0.9vmax;
             }
     
             #date {
                 position: absolute;
                 right: 18vw;
+                font-size: 0.9vmax;
             }
 
             #play {
                 position: absolute;
                 right: 10vw;
+                top: 0.5vh;
                 width: 2rem;
             }
             
             #result {
                 position: absolute;
+                top: 0.5vh;
                 right: 6vw;
                 width: 2rem;
             }
