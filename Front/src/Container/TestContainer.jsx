@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import TestItem from '../Components/Test/TestItem'
 import { useEffect } from 'react'
-import { getTests } from '../util/api/test'
-import { getPreProjectState, setPreProjectState, setTests } from '../store/projectStore'
+import { setPreProjectState, setTests } from '../store/projectStore'
 import { getProjectById } from '../util/api'
 
 const TestContainer = () => {

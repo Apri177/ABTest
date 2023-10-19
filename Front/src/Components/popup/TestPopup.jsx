@@ -1,22 +1,17 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { close } from "../../store/popupStore"
 import '../../styles/popup.scss'
 import { useParams } from "react-router-dom"
 import { createTest } from "../../util/api/test"
-import { setTestState } from "../../store/testStore"
 
 const TestPopup = () => {
 
-
-    
     // reducer 작성하긴했는데 수정해야 함
     
     const dispatch = useDispatch()
     
-    const state = useSelector(state => state.popup)
-    
-    const testState = useSelector(state => state.test.tests)
+    const state = useSelector(state => state.popup)    
     
     useEffect(() => {
         
@@ -271,7 +266,6 @@ const TestPopup = () => {
                         <button 
                         className="common-button popup-done" 
                         onClick={create} 
-                        // type="submit"
                         >
                             DONE
                         </button>

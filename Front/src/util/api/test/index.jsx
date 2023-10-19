@@ -1,4 +1,4 @@
-import axios, { AxiosHeaders } from "axios";
+import axios from "axios";
 
 export const getTestById =
 async(project_id, test_name) => {
@@ -37,7 +37,7 @@ async(project_id, data) => {
 
 export const patchTest = 
 async(project_id, test_name, data) => {
-    const res = await axios.patch(
+    await axios.patch(
         `/api/project/${project_id}/test/${test_name}`,
         data,
         {
