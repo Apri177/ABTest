@@ -12,9 +12,11 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -60,14 +62,9 @@ public class TestController {
                 .maxPart(Integer.parseInt(String.valueOf(form.get("maxPart"))))
                 .name((String) form.get("name"))
                 .password((String) form.get("password"))
+                .numOfSets((Integer) form.get("numOfSets"))
                 .build();
         test.setProjectId(id);
-
-
-//        LocalDateTime now = LocalDateTime.now();
-//        String formattedDate = now.format(DateTimeFormatter.ofPattern("HH-mm MM/dd"));
-//        test.setUpdateDate(formattedDate);
-
 
         UploadFile imageFiles1 = fileStore.storeFile(image1, (String) form.get("name"));
         UploadFile imageFiles2 = fileStore.storeFile(image2, (String) form.get("name"));
@@ -113,37 +110,46 @@ public class TestController {
     }
 
 
+
     @GetMapping("/api/project/{id}/test/{tname}/play/{page}")
-    public List<ResponseEntity<Resource>> goTest(@PathVariable int id, @PathVariable String tname, @PathVariable int page) {
-        List<ResponseEntity<Resource>> response = new ArrayList<ResponseEntity<Resource>>();
+    public List<ResponseEntity<byte[]>> goTest(@PathVariable int id, @PathVariable String tname, @PathVariable int page) {
+
+        List<ResponseEntity<byte[]>> response = new ArrayList<ResponseEntity<byte[]>>();
         CSVReader csvReader = new CSVReader();
         Test test = testService.getTestByName(id, tname);
         List<List<String>> csv = csvReader.readCSV(test);
-        System.out.println(test);
-        String path = test.getImage1().getPath();
+        String path = "";
+
+
         for( int i = 0; i < 2; i++) {
-            Resource resource = new FileSystemResource(path + csv.get(page).get(i));
-
-            HttpHeaders header = new HttpHeaders();
-            Path filePath = null;
-
-            try {
-                filePath = Paths.get(path + csv.get(page).get(i));
-
-                header.add("Content-type", Files.probeContentType(filePath));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            if (i == 1) {
+                path = test.getImage1().getPath() + test.getImage1().getUploadFilename() + "/";
             }
-
-            response.add(new ResponseEntity<Resource>(resource, header, HttpStatus.OK));
+            else {
+                path = test.getImage2().getPath() + test.getImage2().getUploadFilename() + "/";
+            }
+            response.add(returnImage(path + csv.get(page).get(i)));
         }
+
         return response;
     }
 
-    @GetMapping("/image")
-    public ResponseEntity<?> returnImage(@RequestParam String imageName) {
-        Resource resource = new FileSystemResource(imageName);
-        return new ResponseEntity<>(resource, HttpStatus.OK);
+    public ResponseEntity<byte[]> returnImage(@RequestParam String imageName) {
+
+        ResponseEntity<byte[]> result;
+
+        try {
+            File file = new File(imageName);
+
+            HttpHeaders header = new HttpHeaders();
+
+            header.add("ContentType", Files.probeContentType(file.toPath()));
+
+            result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
     }
 
     @PostMapping("/api/project/{id}/test/{tid}/vs")

@@ -8,6 +8,7 @@ export const initialState = {
         maxPart : String,
         file1 : String,
         file2: String,
+        numOfSets : Number,
         updatedDate : String,
     }
 }

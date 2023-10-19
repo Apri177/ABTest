@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Data
 @Document(collection = "tests")
 
@@ -19,10 +22,11 @@ public class Test {
 
     private int maxPart;
 
-    @Nullable
+    private int numOfSets;
+
     private int score;
 
-//    private String updateDate;
+    private String updateDate;
 
 
     private UploadFile image1;
@@ -30,13 +34,13 @@ public class Test {
     private UploadFile csvFile;
 
     @Builder
-    public Test(String name, String password, int maxPart) {
+    public Test(String name, String password, int maxPart, int numOfSets) {
         this.name = name;
         this.password = password;
         this.maxPart = maxPart;
-
-//        LocalDateTime now = LocalDateTime.now();
-//        String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm, yyyy-MM-dd"));
-//        this.updateDate = formattedDate;
+        this.numOfSets = numOfSets;
+        LocalDateTime now = LocalDateTime.now();
+        String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm, yyyy-MM-dd"));
+        this.updateDate = formattedDate;
     }
 }

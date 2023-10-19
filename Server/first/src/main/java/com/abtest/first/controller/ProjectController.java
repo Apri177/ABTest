@@ -4,6 +4,7 @@ import com.abtest.first.domain.Project;
 import com.abtest.first.domain.Test;
 import com.abtest.first.domain.dto.ProjectForm;
 import com.abtest.first.service.ProjectService;
+import com.abtest.first.service.TestService;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,8 @@ public class ProjectController {
 
     @Autowired
     private MongoTemplate mongoTemplate;
+
+    private final TestService testService;
 
     @ApiIgnore
     @GetMapping(value = {"", "/"})
@@ -78,6 +81,11 @@ public class ProjectController {
 
     @DeleteMapping("/api/project/delete/{id}")
     public DeleteResult deleteProject(@PathVariable int id) {
+        List<Test> tests = testService.getAllTests(id);
+        for(Test t : tests) {
+            testService.deleteTest(t.getName(), id);
+        }
+
         return projectService.deleteProject(id);
     }
 

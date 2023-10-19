@@ -23,28 +23,26 @@ public class FileStore {
 
     public UploadFile storeFile(MultipartFile multipartFile, String testName) throws IOException, NullPointerException {
 
+        File dir = new File(rootPath + testName);
+        String dirPath = dir.getPath() + "/";
+
+
         if(multipartFile.isEmpty()) {
             return null;
         }
 
-        File dir = new File(rootPath + testName);
         if (!dir.exists()) {
             dir.mkdir();
+            dirPath = dir.getPath() + "/";
         }
-
-        String dirPath = dir.getPath() + '/';
 
         String originalFilename = multipartFile.getOriginalFilename();
 
         multipartFile.transferTo(new File(getFullPath(dirPath, originalFilename)));
-
         if (extractExt(originalFilename).equals("zip")) {
 
             File file = new File(getFullPath(dirPath, originalFilename));
             ZipFile zipFile = new ZipFile(file);
-
-            String folderName = zipFile.getFile().getName();
-            System.out.println(folderName);
 
             // zip 압축 해제 후 zip 파일 삭제
             zipFile.extractAll(dirPath);
@@ -59,25 +57,25 @@ public class FileStore {
             if (files != null) {
                 for (File tmp : files) {
                     MultipartFile Mfile = FileUtil.Mconvert(tmp);
-                    storeFile(Mfile, testName);
+                    storeFile(Mfile, testName + "/" + extractName(file.getName()));
                 }
             }
 
             String storeFilename = UUID.randomUUID() + "." + extractExt(originalFilename);
-            return new UploadFile(originalFilename, storeFilename, dirPath + folderName + "/");
+
+            return new UploadFile(extractName(originalFilename), storeFilename, dirPath);
         }
 
         String storeFilename = UUID.randomUUID() + "." + extractExt(originalFilename);
         return new UploadFile(originalFilename, storeFilename, dirPath);
     }
 
-
-    private String extractExt(String originalFilename) {
+    public String extractExt(String originalFilename) {
         int pos = originalFilename.lastIndexOf(".");
         return originalFilename.substring(pos + 1);
     }
 
-    private String extractName(String originalFilename) {
+    public String extractName(String originalFilename) {
         int pos = originalFilename.lastIndexOf(".");
         return originalFilename.substring(0, pos);
     }

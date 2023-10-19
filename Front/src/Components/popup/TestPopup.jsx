@@ -53,6 +53,10 @@ const TestPopup = () => {
         setCode(e.target.value)
     }
 
+    const setNumOfSets = (e) => {
+        setTest({...test, numOfSets : e.target.value})
+    }
+
     const setFile1 = (e) => {
         setImages1(e.target.files[0])
     }
@@ -210,7 +214,7 @@ const TestPopup = () => {
                         </div>
                         : page === 2 ?
                         <div className="sec1">
-                            <div className="insert-info" id="number-of-sets">
+                            <div className="insert-info" id="number-of-sets" onChange={setNumOfSets}>
                                 number of sets
                             </div>
         
