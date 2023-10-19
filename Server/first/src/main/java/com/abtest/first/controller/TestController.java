@@ -42,7 +42,7 @@ public class TestController {
     private final ProjectService projectService;
     private final TestService testService;
     private final FileStore fileStore;
-
+    private final CSVReader csvReader = new CSVReader();
     @PostMapping("/api/project/{id}/test/create")
     public Test createTest(
             @PathVariable int id,
@@ -62,7 +62,6 @@ public class TestController {
                 .maxPart(Integer.parseInt(String.valueOf(form.get("maxPart"))))
                 .name((String) form.get("name"))
                 .password((String) form.get("password"))
-                .numOfSets((Integer) form.get("numOfSets"))
                 .build();
         test.setProjectId(id);
 
@@ -72,6 +71,7 @@ public class TestController {
         test.setImage1(imageFiles1);
         test.setImage2(imageFiles2);
         test.setCsvFile(csvFile);
+        test.setNumOfSets(csvReader.readCSV(test).size() - 1);
 
         testService.createTest(test);
         projectService.insert(id, test);
@@ -80,10 +80,8 @@ public class TestController {
     }
 
     @GetMapping("/api/project/{id}/test/{tname}")
-    public String getTestByName(@PathVariable int id, @PathVariable String tname) {
-        Test test = testService.getTestByName(id, tname);
-        System.out.println(test);
-        return "test 조회";
+    public Test getTestByName(@PathVariable int id, @PathVariable String tname) {
+        return testService.getTestByName(id, tname);
     }
 
     @GetMapping("/api/project/{id}/test/all")
@@ -115,10 +113,11 @@ public class TestController {
     public List<ResponseEntity<byte[]>> goTest(@PathVariable int id, @PathVariable String tname, @PathVariable int page) {
 
         List<ResponseEntity<byte[]>> response = new ArrayList<ResponseEntity<byte[]>>();
-        CSVReader csvReader = new CSVReader();
         Test test = testService.getTestByName(id, tname);
         List<List<String>> csv = csvReader.readCSV(test);
         String path = "";
+
+
 
 
         for( int i = 0; i < 2; i++) {
@@ -128,13 +127,13 @@ public class TestController {
             else {
                 path = test.getImage2().getPath() + test.getImage2().getUploadFilename() + "/";
             }
-            response.add(returnImage(path + csv.get(page).get(i)));
+            response.add(returnImage(path + csv.get(page).get(i), csv.get(page).get(2)));
         }
 
         return response;
     }
 
-    public ResponseEntity<byte[]> returnImage(@RequestParam String imageName) {
+    public ResponseEntity<byte[]> returnImage(@RequestParam String imageName, String prompt) {
 
         ResponseEntity<byte[]> result;
 
@@ -144,6 +143,8 @@ public class TestController {
             HttpHeaders header = new HttpHeaders();
 
             header.add("ContentType", Files.probeContentType(file.toPath()));
+            header.add("prompt", prompt);
+
 
             result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
         } catch (IOException e) {

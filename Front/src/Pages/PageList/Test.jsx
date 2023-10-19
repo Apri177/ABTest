@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import '../../styles/entertest.scss'
 import { useEffect, useState } from 'react'
-import { getTestsImage } from '../../util/api/test'
+import { getTestById, getTestsImage } from '../../util/api/test'
 
 const Test = () => {
 
@@ -10,6 +10,8 @@ const Test = () => {
     const [image2, setImage2] = useState("")
     const [image1ContentType, setImage1ContentType] = useState("")
     const [iamge2ContentType, setImage2ContentType] = useState("")
+    const [prompt, setPrompt] = useState("")
+    const [sets, setSets] = useState(0)
 
     const param = useParams()
 
@@ -23,12 +25,18 @@ const Test = () => {
 
     useEffect(() => {
 
+        const test = getTestById(param.project_id, param.test_name)
+        test.then((res) => {
+            setSets(res.data.numOfSets)
+        })
+
         const res = getTestsImage(param.project_id, param.test_name, page)
         res.then((res) => {
             setImage1(res[0].body)
             setImage2(res[1].body)
             setImage1ContentType(res[0].headers.ContentType)
             setImage2ContentType(res[1].headers.ContentType)
+            setPrompt(res[0].headers.prompt[0])
         })
     }, [page, ])
     
@@ -40,7 +48,7 @@ const Test = () => {
             <div className='test-box'>
                 <div className='sec1'>
                     <div className='prompt-box'>
-                        insert something
+                        {prompt}
                     </div>
                 </div>
                 <div className='sec2'>
@@ -69,12 +77,16 @@ const Test = () => {
                         </button>
                     }
                     {
-                        
+                        page !== sets ?
+                            <button className='common-button' id='test-next' onClick={next}>
+                                next
+                                <img src="/images/button-icon-arrow-forward.svg" alt="asdf" />
+                            </button> :
+                            <button className='common-button' id='test-next' >
+                                finish
+                            </button>
+
                     }
-                    <button className='common-button' id='test-next' onClick={next}>
-                        next
-                        <img src="/images/button-icon-arrow-forward.svg" alt="asdf" />
-                    </button>
                 </div>
             </div>
         </div>

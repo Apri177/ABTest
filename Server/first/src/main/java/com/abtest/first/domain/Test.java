@@ -1,9 +1,9 @@
 package com.abtest.first.domain;
 
-import com.mongodb.lang.Nullable;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.lang.Nullable;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -34,11 +34,10 @@ public class Test {
     private UploadFile csvFile;
 
     @Builder
-    public Test(String name, String password, int maxPart, int numOfSets) {
+    public Test(String name, String password, int maxPart) {
         this.name = name;
         this.password = password;
         this.maxPart = maxPart;
-        this.numOfSets = numOfSets;
         LocalDateTime now = LocalDateTime.now();
         String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm, yyyy-MM-dd"));
         this.updateDate = formattedDate;

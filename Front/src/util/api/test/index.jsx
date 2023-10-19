@@ -62,7 +62,6 @@ async(project_id, test_name) => {
 
 export const getTestsImage =
 async(project_id, test_name, page) => {
-    console.log(project_id, test_name);
 
     const res = await axios.get(
         `/api/project/${project_id}/test/${test_name}/play/${page}`
