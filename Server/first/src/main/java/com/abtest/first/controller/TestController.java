@@ -116,24 +116,26 @@ public class TestController {
         Test test = testService.getTestByName(id, tname);
         List<List<String>> csv = csvReader.readCSV(test);
         String path = "";
-
-
-
-
+        String model = "";
+        int pos = 0;
         for( int i = 0; i < 2; i++) {
             if (i == 1) {
                 path = test.getImage1().getPath() + test.getImage1().getUploadFilename() + "/";
+                model = test.getImage1().getUploadFilename();
+                System.out.println(model);
             }
             else {
                 path = test.getImage2().getPath() + test.getImage2().getUploadFilename() + "/";
+                model = test.getImage2().getUploadFilename();
+                System.out.println(model);
             }
-            response.add(returnImage(path + csv.get(page).get(i), csv.get(page).get(2)));
+            response.add(returnImage(path + csv.get(page).get(i), csv.get(page).get(2),model));
         }
 
         return response;
     }
 
-    public ResponseEntity<byte[]> returnImage(@RequestParam String imageName, String prompt) {
+    public ResponseEntity<byte[]> returnImage(@RequestParam String imageName, String prompt, String model) {
 
         ResponseEntity<byte[]> result;
 
@@ -144,6 +146,7 @@ public class TestController {
 
             header.add("ContentType", Files.probeContentType(file.toPath()));
             header.add("prompt", prompt);
+            header.add("Model", model);
 
 
             result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);

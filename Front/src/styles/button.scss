@@ -18,9 +18,14 @@
 
     padding-right: 1.5vw;
 
+    box-sizing: border-box;
 
     &:hover {
         background: #D9D9D9;
+    }
+
+    &:focus {
+        
     }
 
     img {
@@ -53,6 +58,14 @@
     font-size: 1vmax;
     font-weight: 300;
     letter-spacing: -0.04rem;
+
+    box-sizing: border-box;
+
+    transition: all 0.2s ease;
+
+    &:active {
+        padding: 5px;
+    }
 
 }
 
@@ -99,6 +112,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    box-sizing: border-box;
 }
 
 #test-next {
@@ -111,4 +126,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    box-sizing: border-box;
+
+    &:hover {
+        background: #D9D9D9;
+    }
 }

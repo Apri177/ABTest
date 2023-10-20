@@ -146,24 +146,24 @@ const TestPopup = () => {
                             onChange={setPassword} 
                             value={test.password || ""}/>
 
-                            <div className="insert-info" id="test-admin-code">
+                            <div className="insert-info" id="test-admin-code"> 
                                 admin code
-                            </div>
+                            </div> 
                             <input type="text" 
                             id="popup-test-admin-code" 
                             className="popup-input" 
-                            onChange={setAdminCode} />
+                            onChange={setAdminCode} /> 
 
-                        </div>
+                        </div> 
                         : page === 1 ?
-                        <div className="sec1">
-                            <div className="desc-insert" id="test-files">
+                        <div className="sec1"> 
+                            <div className="desc-insert" id="test-files"> 
                                 Files
-                            </div>
+                            </div> 
 
-                            <div className="insert-info" id="test-dir1">
+                            <div className="insert-info" id="test-dir1"> 
                                 directory 1
-                            </div>
+                            </div> 
                             <input type="text" id="popup-test-dir1" className="popup-input" disabled/>
                             
                             <label htmlFor="file-upload1">
