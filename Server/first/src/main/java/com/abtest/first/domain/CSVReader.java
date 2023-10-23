@@ -35,7 +35,6 @@ public class CSVReader {
                 throw new RuntimeException(e);
             }
         }
-
         return csvList;
     }
 }

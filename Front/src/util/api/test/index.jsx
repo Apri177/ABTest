@@ -69,3 +69,19 @@ async(project_id, test_name, page) => {
 
     return res.data
 }
+
+export const postTestResult =
+async(project_id, test_name, result, model_name) => {
+
+    let count
+    = result.filter(e => 
+        model_name[0] === e
+    ).length
+
+    await axios.post(
+        `/api/project/${project_id}/test/${test_name}/result`,
+        {
+            score : count
+        }
+    )
+}

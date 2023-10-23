@@ -37,8 +37,6 @@ dependencies {
 	implementation 'commons-fileupload:commons-fileupload:1.4'
 	implementation 'commons-io:commons-io:2.14.0'
 
-
-
 	// https://mvnrepository.com/artifact/net.lingala.zip4j/zip4j
 	implementation group: 'net.lingala.zip4j', name: 'zip4j', version: '2.10.0'
 
@@ -48,6 +46,7 @@ dependencies {
 	implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
 	implementation group: 'commons-io', name: 'commons-io', version:'2.4'
 
+	implementation group: 'org.python', name: 'jython-standalone', version: '2.7.2'
 }
 
 tasks.named('test') {

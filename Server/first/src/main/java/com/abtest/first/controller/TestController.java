@@ -10,6 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.python.core.PyFunction;
+import org.python.core.PyInteger;
+import org.python.core.PyObject;
+import org.python.util.PythonInterpreter;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
@@ -38,6 +42,8 @@ import java.util.List;
 @RequestMapping("")
 @Getter
 public class TestController {
+
+    private static PythonInterpreter intPre;
 
     private final ProjectService projectService;
     private final TestService testService;
@@ -129,7 +135,12 @@ public class TestController {
                 model = test.getImage2().getUploadFilename();
                 System.out.println(model);
             }
-            response.add(returnImage(path + csv.get(page).get(i), csv.get(page).get(2),model));
+
+            StringBuilder prompt = new StringBuilder();
+            for (int j = 2; j < csv.get(page).size(); j++) {
+                prompt.append(csv.get(page).get(j));
+            }
+            response.add(returnImage(path + csv.get(page).get(i), String.valueOf(prompt) ,model));
         }
 
         return response;
@@ -156,19 +167,29 @@ public class TestController {
         return result;
     }
 
-    @PostMapping("/api/project/{id}/test/{tid}/vs")
-    public void score() {
-        // 전체 셋 개수에서 스코어 업 한 거 만큼 빼서 통계 정리
-    }
+    @PostMapping("/api/project/{id}/test/{tid}/result")
+    public void postScore(
+            @PathVariable int id,
+            @PathVariable String tid,
+            @RequestBody  Test temp
+    ) {
+        Test test = getTestByName(id, tid);
+        test.setScore(test.getScore() + temp.getScore());
+        test.setTester(test.getTester() + 1);
 
-    @PostMapping("/api/project/{id}/test/{tid}/likert")
-    public void likert() {
-        // 첫 번째 세트 기준으로 점수 매긴 후 전체 점수에서 빼서 유효성 검증
-    }
+        System.setProperty("python.import.site", "false");
 
+        intPre = new PythonInterpreter();
+        intPre.execfile("first/src/main/resources/static/temp.py");
+        intPre.exec("print('asd')");
+//        PyFunction pyFunction = intPre.get("test_preference", PyFunction.class);
+//        int a = 10; int b = 20; int n = 10;
+//        PyObject pyObject = pyFunction.__call__(new PyInteger(a), new PyInteger(b), new PyInteger(n));
+//        System.out.println(pyObject.toString());
+    }
 
     @GetMapping("/api/project/{id}/test/{tid}/result")
-    public int showResultTest(@PathVariable int tid, Test test) {
+    public int showResultTest(@PathVariable int tid, Test test, @PathVariable String id) {
         // test 결과 주는 코드
         return 0;
     }

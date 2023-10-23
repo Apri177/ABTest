@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import '../../styles/entertest.scss'
 import { useEffect, useState } from 'react'
-import { getTestById, getTestsImage } from '../../util/api/test'
+import { getTestById, getTestsImage, postTestResult } from '../../util/api/test'
 import { ToastContainer, toast } from 'react-toastify'
 
 const Test = () => {
@@ -48,9 +48,12 @@ const Test = () => {
         setX("")
     }
 
-    const finish = () => {
+    const finish = async () => {
 
         toast.success("Successfully over")
+
+        await postTestResult(param.project_id, param.test_name, result, imgInfo1.Model)
+
         navigate(`/project/${param.project_id}/test/${param.test_name}/result`)
     }
 

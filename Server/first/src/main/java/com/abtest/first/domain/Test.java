@@ -2,6 +2,7 @@ package com.abtest.first.domain;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.lang.Nullable;
 
@@ -13,9 +14,9 @@ import java.time.format.DateTimeFormatter;
 
 public class Test {
 
-//    @Id
     private int projectId;
 
+//    @Id
     private String name;
 
     private String password;
@@ -24,10 +25,11 @@ public class Test {
 
     private int numOfSets;
 
-    private int score;
+    private int score = 0;
+
+    private int tester = 0;
 
     private String updateDate;
-
 
     private UploadFile image1;
     private UploadFile image2;
