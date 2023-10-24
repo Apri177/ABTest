@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { close } from "../../store/popupStore"
 import '../../styles/popup.scss'
 import { useParams } from "react-router-dom"
 import { createTest } from "../../util/api/test"
+import { toast } from "react-toastify"
 
 const TestPopup = () => {
-
-    // reducer 작성하긴했는데 수정해야 함
     
     const dispatch = useDispatch()
     
     const state = useSelector(state => state.popup)    
+    const projectState = useSelector(state => state.project)
     
-    useEffect(() => {
-        
-    }, [])
-
     const [page, setPage] = useState(0)
     
     const [test, setTest] = useState({
@@ -47,11 +43,11 @@ const TestPopup = () => {
     const setAdminCode = (e) => {
         setCode(e.target.value)
     }
-
+    
     const setNumOfSets = (e) => {
         setTest({...test, numOfSets : e.target.value})
     }
-
+    
     const setFile1 = (e) => {
         setImages1(e.target.files[0])
     }
@@ -71,17 +67,46 @@ const TestPopup = () => {
     }
     
     const next = () => {
+
+        if(test.name.length === 0) {
+            toast.warning("Please enter test name!")
+            return
+        } else if (test.name.length > 10) {
+            toast.warning("Please write test name within 10 character")
+            return
+        }
+
+        if(test.maxPart.length === 0) {
+            toast.warning("Please enter Max Participants!")
+            return
+        } else if (parseInt(test.maxPart) > 20){
+            toast.warning("Please write Max participants under 50")
+        }
+
+        if(test.password.length === 0) {
+            toast.warning("Please enter password!")
+            return
+        } else if (test.password.length > 12) {
+            toast.warning("Please write password within 12 character")
+            return
+        }
+
+        if(projectState.preProject.adminCode !== code) {
+            toast.error("Admin code is not correct!")
+            return
+        }
+
         setPage(page + 1)
     }
 
     const back = () => {
         setPage(page - 1)
     }
-
+    
     const create = async() => {
-
+        
         const formdata = new FormData()
-
+        
         formdata.append("body", JSON.stringify({
             name: test.name,
             password: test.password,
@@ -104,8 +129,6 @@ const TestPopup = () => {
         style={{
             visibility: state.popup.show ? "visible" : "hidden", 
             opacity:  state.popup.show ? 1 : 0
-            // visibility: "visible",
-            // opacity: 1
         }} className="overlay">
             <div className="popup" style={{
                 height: page === 2 ? "80vh" : "50vh"

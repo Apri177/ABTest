@@ -25,17 +25,19 @@ public class TestRepository {
         mongoTemplate.insert(test);
     }
 
-    public void edit(String tname, Test test) {
+    public void edit(int projectId, String tname, Test test) {
         Query query = new Query();
         Update update = new Update();
 
+        query.addCriteria(Criteria.where("projectId").is(projectId));
         query.addCriteria(Criteria.where("name").is(tname));
 
         update.set("name", test.getName());
-//        update.set("maxParticipants", test.getMaxParticipants());
-//        update.set("imageFiles1", test.getImageFiles1());
-//        update.set("imageFiles2", test.getImageFiles2());
-//        update.set("updateDate", test.getUpdateDate());
+        update.set("score", test.getScore());
+        update.set("tester", test.getTester());
+        update.set("testResult", test.getTestResult());
+        update.set("updateDate", test.getUpdateDate());
+
 
         mongoTemplate.updateMulti(query, update, "tests");
     }

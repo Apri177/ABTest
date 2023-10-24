@@ -3,7 +3,6 @@ import {createSlice} from "@reduxjs/toolkit"
 export const initialState = {
     projects: [],
     preProject: {},
-    tests : [],
 }
 
 const projectData = createSlice({
@@ -22,9 +21,6 @@ const projectData = createSlice({
         },
         getPreProjectState : (state) => {
             return state.preProject
-        },
-        setTests: (state, action) => {
-            state.tests = action.payload
         },
     }
 })

@@ -1,13 +1,11 @@
-import { useEffect, useState } from 'react'
 import ProjectItem from '../Components/Project/ProjectItem'
 import CreateButton from '../Components/Button/CreateButton'
 import Search from '../Components/Project/Search'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 
 const ProjectContainer = () => {
 
-    const dispatch = useDispatch()
     const projectState = useSelector(state => state.project)
 
     return (

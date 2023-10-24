@@ -1,22 +1,15 @@
 package com.abtest.first.controller;
 
 import com.abtest.first.domain.*;
-import com.abtest.first.domain.dto.TestForm;
 import com.abtest.first.service.ProjectService;
 import com.abtest.first.service.TestService;
-import io.swagger.models.Response;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.math3.stat.inference.AlternativeHypothesis;
+import org.apache.commons.math3.stat.inference.BinomialTest;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.python.core.PyFunction;
-import org.python.core.PyInteger;
-import org.python.core.PyObject;
-import org.python.util.PythonInterpreter;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,26 +17,20 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("")
 @Getter
 public class TestController {
-
-    private static PythonInterpreter intPre;
 
     private final ProjectService projectService;
     private final TestService testService;
@@ -57,7 +44,7 @@ public class TestController {
             @RequestParam(name = "image1") MultipartFile image1,
             @RequestParam(name = "image2") MultipartFile image2,
             @RequestParam(name = "prompt") MultipartFile prompt
-    ) throws IOException, ServletException, ParseException {
+    ) throws IOException, ParseException {
 
 
         JSONParser parser = new JSONParser();
@@ -97,8 +84,8 @@ public class TestController {
 
     @PatchMapping("/api/project/{id}/test/{tname}")
     public String editTest(@PathVariable int id, @PathVariable String tname, Test test) {
-//        testService.editTest(tid, test.getName(), test.getPassword(), test.getMaxParticipants());
-        return "redirect:/project/{" + "}";
+        testService.editTest(id, tname, test);
+        return "수정 완료";
     }
 
     @DeleteMapping("/api/project/{id}/test/delete/{tname}")
@@ -159,7 +146,6 @@ public class TestController {
             header.add("prompt", prompt);
             header.add("Model", model);
 
-
             result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -168,7 +154,7 @@ public class TestController {
     }
 
     @PostMapping("/api/project/{id}/test/{tid}/result")
-    public void postScore(
+    public Test postScore(
             @PathVariable int id,
             @PathVariable String tid,
             @RequestBody  Test temp
@@ -177,21 +163,20 @@ public class TestController {
         test.setScore(test.getScore() + temp.getScore());
         test.setTester(test.getTester() + 1);
 
-        System.setProperty("python.import.site", "false");
+        BinomialTest bTest = new BinomialTest();
+        test.setTestResult(
+            bTest.binomialTest(
+                    test.getTester() * test.getNumOfSets(),
+                    test.getScore(),
+                    0.5,
+                    AlternativeHypothesis.LESS_THAN,
+                    0.05)
+        );
 
-        intPre = new PythonInterpreter();
-        intPre.execfile("first/src/main/resources/static/temp.py");
-        intPre.exec("print('asd')");
-//        PyFunction pyFunction = intPre.get("test_preference", PyFunction.class);
-//        int a = 10; int b = 20; int n = 10;
-//        PyObject pyObject = pyFunction.__call__(new PyInteger(a), new PyInteger(b), new PyInteger(n));
-//        System.out.println(pyObject.toString());
+        Double p_value =
+        bTest.binomialTest(test.getTester() * test.getNumOfSets(), test.getScore(), 0.5, AlternativeHypothesis.LESS_THAN);
+
+        editTest(id, tid, test);
+        return test;
     }
-
-    @GetMapping("/api/project/{id}/test/{tid}/result")
-    public int showResultTest(@PathVariable int tid, Test test, @PathVariable String id) {
-        // test 결과 주는 코드
-        return 0;
-    }
-
 }

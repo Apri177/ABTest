@@ -7,9 +7,12 @@ export const initialState = {
         password : String,
         maxPart : String,
         file1 : String,
-        file2: String,
+        file2 : String,
         numOfSets : Number,
-        updatedDate : String,
+        tester: Number,
+        testResult: Boolean,
+        score: Number,
+        testSel: String
     }
 }
 
@@ -23,8 +26,11 @@ const testData = createSlice({
         setTestState: (state, action) => {
             state.tests = action.payload
         },
+        setPreTest: (state, action) => {
+            state.preTest = action.payload
+        }
     }
 })
 
-export const {getTestState, setTestState} = testData.actions
+export const {getTestState, setTestState, setPreTest} = testData.actions
 export default testData.reducer

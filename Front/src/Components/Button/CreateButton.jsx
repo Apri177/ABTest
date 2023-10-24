@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import '../../styles/button.scss'
 import { open } from '../../store/popupStore';
-import { createProject } from '../../util/api';
-
 const CreateButton = ({ content }) => {
 
     const dispatch = useDispatch()

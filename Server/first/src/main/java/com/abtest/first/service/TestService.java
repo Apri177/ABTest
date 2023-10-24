@@ -18,26 +18,12 @@ public class TestService {
 
     public void createTest(Test test) { testRepository.create(test);}
 
-    public void editTest(int projectId,String name, String password, int maxPart) {
-        Test test = testRepository.findById(projectId,name);
-
-        if(test == null) {
-            System.out.println("프로젝트를 찾을 수 없습니다.");
-            return;
-        }
-
-        if(!test.getPassword().equals(password)) {
-            System.out.println("비밀번호가 틀렸습니다.");
-            return;
-        }
-
-//        test.setMaxParticipants(maxParticipants);
-
+    public void editTest(int projectId, String name, Test test) {
         LocalDateTime now = LocalDateTime.now();
         String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm MM/dd"));
-//        test.setUpdateDate(formattedDate);
+        test.setUpdateDate(formattedDate);
 
-        testRepository.edit(name, test);
+        testRepository.edit(projectId, name, test);
     }
 
 

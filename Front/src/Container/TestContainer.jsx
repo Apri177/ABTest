@@ -4,23 +4,24 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import TestItem from '../Components/Test/TestItem'
 import { useEffect } from 'react'
-import { setPreProjectState, setTests } from '../store/projectStore'
+import { setPreProjectState } from '../store/projectStore'
 import { getProjectById } from '../util/api'
+import { setTestState } from '../store/testStore'
 
 const TestContainer = () => {
 
     const dispatch = useDispatch()
     const projectState = useSelector(state => state.project)
+    const testState = useSelector(state => state.test)
     const param = useParams()
 
     useEffect(() => {        
         const res = getProjectById(param.project_id)
         res.then((res) => {
             dispatch(setPreProjectState(res.data))
-            dispatch(setTests(projectState.preProject.tests))
-            
+            dispatch(setTestState(projectState.preProject.tests))
         })
-    }, [])
+    }, [dispatch, param.project_id, projectState.preProject.tests, testState])
 
     return (
         <div className="test-container">
@@ -55,7 +56,7 @@ const TestContainer = () => {
             </div>
             <div className='test-content-container'>
                 {
-                    projectState.preProject.tests && projectState.preProject.tests.map((item, temp) => {
+                    testState.tests && testState.tests.map((item, temp) => {
                         return (
                             <TestItem name={item.name} dir1={item.image1.uploadFilename} dir2={item.image2.uploadFilename} key={temp}/>
                         )

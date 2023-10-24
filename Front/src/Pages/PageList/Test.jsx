@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import '../../styles/entertest.scss'
 import { useEffect, useState } from 'react'
 import { getTestById, getTestsImage, postTestResult } from '../../util/api/test'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 const Test = () => {
 
@@ -62,7 +62,6 @@ const Test = () => {
     }
 
     useEffect(() => {
-
         const test = getTestById(param.project_id, param.test_name)
         test.then((res) => {
             setSets(res.data.numOfSets)
@@ -70,36 +69,26 @@ const Test = () => {
 
         const res = getTestsImage(param.project_id, param.test_name, page)
         res.then((res) => {
+
             setImgInfo1({
                 image: res[0].body,
                 ContentType: res[0].headers.ContentType,
                 Model: res[0].headers.Model
             })
+
             setImgInfo2({
                 image: res[1].body,
                 ContentType: res[1].headers.ContentType,
                 Model: res[1].headers.Model
             })
+            
             setPrompt(res[0].headers.prompt[0])
         })
-
-        console.log(result);
-    }, [page, ])
+    }, [page, param.project_id, param.test_name])
     
 
      return (
          <div className="ground">
-             <ToastContainer
-                 position="top-right" // 알람 위치 지정
-                 autoClose={3000} // 자동 off 시간
-                 hideProgressBar={false} // 진행시간바 숨김
-                 closeOnClick // 클릭으로 알람 닫기
-                 rtl={false} // 알림 좌우 반전
-                 draggable // 드래그 가능
-                 pauseOnHover // 마우스를 올리면 알람 정지
-                 theme="light"
-                //  limit={1} // 알람 개수 제한
-             />
             <div className='test-box'>
                 <div className='sec1'>
                     <div className='prompt-box'>

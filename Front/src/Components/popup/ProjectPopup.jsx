@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { close } from "../../store/popupStore"
 import '../../styles/popup.scss'
 import { createProject, getProjects } from "../../util/api"
-import { getProjectState, setProjectState } from "../../store/projectStore"
+import { setProjectState } from "../../store/projectStore"
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ProjectPopup = () => {
 
@@ -27,6 +31,13 @@ const ProjectPopup = () => {
     }
     
     const next = () => {
+        if(adminCode.length === 0) {
+            toast.warning("Please enter admincode")
+            return
+        } else if(adminCode.length > 10) {
+            toast.warning("Please write admin code within 10 characters.")
+            return
+        }
         setPage(page + 1)
     }
 
@@ -55,26 +66,27 @@ const ProjectPopup = () => {
         res.then((res) => {
             dispatch(setProjectState(res.data))
         })
-    }, [])
+    }, [dispatch])
 
     const create = async () => {
-        try{
-            if(adminCode.length !== 0 
-                && 
-                name.length !== 0
-                &&
-                content.length !== 0) {
-                    await createProject(projectState.projects.at(-1).id + 1, adminCode, name, content)
-                }
-        } catch (e) {
-            if(adminCode.length !== 0 
-                && 
-                name.length !== 0
-                &&
-                content.length !== 0) {
-                    await createProject(0, adminCode, name, content)
-                }
+        if(name.length === 0) {
+            toast.warning("Please enter Project name")
+            return
+        } else if(name.length > 10) {
+            toast.warning("Please write name within 10 characters.")
+            return
         }
+        if(content.length > 50) {
+            toast.warning("Please write Project notes within 50 characters.")
+            return    
+        }
+
+        try{
+            await createProject(projectState.projects.at(-1).id + 1, adminCode, name, content)
+        } catch (e) {
+            await createProject(0, adminCode, name, content)    
+        }
+
         const res = getProjects()
         res.then((res) => {
             dispatch(setProjectState(res.data))
@@ -88,11 +100,10 @@ const ProjectPopup = () => {
         style={{
             visibility: popupState.popup.show ? "visible" : "hidden", 
             opacity:  popupState.popup.show ? 1 : 0
-            // visibility: "visible",
-            // opacity: 1
         }} className="overlay">
             <div className="popup" style={{
-                height: page ? "50vh" : "40vh"
+                height: "21vmax",
+                width: "25vmax"
             }}>
                 <div className="popup-title">
                     New Project
