@@ -5,18 +5,18 @@ const BarChart = ({per, sum}) => {
     const [score, setScore] = useState(0)
 
     useEffect(() => {
-        setScore(per * (100 / sum))
+        setScore(per / sum)
     }, [per, score, sum])
 
 
     return (
         <div className="bar-chart">
             <div id="orange" style={{
-                width: `${score}%`
+                width: `${score * 100}%`
             }}></div>
 
             <div id="soda" style={{
-                width: `${100 - score}%`
+                width: `${100 - (score * 100)}%`
             }}></div>
         </div>
     )

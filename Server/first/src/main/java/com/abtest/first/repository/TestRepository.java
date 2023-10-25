@@ -47,6 +47,7 @@ public class TestRepository {
 
         query.addCriteria(Criteria.where("name").is(tname));
         query.addCriteria(Criteria.where("projectId").is(projectId));
+
         mongoTemplate.remove(query, "tests");
     }
 

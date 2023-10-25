@@ -17,20 +17,14 @@
         display: flex;
         flex-direction: column;
 
-        // background: black;
-        border: 1px solid black;
-
         position: relative;
 
         .sec1 {
-            border: 1px solid blue;
-
             height: 7.5vh;
         }
 
         .sec2 {
             margin: 0;
-            border: 1px solid red;
             position: relative;
 
             display: flex;
@@ -43,18 +37,17 @@
                 top: 0;
                 left: 0;
 
-
                 width: 80%;
 
-                border: 1px solid ;
+                // border: 1px solid black;
 
                 display: flex;
                 flex-direction: column;
 
                 #test-sel {
-    
                     font-size: 20px;
                     font-weight: 700;
+                    margin: 0;
                 }
     
                 #desc-test {
@@ -64,19 +57,17 @@
             }
 
             #model-div {
+                // border: 1px solid blue;
+
                 position: absolute;
                 left: 0;
-                top: 15vh;
+                top: 12vh;
 
-                width: 50%;
-
-                border: 1px solid brown;
+                width: 25%;
 
                 display: flex;
                 flex-direction: row;
-                justify-content: space-around;
-                
-                margin: 0;
+                justify-content: space-between;
 
                 #model-1 {
                     height: min-content;
@@ -98,10 +89,10 @@
                 .model-name {
                     font-size: 0.825vmax;
                     font-weight: 400;
-                    padding: 0;
                 }
 
             }
+
 
             #test-type {
                 width: 12vmax;
@@ -125,17 +116,16 @@
         }
 
         .sec3 {
-            border: 1px solid purple;
 
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+            align-items: center;
 
             position: relative;
             margin: 0;
 
 
             #test-result {
-                border: 1px solid black;
 
                 display: flex;
                 flex-direction: row;
@@ -144,11 +134,54 @@
 
                 align-items: center;
 
+                font-weight: 400;
+                font-size: 12px;
+                #category {
+
+                }
+
             }
 
 
+            #result-info {
+                width: 90%;
+
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                height: 4vmax;
+
+                border-bottom: 1px solid #D9D9D9;
+
+                #global {
+                    margin: 0;
+                    font-weight: 700;
+                }
+
+                #statis {
+                    display: flex;
+                    flex-direction: row;
+
+                    margin-left: 4vw;
+
+
+                    #result-desc {
+                        font-size: 12px;
+                        font-weight: 400;
+
+                        margin: 0;
+                        margin-left: 1vw;
+                    }
+                }
+
+            }
+
+
+
+
             .bar-chart {
-                height: 2vmax;
+                height: 1.75vmax;
                 width: 20vw;
 
                 display: flex;
@@ -162,9 +195,6 @@
                     background: #33A7A6;
                 }
             }
-
-
         }
     }
-
 }

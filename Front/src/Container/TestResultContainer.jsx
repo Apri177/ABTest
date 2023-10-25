@@ -46,7 +46,6 @@ const TestResultContainer = () => {
                             <div style={{
                                 width: "1vw"
                             }}>
-
                             </div>
                             <p className="model-name">
                                 {"~/" + test.file2}
@@ -62,9 +61,59 @@ const TestResultContainer = () => {
                     
                 </div>
                 <div className="sec3">
+
+                    <div id="result-info">
+                        <p id="global">
+                            Global
+                        </p>
+                        <div id="statis">
+                            {
+                                test.testResult ? 
+                                <img src="/images/orange.svg" alt="orange" /> :
+                                <img src="/images/soda.svg" alt="soda"/>
+                            }
+                            {
+                                test.testResult ?
+                                <p id="result-desc">
+                                    {test.file1} was statistically significantly preferred.        
+                                </p> :
+                                <p id="result-desc">
+                                    {test.file2} was statistically significantly preferred.
+                                </p>
+                            }
+                        </div>
+                    </div>
+
                     <div id="test-result">
+                        <p id="category">
+                            Global
+                        </p>
+                        {
+                            test.testResult ? 
+                            <img src="/images/orange.svg" alt="orange" /> :
+                            <img src="/images/soda.svg" alt="soda"/>
+                        }
+                        <p id="per">  
+                            {Number.parseInt(test.score / (test.numOfSets * test.tester))} %
+                        </p>
+
+                        <p id="left-point">
+                            {test.score} points
+                        </p>
+
+                        <BarChart per={test.score} sum={test.tester * test.numOfSets}/>
+                        <p id="right-point">
+                            {(test.numOfSets * test.tester) - test.score} points
+                        </p>
+
+                        <p id="sets"> 
+                            {test.numOfSets}
+                        </p>
+
+                        <p id="p-value">
+                            p-value
+                        </p>
                         
-                        <BarChart per={50} sum={70}/>
 
                     </div>
                             

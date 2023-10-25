@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4918519-2d20-4428-8256-05ac7cd6fda0" name="Changes" comment="MongoTemplate 및 MongoRepository로 CRUD 변환">
-      <change beforePath="$PROJECT_DIR$/../Front/src/Pages/PageList/TestResult.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Pages/PageList/TestResult.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/Container/TestResultContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Container/TestResultContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/styles/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/main.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front/src/styles/popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/popup.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/styles/testresult.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/testresult.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/domain/dto/TestForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/TestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/first/src/main/java/com/abtest/first/repository/TestRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
