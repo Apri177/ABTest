@@ -1,30 +1,30 @@
 import {createSlice} from "@reduxjs/toolkit"
 
 export const initialState = {
-    projects: [
-        {
-            id: 0,
-            name: "",
-            content: "",
-            adminCode: "",
-            updateDate: "",
-        }
-    ]
+    projects: [],
+    preProject: {},
 }
 
 const projectData = createSlice({
     name: "project",
     initialState,
     reducers: {
-        getProjectState: (state, action) => {
+        getProjectState: (state) => {
+            return state.projects
+        },
+        setProjectState: (state, action) => {
             state.projects = action.payload
-        }, 
-        setProjectState: (state, action, projects) => {
-            state.projects = projects
-        }
+        },
+        setPreProjectState: (state, action) => {
+            // console.log(action.payload);
+            state.preProject = action.payload
+        },
+        getPreProjectState : (state) => {
+            return state.preProject
+        },
     }
 })
 
 
-export const {getProjectState, setProjectState}  = projectData.actions
+export const {getProjectState, setProjectState, setPreProjectState, getPreProjectState, setTests}  = projectData.actions
 export default projectData.reducer

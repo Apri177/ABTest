@@ -1,0 +1,40 @@
+
+.test-result-container {
+    width: 95%;
+    height: 82.5vh;
+
+    background: var(--common-white-main, #FFF);
+    border-radius: 0.75rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+
+        width: 80vmin;
+        height: 70vmin;
+
+        display: flex;
+        flex-flow: row wrap;
+        overflow-y: scroll;
+
+        padding-bottom: 5vh;
+
+        // background: black;
+        border: 1px solid black;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .sec1 {
+            border: 1px solid red;
+            position: relative;
+
+            
+
+        }
+    }
+
+}

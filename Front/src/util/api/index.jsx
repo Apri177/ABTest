@@ -1,56 +1,53 @@
 import axios from "axios";
 
-export const apiTest = 
-async() => {
+export const getProjectById =
+async(project_id) => {
     const res = await axios.get(
-        `/api/test`
+        `/api/project/${project_id}`
     )
-    .then((res) => {
-        console.log(res, "성공");
-    })
-    .catch((err) => {
-        console.log(err, "에러");
-    })
     return res
 }
-
 
 export const getProjects = 
 async() => {
     const res = await axios.get(
         `/api/project/all`
     )
-
-    console.log(res.data[0]);
-    return res.data[0]
+    return res
 }
 
 export const createProject = 
-async() => {
+async(id, adminCode, name, content) => {
     const res = await axios.post(
         `/api/project/create`,
         {
-            "adminCode" : "qwer",
-            "name" : "Second project",
-            "content" : "두 번쨰 프로젝트임",
+            "id" : id,
+            "adminCode" : adminCode,
+            "name" : name,
+            "content" : content,
         }
     )
-    .then((res) => {
-        console.log("성공", res);
-    })
-    .catch((err) => {
-        console.log(err, "실패");
-    })
-    
+    return res.data
 }
 
 
 export const patchProject = 
-async () => {
-    
+async (id, adminCode, name, content, tests) => {
+    const res = await axios.patch(
+        `/api/project/{id}`,
+        {
+            "id": id,
+            "adminCode" : adminCode,
+            "name": name,
+            "content" : content,
+            "tests" : tests
+        }
+    )
+    return res
 }
-
 export const deleteProject = 
-async () => {
-
+async (id) => {
+    await axios.delete(
+        `/api/project/delete/{id}`,
+    )
 }

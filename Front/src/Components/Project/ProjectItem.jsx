@@ -1,9 +1,15 @@
+import { Link } from 'react-router-dom'
 import '../../styles/project.scss'
 
-const ProjectItem = ({name, content, updateDate}) => {
+const ProjectItem = ({id, name, content, updateDate}) => {
 
     return (
-        <div className="project-item">
+        <Link className="project-item"
+        style={{
+            textDecoration: "none",
+            color: 'black'
+        }}
+        to={`/project/${id}`}>
             <div className='project-name'>
                 {name}  
             </div>
@@ -26,7 +32,7 @@ const ProjectItem = ({name, content, updateDate}) => {
                     {updateDate}
                 </p>
             </div>
-        </div>
+        </Link>
     )
 }
 

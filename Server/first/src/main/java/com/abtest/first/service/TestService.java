@@ -13,49 +13,32 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TestService {
 
+
     private final TestRepository testRepository;
 
     public void createTest(Test test) { testRepository.create(test);}
 
-    public void editTest(int id, String name, String password, int maxParticipants) {
-        Test test = testRepository.findById(id);
-
-        if(test == null) {
-            System.out.println("프로젝트를 찾을 수 없습니다.");
-            return;
-        }
-
-        if(!test.getPassword().equals(password)) {
-            System.out.println("비밀번호가 틀렸습니다.");
-            return;
-        }
-
-        test.setName(name);
-        test.setMaxParticipants(maxParticipants);
-
+    public void editTest(int projectId, String name, Test test) {
         LocalDateTime now = LocalDateTime.now();
         String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm MM/dd"));
         test.setUpdateDate(formattedDate);
 
-        testRepository.edit(id, test);
+        testRepository.edit(projectId, name, test);
     }
 
 
-    public void deleteTest(int id, String password) {
-        Test test = testRepository.findById(id);
+    public void deleteTest(String tname, int projectId) {
+        Test test = testRepository.findById(projectId ,tname);
 
-        if(!test.getPassword().equals(password)) {
-            System.out.println("비밀번호가 틀렸습니다.");
-            return;
-        }
-
-        testRepository.delete(id);
+        testRepository.delete(projectId ,tname);
     }
 
-    public List<Test> getAllTests() { return testRepository.findAll(); }
+    public List<Test> getAllTests(int projectId) {
+        return testRepository.findAll(projectId);
+    }
 
-    public Test getTest(int id) {
-        return testRepository.findById(id);
+    public Test getTestByName(int projectId,String tname) {
+           return testRepository.findById(projectId ,tname);
     }
 
 }

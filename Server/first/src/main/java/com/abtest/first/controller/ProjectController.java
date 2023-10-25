@@ -1,8 +1,12 @@
 package com.abtest.first.controller;
 
 import com.abtest.first.domain.Project;
+import com.abtest.first.domain.Test;
 import com.abtest.first.domain.dto.ProjectForm;
 import com.abtest.first.service.ProjectService;
+import com.abtest.first.service.TestService;
+import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.UpdateResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -16,6 +20,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -28,8 +33,11 @@ public class ProjectController {
 
     private final ProjectService projectService;
 
+
     @Autowired
     private MongoTemplate mongoTemplate;
+
+    private final TestService testService;
 
     @ApiIgnore
     @GetMapping(value = {"", "/"})
@@ -37,17 +45,10 @@ public class ProjectController {
         return "/";
     }
 
-    // test 성공 (Front-end)와 API 연동하기
-    @GetMapping("/api/test")
-    public String tete() {
-        return "Test code 입니다.";
-    }
-
     @GetMapping("/api/project/all")
     public List<Project> getProjectAll() {
         return projectService.getAllProjects();
     }
-    private Long sequence;
 
     @PostMapping("/api/project/create")
     public Project createProject(@RequestBody ProjectForm form) throws IOException {
@@ -57,28 +58,35 @@ public class ProjectController {
                 .name(form.getName())
                 .content(form.getContent())
                 .build();
-
+        project.setId(form.getId());
+        List<Test> test = new ArrayList<>();
+        project.setTests(test);
 
         return projectService.createProject(project);
     }
 
-    @GetMapping("/project/{id}")
-    public String showProject(@PathVariable int id){
-        Project project = projectService.getProject(id);
-
-        return "/project_detail";
+    @GetMapping("/api/project/{id}")
+    public Project showProject(@PathVariable int id){
+        return projectService.getProject(id);
     }
 
-    @PatchMapping("/project/{id}")
-    public String editContent(@PathVariable int id, Project project) {
-        projectService.editProject(id, project.getName(), project.getContent(), project.getAdminCode());
-        return "redirect:/";
+    @PatchMapping("/api/project/{id}")
+    public UpdateResult editContent(@PathVariable int id, @RequestBody ProjectForm form) {
+        return projectService.editProject(id,
+                form.getName(),
+                form.getContent(),
+                form.getAdminCode(),
+                form.getTests());
     }
 
-    @DeleteMapping("/project/delete/{id}")
-    public String deleteProject(@PathVariable int id, Project project) {
-        projectService.deleteProject(id, project.getAdminCode());
-        return "redirect:/";
+    @DeleteMapping("/api/project/delete/{id}")
+    public DeleteResult deleteProject(@PathVariable int id) {
+        List<Test> tests = testService.getAllTests(id);
+        for(Test t : tests) {
+            testService.deleteTest(t.getName(), id);
+        }
+
+        return projectService.deleteProject(id);
     }
 
 
