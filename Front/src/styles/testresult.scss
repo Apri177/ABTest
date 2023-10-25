@@ -136,8 +136,42 @@
 
                 font-weight: 400;
                 font-size: 12px;
-                #category {
 
+                position: relative;
+
+                #category {
+                    position: absolute;
+                    left: 7vw;
+                }
+
+                #per {
+                    position: absolute;
+                    left: 11.75vw;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 5.75vw;
+                }
+
+                #left-point {
+                    position: absolute;
+                    left: 19vw;
+                }
+
+                #right-point {
+                    position: absolute;
+                    left: 45vw;
+                }
+
+                #sets {
+                    position: absolute;
+                    left: 50vw;
+                }
+
+                #p-value {
+                    position: absolute;
+                    left: 55vw;
                 }
 
             }
@@ -181,6 +215,9 @@
 
 
             .bar-chart {
+                position: absolute;
+                left: 24vw;
+
                 height: 1.75vmax;
                 width: 20vw;
 

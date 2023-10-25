@@ -88,12 +88,12 @@ const TestResultContainer = () => {
                         <p id="category">
                             Global
                         </p>
-                        {
-                            test.testResult ? 
-                            <img src="/images/orange.svg" alt="orange" /> :
-                            <img src="/images/soda.svg" alt="soda"/>
-                        }
                         <p id="per">  
+                            {
+                                test.testResult ? 
+                                <img src="/images/orange.svg" alt="orange" /> :
+                                <img src="/images/soda.svg" alt="soda"/>
+                            }
                             {Number.parseInt(test.score / (test.numOfSets * test.tester))} %
                         </p>
 
@@ -107,7 +107,7 @@ const TestResultContainer = () => {
                         </p>
 
                         <p id="sets"> 
-                            {test.numOfSets}
+                            {test.numOfSets} sets
                         </p>
 
                         <p id="p-value">
