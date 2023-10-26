@@ -1,19 +1,28 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import BarChart from "../Components/Test/BarChart"
+import { useParams } from "react-router-dom"
 
 const TestResultContainer = () => {
+
+    const param = useParams()
 
     const dispatch = useDispatch()
     const preTest = useSelector(state => state.test.preTest)
     const [test, setTest] = useState({
-
+        file1 : String,
+        file2 : String,
+        name : String,
+        numOfSets: Number,
+        score: Number,
+        testResult : String,
+        testSel : String,
+        tester : Number,
     })
 
     useEffect(() => {
         setTest(preTest)
-        console.log(test);
-    }, [dispatch, preTest, test])
+    }, [dispatch, preTest, test, param])
 
     return (
         <div className="test-result-container">
@@ -56,7 +65,11 @@ const TestResultContainer = () => {
                         <p id="test-type-text">
                             Test type
                         </p>
-                        <img src={`/images/${test.testSel}.svg`} alt="test-type" />
+                        {
+                            test.testSel === "vs" ?
+                            <img src="/images/vs.svg" alt="test-type" /> :
+                            <img src="/images/likert.svg" alt="likert"/>
+                        }
                     </div>
                     
                 </div>
@@ -90,20 +103,20 @@ const TestResultContainer = () => {
                         </p>
                         <p id="per">  
                             {
-                                test.testResult ? 
+                                test.score > (test.numOfSets * test.tester) / 2 ? 
                                 <img src="/images/orange.svg" alt="orange" /> :
                                 <img src="/images/soda.svg" alt="soda"/>
                             }
-                            {Number.parseInt(test.score / (test.numOfSets * test.tester))} %
+                            {Number.parseInt(test.score / (test.numOfSets * test.tester) * 100)} %
                         </p>
 
                         <p id="left-point">
-                            {test.score} points
+                            {test.score}
                         </p>
 
                         <BarChart per={test.score} sum={test.tester * test.numOfSets}/>
                         <p id="right-point">
-                            {(test.numOfSets * test.tester) - test.score} points
+                            {(test.numOfSets * test.tester) - test.score}
                         </p>
 
                         <p id="sets"> 

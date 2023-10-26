@@ -15,6 +15,8 @@ import java.util.UUID;
 public class FileStore {
 
     // 루트 경로 + 본인 경로 설정 필요
+    // My root /Users/seojuyeong/Pictures/
+    // Docker Root /data
     private final String rootPath = "/Users/seojuyeong/Pictures/";
 
     public String getFullPath(String path,String filename) {
@@ -25,11 +27,6 @@ public class FileStore {
 
         File dir = new File(rootPath + testName);
         String dirPath = dir.getPath() + "/";
-
-
-        if(multipartFile.isEmpty()) {
-            return null;
-        }
 
         if (!dir.exists()) {
             dir.mkdir();

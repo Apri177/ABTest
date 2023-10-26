@@ -16,18 +16,21 @@ const ProjectItem = ({id, name, content, updateDate}) => {
             <div className='project-desc'>
                 {content}
             </div>
-            <div>
+            <div style={{
+                position: "absolute",
+                bottom: "3vh"
+            }}>
                 <p style={{
+                    margin: "0",
                     fontWeight: "300",
-                    marginBottom: "0.25vh",
-                    fontSize: "0.75vmax"
+                    fontSize: "1.75vmin"
                 }}>
                     last update
                 </p>
                 <p style={{
+                    margin: "0",
                     fontWeight: "300",
-                    marginTop: "1vh",
-                    fontSize: "1vmax"
+                    fontSize: "1.7vmin"
                 }}>
                     {updateDate}
                 </p>

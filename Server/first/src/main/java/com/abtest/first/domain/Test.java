@@ -32,9 +32,9 @@ public class Test {
 
     private String testSel;
 
-    private Boolean testResult;
+//    private Boolean testResult;
 
-//    private TestResult testResult;
+    private TestResult testResult;
 
     private String updateDate;
 

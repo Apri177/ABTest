@@ -62,10 +62,10 @@ const ProjectPopup = () => {
     }
 
     useEffect(() => {
-        const res = getProjects()
-        res.then((res) => {
-            dispatch(setProjectState(res.data))
-        })
+        // const res = getProjects()
+        // res.then((res) => {
+        //     dispatch(setProjectState(res.data))
+        // })
     }, [dispatch])
 
     const create = async () => {
@@ -127,7 +127,9 @@ const ProjectPopup = () => {
 
                     :
 
-                    <div className="sec1">
+                    <div className="sec1" style={{
+                        paddingTop: "5vh"
+                    }}>
 
                         <div className="insert-info" id="project-name">
                             project name

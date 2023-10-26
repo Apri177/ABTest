@@ -1,5 +1,3 @@
-Popup.scss
-
 .overlay {
     visibility: hidden;
     opacity: 0;
@@ -13,6 +11,10 @@ Popup.scss
     width: 100vw;
     height: 100vh;
     z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -20,13 +22,13 @@ Popup.scss
     background: #fff;
     border-radius: 1rem;
     width: 35vw;
-    height: 60vh;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    height: 50vh;
+    position: relative;
 
     transition: all 1s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
 
     .popup-title {
         border-bottom: 1px solid var(--default-ui-active-stroke, #D9D9D9);
@@ -49,12 +51,15 @@ Popup.scss
     }
 
     #admincode{
-        top: 17.5vh;
+        top: 3.5vh;
     }
-    
 
     #test-files {
-        top: 15vh;
+        top: 2vh;
+    }
+
+    #method-sel {
+        top: 13vh;
     }
 
 
@@ -72,72 +77,80 @@ Popup.scss
         font-weight: 300;
 
         z-index: 99;
+
+        background: none;
     }
 
     #admin-code {
         position: absolute;
-        bottom: 15.75vh;
+        bottom: 13.5vh;
         left: 3vw;
     }
     
     #project-name {
         position: absolute;
-        top: 12vh;
+        top: 6.5vh;
         left: 3vw;
     }
 
     #notes {
         position: absolute;
         left: 3vw;
-        top: 20.5vh;
+        top: 16.5vh;
     }
 
     #test-name {
         position: absolute;
         left: 3vw;
-        top: 11vh;
+        top: 1vh;
     }
 
     #test-max-part {
         position: absolute;
         left: 3vw;
-        top: 19vh;
+        top: 10vh;
     }
 
     #test-password {
         position: absolute;
         left: 3vw;
-        top: 27vh;
+        top: 18.75vh;
     }
 
     #test-admin-code {
         position: absolute;
         left: 3vw;
-        top: 35vh;
+        top: 27.75vh;
     }
 
     #test-dir1 {
         position: absolute;
         left: 3vw;
-        top: 20vh;
+        top: 8vh;
     }
 
     #test-dir2 {
         position: absolute;
         left: 3vw;
-        top: 28vh;
+        top: 17.25vh;
     }
 
     #test-csv {
         position: absolute;
         left: 3vw;
-        top: 36vh;
+        top: 26.5vh;
+    }
+
+    #criteria-sel {
+        position: absolute;
+        left: 3vw;
+        top: 2.75vh;
     }
 
 
     .popup-input {
 
-        width: 30vw;
+        width: 100%;
         height: 4vh;
         border-radius: 0.25rem;
         border: 1px solid var(--default-ui-active-stroke, #D9D9D9);
@@ -147,84 +160,57 @@ Popup.scss
             border-color: #FFAA00;
         }
     }
-
-    #popup-admin-code {
-        position: absolute;
-        bottom: 12.5vh;
-    }
-
-    #popup-project-name {
-        position: absolute;
-        top: 13vh;
-    }
-
-    #popup-notes {
-        position: absolute;
-        top: 21.5vh;
-    }
-
-    #popup-test-name {
-        position: absolute;
-        top: 12vh;
-    }
-
-    #popup-max-part {
-        position: absolute;
-        top: 20vh;
-    }
-
     #popup-test-password {
-        position: absolute;
-        top: 28vh;
-
-        width: 32vw;
-
+        // width: 32vw;
     }
 
     #popup-test-admin-code {
-        position: absolute;
-        top: 36vh;
-
-        width: 32vw;
+        // width: 32vw;
     }
 
-    #popup-test-dir1 {
-        position: absolute;
-        top: 21vh;
-    }
 
-    #popup-test-dir2 {
-        position: absolute;
-        top: 29vh;
-    }
+    .methods {
+        width: 100%;
+        border: 1px solid black;
 
-    #popup-test-csv {
-        position: absolute;
-        top: 37vh;
+        display: flex;
+        justify-content: space-between;
     }
 
 
     // popup-section
 
     .sec1 {
+        border: 2px solid black;
+
         width: 100%;
-        height: 20vh;
+        height: 100%;
 
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-direction: column;
 
-        margin-top: 3vh;        
+        position: relative;
 
         box-sizing: border-box;
+
         padding-left: 2vw;
+        padding-right: 2vw;
+
     }
 
     .sec2 {
-        margin-top: 3vh;
+        margin: 0;
+        
         width: 100%;
         display: flex;
+        align-items: center;
         justify-content: flex-end;
-        
+
+        height: 10vh;
+
+        margin-bottom: 0.5vh;
     }
 
 
@@ -232,19 +218,19 @@ Popup.scss
     #upload1 {
         position: absolute;
         right: 3vw;
-        top: 21.5vh;
+        top: 9.75vh;
     }
 
     #upload2 {
         position: absolute;
         right: 3vw;
-        top: 29.5vh;
+        top: 19vh;
     }
 
     #upload3 {
         position: absolute;
         right: 3vw;
-        top: 37.5vh;
+        top: 28vh;
     }
 
 }

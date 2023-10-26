@@ -3,7 +3,7 @@ import CreateButton from '../Components/Button/CreateButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import TestItem from '../Components/Test/TestItem'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { setPreProjectState } from '../store/projectStore'
 import { getProjectById } from '../util/api'
 import { setTestState } from '../store/testStore'
@@ -15,13 +15,17 @@ const TestContainer = () => {
     const testState = useSelector(state => state.test)
     const param = useParams()
 
+    const [tests, setTests] = useState([])
+
     useEffect(() => {        
         const res = getProjectById(param.project_id)
         res.then((res) => {
+            console.log(res);
             dispatch(setPreProjectState(res.data))
-            dispatch(setTestState(projectState.preProject.tests))
+            dispatch(setTestState(res.data.tests))
         })
-    }, [dispatch, param.project_id, projectState.preProject.tests, testState])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [param])
 
     return (
         <div className="test-container">
@@ -36,6 +40,7 @@ const TestContainer = () => {
             </div>
             <CreateButton content={"new test"}/>
             <div id='content-header'>
+                {/* CSS Upper Case */}
                 <dl>
                     <dt id='name'>
                         name
@@ -50,7 +55,7 @@ const TestContainer = () => {
                         participants
                     </dt>
                     <dt id='date'>
-                        created
+                        updated
                     </dt>
                 </dl>    
             </div>
@@ -58,7 +63,12 @@ const TestContainer = () => {
                 {
                     testState.tests && testState.tests.map((item, temp) => {
                         return (
-                            <TestItem name={item.name} dir1={item.image1.uploadFilename} dir2={item.image2.uploadFilename} key={temp}/>
+                            <TestItem 
+                            name={item.name} 
+                            dir1={item.image1.uploadFilename} 
+                            dir2={item.image2.uploadFilename} 
+                            updateDate={item.updateDate} 
+                            key={temp}/>
                         )
                     })
                 }

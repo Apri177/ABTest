@@ -114,13 +114,12 @@ public class TestController {
         for( int i = 0; i < 2; i++) {
             if (i == 1) {
                 path = test.getImage1().getPath() + test.getImage1().getUploadFilename() + "/";
+
                 model = test.getImage1().getUploadFilename();
-                System.out.println(model);
             }
             else {
                 path = test.getImage2().getPath() + test.getImage2().getUploadFilename() + "/";
                 model = test.getImage2().getUploadFilename();
-                System.out.println(model);
             }
 
             StringBuilder prompt = new StringBuilder();
@@ -133,9 +132,11 @@ public class TestController {
         return response;
     }
 
-    public ResponseEntity<byte[]> returnImage(@RequestParam String imageName, String prompt, String model) {
+    public ResponseEntity<byte[]> returnImage(String imageName, String prompt, String model) {
 
         ResponseEntity<byte[]> result;
+
+        System.out.println(imageName);
 
         try {
             File file = new File(imageName);
@@ -160,21 +161,46 @@ public class TestController {
             @RequestBody  Test temp
     ) {
         Test test = getTestByName(id, tid);
+        TestResult testResult = new TestResult();
         test.setScore(test.getScore() + temp.getScore());
         test.setTester(test.getTester() + 1);
 
         BinomialTest bTest = new BinomialTest();
-        test.setTestResult(
-            bTest.binomialTest(
-                    test.getTester() * test.getNumOfSets(),
-                    test.getScore(),
-                    0.5,
-                    AlternativeHypothesis.LESS_THAN,
-                    0.05)
-        );
+        if (bTest.binomialTest(
+                test.getTester() * test.getNumOfSets(),
+                test.getScore(),
+                0.5,
+                AlternativeHypothesis.GREATER_THAN,
+                0.05
+        )) {
+            testResult.setResult(test.getImage1().getUploadFilename());
+            testResult.setP_value(
+                    bTest.binomialTest(
+                            test.getTester() * test.getNumOfSets(),
+                            test.getScore(),
+                            0.5,
+                            AlternativeHypothesis.GREATER_THAN
+                    )
+            );
+        }
 
-        Double p_value =
-        bTest.binomialTest(test.getTester() * test.getNumOfSets(), test.getScore(), 0.5, AlternativeHypothesis.LESS_THAN);
+        if (bTest.binomialTest(
+                test.getTester() * test.getNumOfSets(),
+                test.getTester() * test.getNumOfSets() - test.getScore(),
+                0.5,
+                AlternativeHypothesis.GREATER_THAN,
+                0.05)
+        ) {
+            testResult.setResult(test.getImage1().getUploadFilename());
+            testResult.setP_value(
+                bTest.binomialTest(
+                    test.getTester() * test.getNumOfSets(),
+                    test.getTester() * test.getNumOfSets() - test.getScore(),
+                    0.5,
+                    AlternativeHypothesis.GREATER_THAN
+                )
+            );
+        }
 
         editTest(id, tid, test);
         return test;

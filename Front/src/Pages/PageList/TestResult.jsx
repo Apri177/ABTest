@@ -48,7 +48,7 @@ const TestResult = () => {
                 alignItems: "center",
             }}>
 
-                <TestResultInfoBar testName={"~/ " + testState.preTest.name}/>
+                <TestResultInfoBar testName={"~/ " + testState.preTest.name} param={param}/>
                 <TestResultContainer/>
             </div>
         </div>

@@ -108,48 +108,82 @@
             align-items: center;
             position: relative;
 
+            
+
             #name {
+                width: 10vw;
+                height: 5vh;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 position: absolute;
                 left: 4vw;
-                font-size: 0.9vmax;
+                font-size: 1.5vmin;
             }
     
             #dir1 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
                 position: absolute;
-                left: 17vw;
-                font-size: 0.9vmax;
+                left: 16vw;
+                font-size: 1.5vmin;
+
+                width: 13vw;
+                height: 5vh;
             }
     
             #dir2 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 position: absolute;
-                left: 30.5vw;
-                font-size: 0.9vmax;
+                left: 30vw;
+                font-size: 1.5vmin;
+
+                width: 13vw;
+                height: 5vh;
             }
     
             #partic {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 position: absolute;
-                right: 25vw;
-                font-size: 0.9vmax;
+                right: 26vw;
+                font-size: 1.5vmin;
+
+                width: 5vw;
+                height: 5vh;
             }
     
             #date {
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 position: absolute;
-                right: 18vw;
-                font-size: 0.9vmax;
+                right: 14.5vw;
+                font-size: 1.5vmin;
+
+                width: 10vw;
+                height: 5vh;
             }
 
             #play {
                 position: absolute;
                 right: 10vw;
                 top: 0.5vh;
-                width: 2rem;
+                width: 4vmin;
             }
             
             #result {
                 position: absolute;
                 top: 0.5vh;
                 right: 6vw;
-                width: 2rem;
+                width: 4vmin;
             }
         }
         
