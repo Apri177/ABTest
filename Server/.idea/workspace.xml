@@ -11,6 +11,8 @@
       <change beforePath="$PROJECT_DIR$/../Front/src/Pages/PageList/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Pages/PageList/Main.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front/src/styles/button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/button.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front/src/styles/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/styles/search.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/search.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/styles/test.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/test.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
