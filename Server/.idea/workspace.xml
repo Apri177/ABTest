@@ -6,15 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a4918519-2d20-4428-8256-05ac7cd6fda0" name="Changes" comment="MongoTemplate 및 MongoRepository로 CRUD 변환">
       <change beforePath="$PROJECT_DIR$/../Front/src/Components/popup/ProjectPopup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Components/popup/ProjectPopup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front/src/Components/popup/TestPopup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Components/popup/TestPopup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/Container/ProjectContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Container/ProjectContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front/src/Container/TestContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Container/TestContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front/src/Container/TestResultContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Container/TestResultContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front/src/Pages/PageList/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Pages/PageList/Main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front/src/Pages/PageList/TestResult.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Pages/PageList/TestResult.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front/src/styles/entertest.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/entertest.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/styles/button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/button.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front/src/styles/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front/src/styles/popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/popup.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front/src/styles/testresult.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/testresult.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
