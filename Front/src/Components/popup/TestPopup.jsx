@@ -45,10 +45,6 @@ const TestPopup = () => {
         setCode(e.target.value)
     }
     
-    const setNumOfSets = (e) => {
-        setTest({...test, numOfSets : e.target.value})
-    }
-    
     const setFile1 = (e) => {
         setImages1(e.target.files[0])
     }
@@ -139,6 +135,7 @@ const TestPopup = () => {
             
             <div className="popup" style={{
                 // height: page === 2 ? "80vh" : "50vh"
+                
 
             }}>
 
@@ -148,43 +145,54 @@ const TestPopup = () => {
                 
                 {
                     page === 0 ? 
-                    <div className="sec1">
-                        <div className="insert-info" id="test-name">
-                            test name
-                        </div>
-                        <input type="text" 
-                        id="popup-test-name" 
-                        className="popup-input" 
-                        onChange={setName} 
-                        value={test.name || ""}/>
+                    <div className="sec1" style={{
+                        paddingTop: "2vh"
+                    }}>
 
-                        <div className="insert-info" id="test-max-part">
-                            max participants
+                        <div className="insert-container">
+                            <div className="insert-info" id="test-name">
+                                test name
+                            </div>
+                            <input type="text" 
+                            id="popup-test-name" 
+                            className="popup-input" 
+                            onChange={setName} 
+                            value={test.name || ""}/>
                         </div>
-                        <input type="text" 
-                        name="maxPart" 
-                        id="popup-max-part" 
-                        className="popup-input" 
-                        onChange={setMaxPart}
-                        value={test.maxPart || ""}/>
 
-                        <div className="insert-info" id="test-password">
-                            password
+                        <div className="insert-container">
+                            <div className="insert-info" id="test-max-part">
+                                max participants
+                            </div>
+                            <input type="text" 
+                            name="maxPart" 
+                            id="popup-max-part" 
+                            className="popup-input" 
+                            onChange={setMaxPart}
+                            value={test.maxPart || ""}/>
                         </div>
-                        <input type="text" 
-                        name="password" 
-                        id="popup-test-password" 
-                        className="popup-input" 
-                        onChange={setPassword} 
-                        value={test.password || ""}/>
 
-                        <div className="insert-info" id="test-admin-code"> 
-                            admin code
-                        </div> 
-                        <input type="text" 
-                        id="popup-test-admin-code" 
-                        className="popup-input" 
-                        onChange={setAdminCode} /> 
+                        <div className="insert-container">
+                            <div className="insert-info" id="test-password">
+                                password
+                            </div>
+                            <input type="text" 
+                            name="password" 
+                            id="popup-test-password" 
+                            className="popup-input" 
+                            onChange={setPassword} 
+                            value={test.password || ""}/>
+                        </div>
+
+                        <div className="insert-container">
+                            <div className="insert-info" id="test-admin-code"> 
+                                admin code
+                            </div> 
+                            <input type="text" 
+                            id="popup-test-admin-code" 
+                            className="popup-input" 
+                            onChange={setAdminCode} /> 
+                        </div>
 
                     </div> 
                     : page === 1 ?
@@ -194,15 +202,16 @@ const TestPopup = () => {
                         <div className="desc-insert" id="test-files"> 
                             Files
                         </div> 
-
-                        <div className="insert-info" id="test-dir1"> 
-                            directory 1
-                        </div> 
-                        <input type="text" 
-                        id="popup-test-dir1" 
-                        className="popup-input" 
-                        value={images1.name || ""}
-                        disabled/>
+                        <div className="insert-container">
+                            <div className="insert-info" id="test-dir1"> 
+                                directory 1
+                            </div> 
+                            <input type="text" 
+                            id="popup-test-dir1" 
+                            className="popup-input" 
+                            value={images1.name || ""}
+                            disabled/>
+                        </div>
                         
                         <label htmlFor="file-upload1">
                             <img src="/images/icon-upload-file.svg" alt="file upload" style={{
@@ -214,15 +223,16 @@ const TestPopup = () => {
                         }}
                         onChange={setFile1}
                         accept="application/zip"/>
-
-                        <div className="insert-info" id="test-dir2">
-                            directory 2
+                        <div className="insert-container">
+                            <div className="insert-info" id="test-dir2">
+                                directory 2
+                            </div>
+                            <input type="text" 
+                            id="popup-test-dir2" 
+                            className="popup-input" 
+                            disabled 
+                            value={images2.name || ""}/>
                         </div>
-                        <input type="text" 
-                        id="popup-test-dir2" 
-                        className="popup-input" 
-                        disabled 
-                        value={images2.name || ""}/>
 
                         <label htmlFor="file-upload2">
                             <img src="/images/icon-upload-file.svg" alt="file upload" style={{
@@ -235,14 +245,18 @@ const TestPopup = () => {
                         onChange={setFile2}
                         accept="application/zip"/>
 
-                        <div className="insert-info" id="test-csv">
-                            prompt csv
+                        <div className="insert-container">
+                            <div className="insert-info" id="test-csv">
+                                prompt csv
+                            </div>
+                            <input type="text" 
+                            id="popup-test-csv" 
+                            className="popup-input" 
+                            disabled
+                            value={images3.name || ""}
+                            />
                         </div>
-                        <input type="text" 
-                        id="popup-test-csv" 
-                        className="popup-input" 
-                        disabled
-                        value={images3.name || ""}/>
+
                         <label htmlFor="file-upload3">
                             <img src="/images/icon-upload-file.svg" alt="file upload" style={{
                                 maxWidth:"2vw",
@@ -255,15 +269,18 @@ const TestPopup = () => {
                     </div>
                     : 
                     <div className="sec1">
-                        <div className="insert-info" id="criteria-sel">
-                            selection criteria
-                        </div>
 
-                        <input type="text" 
-                        className="popup-input" 
-                        id="popup-criteria"
-                        onChange={setSelCritreria}
-                        />
+                        <div className="insert-container">
+                            <div className="insert-info" id="criteria-sel">
+                                selection criteria
+                            </div>
+
+                            <input type="text" 
+                            className="popup-input" 
+                            id="popup-criteria"
+                            onChange={setSelCritreria}
+                            />
+                        </div>
 
                         <div className="desc-insert" id="method-sel">
                             Selection method

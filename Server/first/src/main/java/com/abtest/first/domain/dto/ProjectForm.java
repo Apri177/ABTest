@@ -17,6 +17,8 @@ public class ProjectForm {
     private String name;
     private String content;
 
+    private String selCriteria;
+
     private List<Test> tests;
 
     private String updateDate;

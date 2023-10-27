@@ -101,14 +101,14 @@ const TestResultContainer = () => {
                         <p id="category">
                             Global
                         </p>
-                        <p id="per">  
+                        <div id="per">  
                             {
                                 test.score > (test.numOfSets * test.tester) / 2 ? 
-                                <img src="/images/orange.svg" alt="orange" /> :
+                                <img src="/images/orange.svg" alt="orange"/> :
                                 <img src="/images/soda.svg" alt="soda"/>
                             }
-                            {Number.parseInt(test.score / (test.numOfSets * test.tester) * 100)} %
-                        </p>
+                            {Number.parseInt((test.score / (test.numOfSets * test.tester) * 100))} %
+                        </div>
 
                         <p id="left-point">
                             {test.score}

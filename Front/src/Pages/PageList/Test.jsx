@@ -97,7 +97,7 @@ const Test = () => {
                 </div>
                 <div className='sec2'>
                     <label htmlFor="image1">
-                        <img src={`data:${imgInfo1.ContentType};base64,${imgInfo1.image}`} 
+                        <img src={`data:${imgInfo1.ContentType || ""};base64,${imgInfo1.image || ""}`} 
                         alt="사진1" 
                         className='test-image'
                         />
@@ -118,7 +118,7 @@ const Test = () => {
                     }}/>
 
                     <label htmlFor="image2">
-                        <img src={ `data:${imgInfo2.ContentType};base64,${imgInfo2.image}` } 
+                        <img src={ `data:${imgInfo2.ContentType || ""}; base64,${imgInfo2.image || ""}` } 
                         alt="사진2" 
                         className='test-image'
                         />

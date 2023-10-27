@@ -4,6 +4,7 @@ import ProjectContainer from "../../Container/ProjectContainer"
 import ProjectPopup from "../../Components/popup/ProjectPopup"
 
 const Main = () => {
+
     return (
         <div className="main-container">
 

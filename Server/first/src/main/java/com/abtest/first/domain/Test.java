@@ -36,8 +36,6 @@ public class Test {
 
     private TestResult testResult;
 
-    private String selCriteria;
-
     private String updateDate;
 
     private UploadFile image1;
@@ -45,7 +43,7 @@ public class Test {
     private UploadFile csvFile;
 
     @Builder
-    public Test(String name, String password, int maxPart, String testSel, String selCriteria) {
+    public Test(String name, String password, int maxPart, String testSel) {
         this.name = name;
         this.password = password;
         this.maxPart = maxPart;
@@ -53,6 +51,5 @@ public class Test {
         String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm, yyyy-MM-dd"));
         this.updateDate = formattedDate;
         this.testSel = testSel;
-        this.selCriteria = selCriteria;
     }
 }

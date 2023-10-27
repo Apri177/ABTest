@@ -10,7 +10,7 @@
     background: rgba(0, 0, 0, 0.7);
     width: 100vw;
     height: 100vh;
-    z-index: 9999;
+    z-index: 999;
 
     display: flex;
     justify-content: center;
@@ -21,6 +21,7 @@
 .popup {
     background: #fff;
     border-radius: 1rem;
+
     width: 35vw;
     height: 50vh;
     position: relative;
@@ -40,18 +41,18 @@
         padding: 1rem;
         
         font-weight: 700;
-        
     }
-
 
     // 팝업
     
     .desc-insert {
         position: absolute;
+
+        font-size: 2.2vmin;
     }
 
     #admincode{
-        top: 3.5vh;
+        bottom: 9vh;
     }
 
     #test-files {
@@ -63,11 +64,18 @@
     }
 
 
+    .insert-container {
+        width: 100%;
+        position: relative;
+    }
 
     .insert-info {
         background-color: #fff;
         width: max-content;
         height: max-content;
+
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
 
         display: flex;
         justify-content: center;
@@ -77,79 +85,29 @@
         font-weight: 300;
 
         z-index: 99;
-    }
 
-    #admin-code {
         position: absolute;
-        bottom: 13.5vh;
-        left: 3vw;
-    }
-    
-    #project-name {
-        position: absolute;
-        top: 6.5vh;
-        left: 3vw;
-    }
-
-    #notes {
-        position: absolute;
-        left: 3vw;
-        top: 16.5vh;
-    }
-
-    #test-name {
-        position: absolute;
-        left: 3vw;
-        top: 1vh;
-    }
-
-    #test-max-part {
-        position: absolute;
-        left: 3vw;
-        top: 10vh;
-    }
-
-    #test-password {
-        position: absolute;
-        left: 3vw;
-        top: 18.75vh;
-    }
-
-    #test-admin-code {
-        position: absolute;
-        left: 3vw;
-        top: 27.75vh;
+        bottom: 4.5vh;
+        left: 1vw;
     }
 
     #test-dir1 {
-        position: absolute;
-        left: 3vw;
-        top: 8vh;
+        background: none;
     }
 
     #test-dir2 {
-        position: absolute;
-        left: 3vw;
-        top: 17.25vh;
+        background: none;
     }
 
     #test-csv {
-        position: absolute;
-        left: 3vw;
-        top: 26.5vh;
-    }
-
-    #criteria-sel {
-        position: absolute;
-        left: 3vw;
-        top: 3vh;
+        background: none;
     }
 
 
     .popup-input {
 
         width: 100%;
-        height: 4vh;
+        height: 5vh;
         border-radius: 0.25rem;
         border: 1px solid var(--default-ui-active-stroke, #D9D9D9);
         
@@ -158,6 +116,8 @@
             border-color: #FFAA00;
         }
     }
+
+
     #popup-test-password {
         // width: 32vw;
     }
@@ -169,7 +129,6 @@
 
     .methods {
         width: 100%;
-        // border: 1px solid black;
 
         display: flex;
         justify-content: space-between;
@@ -179,7 +138,6 @@
     // popup-section
 
     .sec1 {
-        // border: 2px solid black;
 
         width: 100%;
         height: 100%;
@@ -216,19 +174,27 @@
     #upload1 {
         position: absolute;
         right: 3vw;
-        top: 9.75vh;
+        top: 10vh;
     }
 
     #upload2 {
         position: absolute;
         right: 3vw;
-        top: 19vh;
+        top: 19.5vh;
     }
 
     #upload3 {
         position: absolute;
         right: 3vw;
-        top: 28vh;
+        top: 29vh;
+    }
+
+    #vs {
+        height: 10vh;
+    }
+
+    #likert {
+        height: 10vh;
     }
 
 }

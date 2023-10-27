@@ -4,11 +4,8 @@ module.exports = function(app) {
     app.use(
         '/api',
         createProxyMiddleware({
-            // docker port 17047
-            target: 'http://localhost:17047',
-
-            // local port 8080
-            // target: 'http://localhost:8080',
+            target: 'http://localhost:8080',
+            // target: 'http://211.54.1.12:17047',
             changeOrigin: true,
         })
     )

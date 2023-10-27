@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { close } from "../../store/popupStore"
 import '../../styles/popup.scss'
@@ -80,10 +80,15 @@ const ProjectPopup = () => {
             await createProject(0, adminCode, name, content)    
         }
 
+
+
         const res = getProjects()
         res.then((res) => {
             dispatch(setProjectState(res.data))
         })
+
+        toast.success("Created!")
+
         closeHandler()
     }
 
@@ -93,55 +98,67 @@ const ProjectPopup = () => {
         style={{
             visibility: popupState.popup.show ? "visible" : "hidden", 
             opacity:  popupState.popup.show ? 1 : 0
+
+            // visibility: "visible",
+            // opacity: 1
         }} className="overlay">
             <div className="popup" style={{
-                height: "21vmax",
-                width: "25vmax"
+                width: "25vw",
+                height: "35vh"
             }}>
                 <div className="popup-title">
                     New Project
                 </div>
+
                 {
                     page === 0
                     ?
-                    <div className="sec1">
-                        <div className="desc-insert" id="admincode">
-                            Enter admin code
+                    <div className="sec1" style={{
+                        paddingTop: "10vh"
+                    }}>
+                        <div className="insert-container">
+                            <div className="desc-insert" id="admincode">
+                                Enter admin code
+                            </div>
+                            <div className="insert-info" id="admin-code">
+                                admin code
+                            </div>
+                            <input id="popup-admin-code" 
+                            className="popup-input" 
+                            placeholder="enter the admin code"
+                            onChange={saveAdminCode}
+                            value={adminCode}/>
                         </div>
-                        <div className="insert-info" id="admin-code">
-                            admin code
-                        </div>
-                        <input id="popup-admin-code" 
-                        className="popup-input" 
-                        placeholder="enter the admin code"
-                        onChange={saveAdminCode}
-                        value={adminCode}/>
                     </div>
 
                     :
 
                     <div className="sec1" style={{
-                        paddingTop: "5vh"
+                        paddingTop: "4vh"
                     }}>
+                        <div className="insert-container">
+                            <div className="insert-info" id="project-name">
+                                project name
+                            </div>
+                            <input type="text" 
+                            name="projectName" 
+                            className="popup-input" 
+                            id="popup-project-name"
+                            onChange={saveName}
+                            value={name}/>
+                        </div>
 
-                        <div className="insert-info" id="project-name">
-                            project name
+                        <div className="insert-container">
+                            <div className="insert-info" id="notes">
+                                notes
+                            </div>
+                            <input type="text" 
+                            name="notes" 
+                            className="popup-input" 
+                            id="popup-notes" 
+                            onChange={saveContent}
+                            value={content}/>
                         </div>
-                        <input type="text" 
-                        name="projectName" 
-                        className="popup-input" 
-                        id="popup-project-name"
-                        onChange={saveName}
-                        value={name}/>
-                        <div className="insert-info" id="notes">
-                            notes
-                        </div>
-                        <input type="text" 
-                        name="notes" 
-                        className="popup-input" 
-                        id="popup-notes" 
-                        onChange={saveContent}
-                        value={content}/>
                     </div>
 
                 }

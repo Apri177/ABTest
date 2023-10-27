@@ -21,6 +21,9 @@ const TestResult = () => {
     useEffect(() => {
         const res = getTestById(param.project_id, param.test_name)
         res.then((rst) => {
+
+            console.log(rst);
+
             dispatch(setPreTest(
                 {
                     name : rst.data.name,
@@ -30,7 +33,7 @@ const TestResult = () => {
                     tester: rst.data.tester,
                     file1: rst.data.image1.uploadFilename,
                     file2: rst.data.image2.uploadFilename,
-                    testSel: "vs"
+                    testSel: rst.data.testSel || ""
                 }
             ))
         })
@@ -47,7 +50,6 @@ const TestResult = () => {
                 flexDirection: "column",
                 alignItems: "center",
             }}>
-
                 <TestResultInfoBar testName={"~/ " + testState.preTest.name} param={param}/>
                 <TestResultContainer/>
             </div>

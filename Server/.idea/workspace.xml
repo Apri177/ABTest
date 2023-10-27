@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4918519-2d20-4428-8256-05ac7cd6fda0" name="Changes" comment="MongoTemplate 및 MongoRepository로 CRUD 변환">
-      <change afterPath="$PROJECT_DIR$/first/first-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/Components/popup/EndTestPopup.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/Components/popup/ProjectPopup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Components/popup/ProjectPopup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/Pages/PageList/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Pages/PageList/Main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/setupProxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/setupProxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/styles/popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/popup.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +54,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -91,7 +97,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "<알 수 없음>",
     "last_opened_file_path": "/Users/seojuyeong/Documents/GitHub/ABTest/Server",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -100,6 +106,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "spring.configuration.checksum": "d2255874d4844abbd5fa3739a2d23ad3",
     "vue.rearranger.settings.migration": "true"
   }
@@ -174,7 +181,9 @@
       </method>
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="first/Dockerfile builder" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
@@ -231,6 +240,7 @@
       <workItem from="1698045068975" duration="2206000" />
       <workItem from="1698047297568" duration="2416000" />
       <workItem from="1698109168332" duration="6805000" />
+      <workItem from="1698386141930" duration="4450000" />
     </task>
     <task id="LOCAL-00001" summary="swagger-ui 적용">
       <option name="closed" value="true" />
