@@ -1,12 +1,24 @@
 import ProjectItem from '../Components/Project/ProjectItem'
 import CreateButton from '../Components/Button/CreateButton'
 import Search from '../Components/Project/Search'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { getProjects } from '../util/api'
+import { setProjectState } from '../store/projectStore'
 
 
 const ProjectContainer = () => {
 
     const projectState = useSelector(state => state.project)
+    const dispatch = useDispatch(state => state.project)
+    
+    useEffect(() => {
+        const res = getProjects()
+        res.then((res) => {
+            dispatch(setProjectState(res.data))
+        })
+    }, [dispatch])
+
 
     return (
         <div className="project-container">

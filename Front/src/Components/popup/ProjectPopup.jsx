@@ -61,13 +61,6 @@ const ProjectPopup = () => {
         setContent(e.target.value)
     }
 
-    useEffect(() => {
-        // const res = getProjects()
-        // res.then((res) => {
-        //     dispatch(setProjectState(res.data))
-        // })
-    }, [dispatch])
-
     const create = async () => {
         if(name.length === 0) {
             toast.warning("Please enter Project name")
