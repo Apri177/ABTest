@@ -16,8 +16,8 @@ public class FileStore {
 
     // 루트 경로 + 본인 경로 설정 필요
     // My root /Users/seojuyeong/Pictures/
-    // Docker Root /data
-    private final String rootPath = "/data";
+    // Docker Root /data/
+    private final String rootPath = "/data/";
 
     public String getFullPath(String path,String filename) {
         return path + filename;

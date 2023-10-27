@@ -19,6 +19,7 @@ const TestPopup = () => {
         name : "",
         maxPart : "",
         password : "",
+        selCriteria : ""
     })
     
     const [code, setCode] = useState("")
@@ -59,6 +60,10 @@ const TestPopup = () => {
     const setFile3 = (e) => {
         setImages3(e.target.files[0])
     }
+
+    const setSelCritreria = (e) => {
+        setTest({...test, selCriteria: e.target.value})
+    }
     
     const closeHandler = () => {
         dispatch(close())
@@ -79,7 +84,7 @@ const TestPopup = () => {
         if(test.maxPart.length === 0) {
             toast.warning("Please enter Max Participants!")
             return
-        } else if (parseInt(test.maxPart) > 20){
+        } else if (parseInt(test.maxPart) > 50){
             toast.warning("Please write Max participants under 50")
             return
         }
@@ -131,9 +136,12 @@ const TestPopup = () => {
             visibility: state.popup.show ? "visible" : "hidden", 
             opacity:  state.popup.show ? 1 : 0,
         }} className="overlay">
+            
             <div className="popup" style={{
-                height: page === 2 ? "80vh" : "50vh"
+                // height: page === 2 ? "80vh" : "50vh"
+
             }}>
+
                 <div className="popup-title">
                     New Test
                 </div>
@@ -245,21 +253,17 @@ const TestPopup = () => {
                         }} 
                         onChange={setFile3}/>
                     </div>
-                    : page === 2 ?
-                    <div className="sec1">
-                        <div>
-                            <img src="/images/mixed.svg" alt="mixed" id="mixed"/>
-
-                            <img src="/images/identical.svg" alt="identical" id="identical"/>
-                        </div> 
-                    </div>
-                    :
+                    : 
                     <div className="sec1">
                         <div className="insert-info" id="criteria-sel">
                             selection criteria
                         </div>
 
-                        <input type="text" className="popup-input" id="popup-criteria"/>
+                        <input type="text" 
+                        className="popup-input" 
+                        id="popup-criteria"
+                        onChange={setSelCritreria}
+                        />
 
                         <div className="desc-insert" id="method-sel">
                             Selection method
@@ -271,6 +275,13 @@ const TestPopup = () => {
                         </div>
                     </div>
                 }
+                {/*  <div className="sec1">
+                     <div>
+                         <img src="/images/mixed.svg" alt="mixed" id="mixed"/>
+
+                         <img src="/images/identical.svg" alt="identical" id="identical"/>
+                     </div> 
+                 </div> */}
 
                 <div className="sec2">
                 {
@@ -283,8 +294,9 @@ const TestPopup = () => {
                         back
                     </button>
                 }
+
                 {
-                page < 3 ? 
+                page < 2 ? 
                 <button className="common-button popup-next" onClick={next}>
                 NEXT
                 </button> :

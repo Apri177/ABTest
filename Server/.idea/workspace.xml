@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4918519-2d20-4428-8256-05ac7cd6fda0" name="Changes" comment="MongoTemplate 및 MongoRepository로 CRUD 변환">
-      <change beforePath="$PROJECT_DIR$/../Front/src/Components/popup/ProjectPopup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Components/popup/ProjectPopup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front/src/Container/ProjectContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Container/ProjectContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/Components/popup/TestPopup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Components/popup/TestPopup.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front/src/Container/TestContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Container/TestContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front/src/Pages/PageList/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/Pages/PageList/Main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front/src/styles/button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/button.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front/src/styles/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front/src/styles/search.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/search.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/src/styles/popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/popup.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front/src/styles/test.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front/src/styles/test.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,9 +109,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/first" />
       <recent name="$PROJECT_DIR$/first/build/libs" />
       <recent name="$PROJECT_DIR$/first/" />
-      <recent name="$PROJECT_DIR$/first" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -180,7 +176,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
+    </configuration>
+    <configuration name="first/Dockerfile builder" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="adoptopenjdkopenjdk11_builder" />
+          <option name="buildCliOptions" value="--target builder" />
+          <option name="buildKitEnabled" value="true" />
+          <option name="buildOnly" value="true" />
+          <option name="sourceFilePath" value="first/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Docker.first/Dockerfile builder" />
       <item itemvalue="Gradle.first [bootJar]" />
       <item itemvalue="Python.test" />
       <item itemvalue="Spring Boot.start" />
@@ -188,6 +201,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.first [bootJar]" />
+        <item itemvalue="Docker.first/Dockerfile builder" />
       </list>
     </recent_temporary>
   </component>

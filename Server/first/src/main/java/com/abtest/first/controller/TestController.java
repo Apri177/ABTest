@@ -55,6 +55,7 @@ public class TestController {
                 .maxPart(Integer.parseInt(String.valueOf(form.get("maxPart"))))
                 .name((String) form.get("name"))
                 .password((String) form.get("password"))
+                .selCriteria((String) form.get("selCriteria"))
                 .build();
         test.setProjectId(id);
 
