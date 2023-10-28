@@ -21,7 +21,7 @@ function App() {
         limit={1} // 알람 개수 제한
       />
       <Routes>
-        <Route path="/" element={<Main/>} />
+        <Route path="/" element={<Test/>} />
         <Route path="/project/:project_id" element={<Project/>}/>
         <Route path="/project/:project_id/test/:test_name/play" element={<Test/>}/>
         <Route path="/project/:project_id/test/:test_name/result" element={<TestResult/>}/>

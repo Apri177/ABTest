@@ -3,6 +3,8 @@ body {
     margin: 0;
 
     background: var(--background, #f0f0f0);
+
+    overflow: hidden;
 }
 
 
@@ -20,7 +22,7 @@ body {
 // Side bar
 .side-bar {
     width: 15vw;
-    height: 100vh;
+    height: 102vh;
     background: var(--common-white-main, #FFF);
     flex-shrink: 0;
 
@@ -92,6 +94,16 @@ body {
         overflow-y: scroll;
 
         padding-bottom: 5vh;
+
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        background: #ccc;
+        }
+        
     }
 }
 

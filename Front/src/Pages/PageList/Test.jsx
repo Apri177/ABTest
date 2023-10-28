@@ -27,6 +27,7 @@ const Test = () => {
     const [result, setResult] = useState([])
     const [x, setX] = useState("")
 
+
     const param = useParams()
 
     const back = () => {
@@ -62,28 +63,28 @@ const Test = () => {
     }
 
     useEffect(() => {
-        const test = getTestById(param.project_id, param.test_name)
-        test.then((res) => {
-            setSets(res.data.numOfSets)
-        })
+        // const test = getTestById(param.project_id, param.test_name)
+        // test.then((res) => {
+        //     setSets(res.data.numOfSets)
+        // })
 
-        const res = getTestsImage(param.project_id, param.test_name, page)
-        res.then((res) => {
+        // const res = getTestsImage(param.project_id, param.test_name, page)
+        // res.then((res) => {
 
-            setImgInfo1({
-                image: res[0].body,
-                ContentType: res[0].headers.ContentType,
-                Model: res[0].headers.Model
-            })
+        //     setImgInfo1({
+        //         image: res[0].body,
+        //         ContentType: res[0].headers.ContentType,
+        //         Model: res[0].headers.Model
+        //     })
 
-            setImgInfo2({
-                image: res[1].body,
-                ContentType: res[1].headers.ContentType,
-                Model: res[1].headers.Model
-            })
+        //     setImgInfo2({
+        //         image: res[1].body,
+        //         ContentType: res[1].headers.ContentType,
+        //         Model: res[1].headers.Model
+        //     })
             
-            setPrompt(res[0].headers.prompt[0])
-        })
+        //     setPrompt(res[0].headers.prompt[0])
+        // })
     }, [page, param.project_id, param.test_name])
     
 
@@ -108,14 +109,17 @@ const Test = () => {
                             null
                         }
                     </label>
-                    <input type="radio" 
+                    {
+                        
+                    }
+                    {/* <input type="radio" 
                     id="image1" 
                     defaultValue={imgInfo1.Model[0]}
                     onChange={radioHandler}
                     checked={x === imgInfo1.Model[0]}
                     style={{
                         display: "none"
-                    }}/>
+                    }}/> */}
 
                     <label htmlFor="image2">
                         <img src={ `data:${imgInfo2.ContentType || ""}; base64,${imgInfo2.image || ""}` } 
@@ -129,7 +133,11 @@ const Test = () => {
                             null
                         }
                     </label>
-                    <input type="radio"
+
+
+                    
+
+                    {/* <input type="radio"
                     id="image2"
                     defaultValue={imgInfo2.Model[0]}
                     onChange={radioHandler}
@@ -137,16 +145,35 @@ const Test = () => {
                     style={{
                         display: "none"
                     }}
-                    />
+                    /> */}
 
                 </div>
 
                 <div className='sec3'>
-                    <p style={{
+
+                    <div className='likert-container'>
+                        <div className='radio-item'>
+                            A is much better
+                        </div>
+                        <div className='radio-item'>
+                            A is better
+                        </div>
+                        <div className='radio-item'>
+                            About the same
+                        </div>
+                        <div className='radio-item'>
+                            B is  better
+                        </div>
+                        <div className='radio-item'>
+                            B is much better
+                        </div>
+                    </div>
+
+                    {/* <p style={{
                         fontWeight: "300",
                     }}>
                         asdfasdf
-                    </p>
+                    </p> */}
 
                     {
                         page === 1 ? 
