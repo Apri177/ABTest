@@ -105,14 +105,11 @@
     display: flex;
     justify-content: center;
 
-    border: 1px solid black;
-
     .likert-container {
         display: flex;
         justify-content: space-around;
         align-items: center;
 
-        border: 1px solid black;
 
         width: 35.3vw;
         height: 10vh;
@@ -121,14 +118,20 @@
 
         padding: 16px 24px 16px 24px;
 
+        input {
+            
+        }
+
         .radio-item {
-            border: 1px solid black;
 
             width: 5.5vw;
             height: 6vh;
             gap: 7px;
 
+            border: 1px solid black;
+
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
 

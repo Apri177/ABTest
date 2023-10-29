@@ -152,21 +152,72 @@ const Test = () => {
                 <div className='sec3'>
 
                     <div className='likert-container'>
-                        <div className='radio-item'>
-                            A is much better
-                        </div>
-                        <div className='radio-item'>
-                            A is better
-                        </div>
-                        <div className='radio-item'>
-                            About the same
-                        </div>
-                        <div className='radio-item'>
-                            B is  better
-                        </div>
-                        <div className='radio-item'>
-                            B is much better
-                        </div>
+                        
+
+                        <label htmlFor="radio-1">
+                            <div className='radio-item' >
+                            <input type="radio"
+                            value={"1"}
+                            id='radio-1'
+                            onClick={radioHandler}/>
+                                <p className='radio-value'>
+                                    A is much better
+                                </p>
+                            </div>
+                        </label>
+
+
+                        <label htmlFor="radio-2">
+                            <div className='radio-item'>
+                                <input type="radio"
+                                value={"2"}
+                                id='radio-2'
+                                onClick={radioHandler} />
+                                <p className='radio-value'>
+                                    A is better
+                                </p>
+                            </div>
+                        </label>
+
+                        <label htmlFor="radio-3">
+                            <div className='radio-item'>
+                                <input type="radio"
+                                value={"3"}
+                                id='radio-3'
+                                onClick={radioHandler} />
+                                <p className='radio-value'>
+                                    About the same
+                                </p>
+                            </div>
+                        </label>
+
+
+                        <label htmlFor="radio-4">
+                            <div className='radio-item'>
+                                <input type="radio"
+                                value={"4"}
+                                id='radio-4'
+                                onClick={radioHandler} />
+                                <p className='radio-value'>
+                                    B is  better
+                                </p>
+                            </div>
+                        </label>
+
+
+                        <label htmlFor="radio-5">
+                            <div className='radio-item'>
+                                <input type="radio"
+                                value={"5"}
+                                id='radio-5'
+                                onClick={radioHandler} />
+
+                                <p className='radio-value'>
+                                    B is much better
+
+                                </p>
+                            </div>
+                        </label>
                     </div>
 
                     {/* <p style={{
