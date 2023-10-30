@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom'
 import '../../styles/project.scss'
+import { useState } from 'react'
 
 const ProjectItem = ({id, name, content, updateDate}) => {
+
+    const [moreState, setMoreState] = useState(false)
+
+    const moreHandler = (e) => {
+        setMoreState(!moreState)
+    }
 
     return (
         <Link className="project-item"
@@ -10,11 +17,15 @@ const ProjectItem = ({id, name, content, updateDate}) => {
             color: 'black'
         }}
         to={`/project/${id}`}>
+
+
             <div className='project-name'>
                 {name}  
             </div>
             <div className='project-desc'>
-                {content}
+                <p>
+                    {content}
+                </p>
             </div>
             <div style={{
                 position: "absolute",
@@ -35,6 +46,12 @@ const ProjectItem = ({id, name, content, updateDate}) => {
                     {updateDate}
                 </p>
             </div>
+
+            <img src="/images/more.svg" alt="more"
+                id='more'
+                onClick={moreHandler}
+            />
+
         </Link>
     )
 }

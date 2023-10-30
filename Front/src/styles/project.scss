@@ -1,34 +1,54 @@
 .project-item {
     position: relative;
 
-    width: 20vw;
-    height: 25vh;
+    width: 25vw;
+    height: 30vh;
     border-radius: 0.625rem;
     border: 1px solid var(--default-ui-active-stroke, #D9D9D9);
     background: var(--default-ui-active, #FFF);
 
     &:hover{
-        background: var(--default-ui-selected, #E1E1E1);
+        background: var(--default-ui-selected, #F7F7F7);
     }
 
-    flex-shrink: 0;
+    &:active{
+        background: var(#E1E1E1);
+    }
 
-    margin-top: 2vh;
-    margin-left: 1.5vw;
+    margin-top: 1vh;
+    margin-left: 1.75%;
+
+    box-sizing: border-box;
 
     padding-top: 3vh;
     padding-bottom: 3vh;
     padding-left: 2vw;
+    padding-right: 2vw;
 
     .project-name {
         font-weight: 700;
         font-size: 3vmin;
-        margin-bottom: 4vh;
     }
 
     .project-desc {
+
+        height: 10vh;
+
         font-weight: 400;
         font-size: 2vmin;
-        margin-bottom: 10vh;
+
+        p {
+            margin: 0;
+            overflow-wrap: break-word;
+            overflow-y: hidden;
+
+            word-break: keep-all;
+        }
+    }
+
+    #more {
+        position: absolute;
+        right: 1vw;
+        top: 2vh;
     }
 }

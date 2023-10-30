@@ -269,14 +269,13 @@ const TestPopup = () => {
                     </div>
                     : 
                     <div className="sec1">
-
                         <div className="insert-container">
                             <div className="insert-info" id="criteria-sel">
                                 selection criteria
                             </div>
 
-                            <input type="text" 
-                            className="popup-input" 
+                            <input type="text"
+                            className="popup-input"
                             id="popup-criteria"
                             onChange={setSelCritreria}
                             />

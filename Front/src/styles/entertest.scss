@@ -31,8 +31,6 @@
     width: 100%;
     height: 15%;
 
-    border: 1px solid black;
-
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -57,43 +55,49 @@
     height: 60%;
 
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
 
-    border: 1px solid black;
+    .image {
 
-    .test-image {
-        width: 37.5vw;
-        height: 80.1vh;
+        width: 50%;
+        height: 100%;
 
-        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        &:hover{
-            border: 0.1rem solid orange;
+        position: relative;
+
+        .test-image {
+            width: 60%;
+            height: 64.25%;
+
+            box-sizing: border-box;
+
+            position: relative;
+
+            #image-1 {
+                width: 100%;
+            }
+
+            #image-2 {
+                width: 100%;
+            }
+
+            &:hover{
+                border: 0.2rem solid orange;
+            }
         }
-    }
 
-    #check-1 {
-        position: absolute;
-        left: 33.25vw;
-        margin-top: 1vh;
-        
-        width: 2vw;
-        height: 4vh;
+        .check {
+            position: absolute;
+            right: 2vw;
+            top: 2vh;
 
-        z-index: 99;
-
-    }
-
-    #check-2 {
-        position: absolute;
-        margin-top: 1vh;
-        right: 8vw;
-
-        width: 2vw;
-        height: 4vh;
-
-        z-index: 99;
+            width: 2vw;
+            height: 4vh;
+            z-index: 99;
+        }
     }
 }
 
@@ -103,30 +107,29 @@
     height: 25%;
 
     display: flex;
-    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
 
     .likert-container {
+
+        border: 1px solid black;
         display: flex;
         justify-content: space-around;
         align-items: center;
-
 
         width: 35.3vw;
         height: 10vh;
 
         border-radius: 4px;
 
-        padding: 16px 24px 16px 24px;
-
-        input {
-            
-        }
+        padding: 2vh 1.7vw 0.1vh 1.7vw;
 
         .radio-item {
 
             width: 5.5vw;
             height: 6vh;
-            gap: 7px;
+
 
             border: 1px solid black;
 
@@ -136,9 +139,7 @@
             align-items: center;
 
             font-size: 0.7vw;
-            line-height: 16.34px;
             font-weight: 400;
-            // font-size: 12px;
 
         }
 

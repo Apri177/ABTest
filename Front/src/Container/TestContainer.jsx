@@ -22,6 +22,8 @@ const TestContainer = () => {
             dispatch(setPreProjectState(res.data))
             dispatch(setTestState(res.data.tests))
         })
+
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [param])
 
@@ -68,6 +70,7 @@ const TestContainer = () => {
                             name={item.name} 
                             dir1={item.image1.uploadFilename} 
                             dir2={item.image2.uploadFilename} 
+                            maxPart={item.maxPart}
                             updateDate={item.updateDate} 
                             key={temp}/>
                         )

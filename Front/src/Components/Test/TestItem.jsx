@@ -42,7 +42,7 @@ const TestItem = ({name, dir1, dir2, maxPart, updateDate}) => {
             </div>
 
             <div className='tester' id='partic'>
-                123
+                {maxPart}
             </div>
 
             <div className="update-date" id="date">

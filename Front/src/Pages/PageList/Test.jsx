@@ -26,6 +26,7 @@ const Test = () => {
     const [sets, setSets] = useState(0)
     const [result, setResult] = useState([])
     const [x, setX] = useState("")
+    const [testType, setTestType] = useState("vs")
 
 
     const param = useParams()
@@ -63,28 +64,28 @@ const Test = () => {
     }
 
     useEffect(() => {
-        // const test = getTestById(param.project_id, param.test_name)
-        // test.then((res) => {
-        //     setSets(res.data.numOfSets)
-        // })
+        const test = getTestById(param.project_id, param.test_name)
+        test.then((res) => {
+            setSets(res.data.numOfSets)
+        })
 
-        // const res = getTestsImage(param.project_id, param.test_name, page)
-        // res.then((res) => {
+        const res = getTestsImage(param.project_id, param.test_name, page)
+        res.then((res) => {
 
-        //     setImgInfo1({
-        //         image: res[0].body,
-        //         ContentType: res[0].headers.ContentType,
-        //         Model: res[0].headers.Model
-        //     })
+            setImgInfo1({
+                image: res[0].body,
+                ContentType: res[0].headers.ContentType,
+                Model: res[0].headers.Model
+            })
 
-        //     setImgInfo2({
-        //         image: res[1].body,
-        //         ContentType: res[1].headers.ContentType,
-        //         Model: res[1].headers.Model
-        //     })
+            setImgInfo2({
+                image: res[1].body,
+                ContentType: res[1].headers.ContentType,
+                Model: res[1].headers.Model
+            })
             
-        //     setPrompt(res[0].headers.prompt[0])
-        // })
+            setPrompt(res[0].headers.prompt[0])
+        })
     }, [page, param.project_id, param.test_name])
     
 
@@ -96,135 +97,164 @@ const Test = () => {
                         {prompt}
                     </div>
                 </div>
+                
                 <div className='sec2'>
-                    <label htmlFor="image1">
-                        <img src={`data:${imgInfo1.ContentType || ""};base64,${imgInfo1.image || ""}`} 
-                        alt="사진1" 
-                        className='test-image'
-                        />
-                        {
-                            x === imgInfo1.Model[0] ? 
-                            <img src="/images/set-status.svg" alt="checked" id="check-1"/>
-                            :
-                            null
-                        }
-                    </label>
+                    <div className='image'> 
+                        <label htmlFor="image1" className='test-image'>
+                            <img src={`data:${imgInfo1.ContentType || ""};base64,${imgInfo1.image || ""}`} 
+                            alt="사진1" 
+                            id='image-1'
+                            />
+
+                            {
+                                x === imgInfo1.Model[0] ? 
+                                <img src="/images/set-status.svg" alt="checked" className='check'/>
+                                :
+                                null
+                            }
+                        </label>
+
+
+                    </div>
+
                     {
-                        
+                        testType === "vs" ? 
+                        <input type="radio" 
+                        id="image1" 
+                        defaultValue={imgInfo1.Model[0]}
+                        onChange={radioHandler}
+                        checked={x === imgInfo1.Model[0]}
+                        style={{
+                            display: "none"
+                        }}/> : 
+                        null
                     }
-                    {/* <input type="radio" 
-                    id="image1" 
-                    defaultValue={imgInfo1.Model[0]}
-                    onChange={radioHandler}
-                    checked={x === imgInfo1.Model[0]}
-                    style={{
-                        display: "none"
-                    }}/> */}
 
-                    <label htmlFor="image2">
-                        <img src={ `data:${imgInfo2.ContentType || ""}; base64,${imgInfo2.image || ""}` } 
-                        alt="사진2" 
-                        className='test-image'
-                        />
-                        {
-                            x === imgInfo2.Model[0] ?
-                            <img src="/images/set-status.svg" alt="checked" id="check-2"/>
-                            :
+
+                    <div className='image'>
+                        <label htmlFor="image2" className='test-image'>
+                            <img src={ `data:${imgInfo2.ContentType || ""}; base64,${imgInfo2.image || ""}` } 
+                            alt="사진2" 
+                            id='image-2'
+                            />
+                            {
+                                x === imgInfo2.Model[0] ?
+                                <img src="/images/set-status.svg" alt="checked" className='check'/>
+                                :
+                                null
+                            }
+                        </label>
+                    </div>
+
+                    {
+                        testType === "vs" ?
+                            <input type="radio"
+                            id="image2"
+                            defaultValue={imgInfo2.Model[0]}
+                            onChange={radioHandler}
+                            checked={x === imgInfo2.Model[0]}
+                            style={{
+                                display: "none"
+                            }} />
+                            : 
                             null
-                        }
-                    </label>
-
-
-                    
-
-                    {/* <input type="radio"
-                    id="image2"
-                    defaultValue={imgInfo2.Model[0]}
-                    onChange={radioHandler}
-                    checked={x === imgInfo2.Model[0]}
-                    style={{
-                        display: "none"
-                    }}
-                    /> */}
+                    }
 
                 </div>
 
                 <div className='sec3'>
-
-                    <div className='likert-container'>
-                        
-
-                        <label htmlFor="radio-1">
-                            <div className='radio-item' >
-                            <input type="radio"
-                            value={"1"}
-                            id='radio-1'
-                            onClick={radioHandler}/>
-                                <p className='radio-value'>
-                                    A is much better
-                                </p>
-                            </div>
-                        </label>
-
-
-                        <label htmlFor="radio-2">
-                            <div className='radio-item'>
-                                <input type="radio"
-                                value={"2"}
-                                id='radio-2'
-                                onClick={radioHandler} />
-                                <p className='radio-value'>
-                                    A is better
-                                </p>
-                            </div>
-                        </label>
-
-                        <label htmlFor="radio-3">
-                            <div className='radio-item'>
-                                <input type="radio"
-                                value={"3"}
-                                id='radio-3'
-                                onClick={radioHandler} />
-                                <p className='radio-value'>
-                                    About the same
-                                </p>
-                            </div>
-                        </label>
-
-
-                        <label htmlFor="radio-4">
-                            <div className='radio-item'>
-                                <input type="radio"
-                                value={"4"}
-                                id='radio-4'
-                                onClick={radioHandler} />
-                                <p className='radio-value'>
-                                    B is  better
-                                </p>
-                            </div>
-                        </label>
-
-
-                        <label htmlFor="radio-5">
-                            <div className='radio-item'>
-                                <input type="radio"
-                                value={"5"}
-                                id='radio-5'
-                                onClick={radioHandler} />
-
-                                <p className='radio-value'>
-                                    B is much better
-
-                                </p>
-                            </div>
-                        </label>
-                    </div>
-
-                    {/* <p style={{
+                    <p style={{
                         fontWeight: "300",
+                        marginBottom: "1vh"
                     }}>
                         asdfasdf
-                    </p> */}
+                    </p>
+
+                    {
+                        testType === "likert" ? 
+                        <fieldset className='likert-container'>
+
+                            <label htmlFor="radio-1">
+                                <div className='radio-item' >
+                                <input type="radio"
+                                value={"1"}
+                                name='likert'
+                                id='radio-1'
+                                onClick={radioHandler}/>
+                                    <p className='radio-value'>
+                                        A is much better
+                                    </p>
+                                </div>
+                            </label>
+
+
+                            <label htmlFor="radio-2">
+                                <div className='radio-item'>
+                                    <input type="radio"
+                                    value={"2"}
+                                    name='likert'
+                                    id='radio-2'
+                                    onClick={radioHandler} 
+                                    
+                                    style={{
+                                        border: "1px solid black"
+                                    }}/>
+                                    <p className='radio-value'>
+                                        A is better
+                                    </p>
+                                </div>
+                            </label>
+
+                            <label htmlFor="radio-3">
+                                <div className='radio-item'>
+                                    <input type="radio"
+                                    value={"3"}
+                                    name='likert'
+                                    id='radio-3'
+                                    onClick={radioHandler} 
+                                    />
+                                    <p className='radio-value'>
+                                        About the same
+                                    </p>
+                                </div>
+                            </label>
+
+
+                            <label htmlFor="radio-4">
+                                <div className='radio-item'>
+                                    <input type="radio"
+                                    value={"4"}
+                                    name='likert'
+                                    id='radio-4'
+                                    onClick={radioHandler} />
+                                    <p className='radio-value'>
+                                        B is  better
+                                    </p>
+                                </div>
+                            </label>
+
+
+                            <label htmlFor="radio-5">
+                                <div className='radio-item'>
+                                    <input type="radio"
+                                    value={"5"}
+                                    name='likert'
+                                    id='radio-5'
+                                    onClick={radioHandler} />
+
+                                    <p className='radio-value'>
+                                        B is much better
+
+                                    </p>
+                                </div>
+                            </label>
+                        </fieldset> 
+
+                        : 
+                        null
+                    }
+                        
+
 
                     {
                         page === 1 ? 
