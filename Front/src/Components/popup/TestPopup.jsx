@@ -19,7 +19,8 @@ const TestPopup = () => {
         name : "",
         maxPart : "",
         password : "",
-        selCriteria : ""
+        selCriteria : "",
+        testType : "vs",
     })
     
     const [code, setCode] = useState("")
@@ -41,6 +42,14 @@ const TestPopup = () => {
         setTest({...test, password : e.target.value})
     }
 
+    const setSelCritreria = (e) => {
+        setTest({...test, selCriteria: e.target.value})
+    }
+
+    const setTestType = (e) => {
+         setTest({...test, testType: e.target.value})
+    }
+
     const setAdminCode = (e) => {
         setCode(e.target.value)
     }
@@ -57,10 +66,6 @@ const TestPopup = () => {
         setImages3(e.target.files[0])
     }
 
-    const setSelCritreria = (e) => {
-        setTest({...test, selCriteria: e.target.value})
-    }
-    
     const closeHandler = () => {
         dispatch(close())
         setPage(0)
@@ -113,6 +118,8 @@ const TestPopup = () => {
             name: test.name,
             password: test.password,
             maxPart: test.maxPart,
+            selCriteria: test.selCriteria,
+            testType: test.testType
         }))
         
         formdata.append("image1", images1)
@@ -133,12 +140,7 @@ const TestPopup = () => {
             opacity:  state.popup.show ? 1 : 0,
         }} className="overlay">
             
-            <div className="popup" style={{
-                // height: page === 2 ? "80vh" : "50vh"
-                
-
-            }}>
-
+            <div className="popup">
                 <div className="popup-title">
                     New Test
                 </div>
@@ -277,6 +279,7 @@ const TestPopup = () => {
                             <input type="text"
                             className="popup-input"
                             id="popup-criteria"
+                            value={test.selCriteria || ""}
                             onChange={setSelCritreria}
                             />
                         </div>
@@ -285,9 +288,45 @@ const TestPopup = () => {
                             Selection method
                         </div>
                         <div className="methods">
-                            <img src="/images/vs.svg" alt="vs" id="vs"/>
-                            
-                            <img src="/images/likert.svg" alt="likert" id="likert"/>
+                            <fieldset>
+                                <label htmlFor="test-vs">
+                                    {
+                                        test.testType === "vs" ? 
+                                        <img src="/images/selected_vs.svg" alt="selected_vs" id="vs"/>
+                                        :
+                                        <img src="/images/vs.svg" alt="vs" id="vs"/>
+                                    }
+                                </label>
+                                <input type="radio" 
+                                name="testType" 
+                                id="test-vs" 
+                                defaultChecked
+                                value="vs"
+                                onClick={setTestType}
+                                style={{
+                                    display: "none",
+                                }}/>
+                                
+                                <label htmlFor="test-likert">
+                                    {
+                                        test.testType === "likert" ? 
+                                        <img src="/images/selected_likert.svg" alt="selected_likert" id="likert"/>
+                                        :
+                                        <img src="/images/likert.svg" alt="likert" id="likert"/>
+                                    }
+                                </label>
+                                <input type="radio"
+                                name="testType"
+                                id="test-likert"
+                                value="likert"
+                                onClick={setTestType}
+                                style={{
+                                    display: "none"
+                                }}
+                                />
+
+
+                            </fieldset>
                         </div>
                     </div>
                 }

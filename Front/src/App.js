@@ -13,6 +13,7 @@ function App() {
         position="top-right" // 알람 위치 지정
         autoClose={3000} // 자동 off 시간
         hideProgressBar={false} // 진행시간바 숨김
+        draggable={false}
         closeOnClick // 클릭으로 알람 닫기
         rtl={false} // 알림 좌우 반전
         pauseOnFocusLoss // 화면을 벗어나면 알람 정지

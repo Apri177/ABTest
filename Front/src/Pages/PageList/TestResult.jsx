@@ -31,9 +31,10 @@ const TestResult = () => {
                     score: rst.data.score,
                     testResult: rst.data.testResult,
                     tester: rst.data.tester,
+                    testSel: rst.data.testSel || "",
+                    testType: rst.data.testType,
                     file1: rst.data.image1.uploadFilename,
                     file2: rst.data.image2.uploadFilename,
-                    testSel: rst.data.testSel || ""
                 }
             ))
         })

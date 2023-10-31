@@ -1,0 +1,72 @@
+pipeline {
+    agent any 
+    
+    stages {
+        stage('Prepare') {
+            steps {
+                git branch: 'master',
+                    url: 'https://April_07@bitbucket.org/squeezebits/abtest.git'
+            }
+            
+            post {
+                success { 
+                    sh 'echo "Successfully Cloned Repository"'
+                }
+                failure {
+                    sh 'echo "Fail Cloned Repository"'
+                }
+            }    
+        }
+        
+        stage('Build') { 
+            steps {
+                sh 'chmod +x gradlew'
+                sh  './gradlew clean build'
+
+
+                sh 'ls -al ./build'
+            }
+            post {
+                success {
+                    echo 'gradle build success'
+                }
+
+                failure {
+                    echo 'gradle build failed'
+                }
+            }
+        }
+
+        stage('Dockerizing'){
+            steps{
+                sh 'echo " Image Bulid Start"'
+                sh 'docker build . -t abtest'
+            }
+            post {
+                success {
+                    sh 'echo "Bulid Docker Image Success"'
+                }
+
+                failure {
+                    sh 'echo "Bulid Docker Image Fail"'
+                }
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                sh 'docker run --name docker-abtest -d -p 17047:17047 abtest'
+            }
+
+            post {
+                success {
+                    echo 'success'
+                }
+
+                failure {
+                    echo 'failed'
+                }
+            }
+        }
+    }
+}

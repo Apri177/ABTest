@@ -39,7 +39,6 @@ public class TestController {
     @PostMapping("/api/project/{id}/test/create")
     public Test createTest(
             @PathVariable int id,
-            HttpServletRequest request,
             @RequestParam(name = "body") String body,
             @RequestParam(name = "image1") MultipartFile image1,
             @RequestParam(name = "image2") MultipartFile image2,
@@ -51,11 +50,14 @@ public class TestController {
         Object obj = parser.parse(body);
         JSONObject form = (JSONObject) obj;
 
+        System.out.println(form);
+
         Test test = Test.builder()
                 .maxPart(Integer.parseInt(String.valueOf(form.get("maxPart"))))
                 .name((String) form.get("name"))
                 .password((String) form.get("password"))
                 .testSel((String) form.get("selCriteria"))
+                .testType((String) form.get("testType"))
                 .build();
         test.setProjectId(id);
 

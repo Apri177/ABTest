@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter;
 
 @Data
 @Document(collection = "tests")
-@Getter
 public class Test {
 
     private int projectId;
@@ -32,6 +31,8 @@ public class Test {
 
     private String testSel;
 
+    private String testType;
+
 //    private Boolean testResult;
 
     private TestResult testResult;
@@ -43,13 +44,15 @@ public class Test {
     private UploadFile csvFile;
 
     @Builder
-    public Test(String name, String password, int maxPart, String testSel) {
+    public Test(String name, String password, int maxPart, String testSel, String testType) {
         this.name = name;
         this.password = password;
         this.maxPart = maxPart;
+        this.testSel = testSel;
+        this.testType = testType;
         LocalDateTime now = LocalDateTime.now();
         String formattedDate = now.format(DateTimeFormatter.ofPattern("HH:mm, yyyy-MM-dd"));
         this.updateDate = formattedDate;
-        this.testSel = testSel;
+
     }
 }

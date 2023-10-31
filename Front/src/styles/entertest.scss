@@ -52,7 +52,7 @@
 .sec2 {
 
     width: 100%;
-    height: 60%;
+    height: 65%;
 
     display: flex;
     align-items: center;
@@ -65,23 +65,28 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
+        
         position: relative;
 
         .test-image {
-            width: 60%;
-            height: 64.25%;
 
             box-sizing: border-box;
 
             position: relative;
 
+            width: 27.8vw;
+            height: 51.1vh;
+
+            transition: all 0.2s ease;
+
             #image-1 {
                 width: 100%;
+                height: 100%;
             }
 
             #image-2 {
                 width: 100%;
+                height: 100%;
             }
 
             &:hover{
@@ -91,8 +96,8 @@
 
         .check {
             position: absolute;
-            right: 2vw;
-            top: 2vh;
+            right: 0.7vw;
+            top: 1.27vh;
 
             width: 2vw;
             height: 4vh;
@@ -103,8 +108,10 @@
 
 .sec3 {
 
+    border: 1px solid black;
+
     width: 100%;
-    height: 25%;
+    height: 20%;
 
     display: flex;
     align-items: center;

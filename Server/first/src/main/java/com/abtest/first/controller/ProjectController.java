@@ -61,11 +61,13 @@ public class ProjectController {
 
     @PatchMapping("/api/project/{id}")
     public UpdateResult editContent(@PathVariable int id, @RequestBody ProjectForm form) {
+
         return projectService.editProject(id,
                 form.getName(),
                 form.getContent(),
                 form.getAdminCode(),
                 form.getTests());
+
     }
 
     @DeleteMapping("/api/project/delete/{id}")
@@ -77,5 +79,6 @@ public class ProjectController {
 
         return projectService.deleteProject(id);
     }
+
 }
 

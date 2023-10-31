@@ -67,6 +67,8 @@ const Test = () => {
         const test = getTestById(param.project_id, param.test_name)
         test.then((res) => {
             setSets(res.data.numOfSets)
+
+            console.log(res.data);
         })
 
         const res = getTestsImage(param.project_id, param.test_name, page)
@@ -97,14 +99,14 @@ const Test = () => {
                         {prompt}
                     </div>
                 </div>
-                
-                <div className='sec2'>
+
+                <div className='sec2'> 
                     <div className='image'> 
-                        <label htmlFor="image1" className='test-image'>
+                        <label htmlFor="image1" className='test-image'> 
                             <img src={`data:${imgInfo1.ContentType || ""};base64,${imgInfo1.image || ""}`} 
-                            alt="사진1" 
+                            alt="image1" 
                             id='image-1'
-                            />
+                            /> 
 
                             {
                                 x === imgInfo1.Model[0] ? 
@@ -134,7 +136,7 @@ const Test = () => {
                     <div className='image'>
                         <label htmlFor="image2" className='test-image'>
                             <img src={ `data:${imgInfo2.ContentType || ""}; base64,${imgInfo2.image || ""}` } 
-                            alt="사진2" 
+                            alt="image2" 
                             id='image-2'
                             />
                             {
@@ -186,7 +188,6 @@ const Test = () => {
                                     </p>
                                 </div>
                             </label>
-
 
                             <label htmlFor="radio-2">
                                 <div className='radio-item'>

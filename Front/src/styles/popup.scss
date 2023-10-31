@@ -128,10 +128,41 @@
 
 
     .methods {
-        width: 75%;
+        width: 100%;
 
-        display: flex;
-        justify-content: space-between;
+        fieldset {
+            border: 0;
+
+            margin: 0;
+            padding: 0;
+
+            width: 80%;
+            height: 100%;
+            
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            transition: all 0.2s ease;
+
+            img {
+                border-radius: 4px;
+                height: 10vh;
+
+                &:hover {
+                    background: #F7F7F7;
+                }
+            }
+        
+            #likert {
+                border-radius: 4px;
+                height: 10vh;
+
+                &:hover {
+                    background: #F7F7F7;
+                }
+            }
+        }
     }
 
 
@@ -189,13 +220,7 @@
         top: 29vh;
     }
 
-    #vs {
-        height: 10vh;
-    }
 
-    #likert {
-        height: 10vh;
-    }
 
 }
   
