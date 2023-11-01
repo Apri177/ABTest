@@ -1,7 +1,9 @@
 pipeline {
     agent any 
-    
+
+
     stages {
+
         stage('Prepare') {
             steps {
                 git branch: 'master',
@@ -17,14 +19,14 @@ pipeline {
                 }
             }    
         }
-        
-        stage('Build') { 
+
+        stage('Build') {
             steps {
                 sh 'chmod +x gradlew'
                 sh  './gradlew clean build'
 
 
-                sh 'ls -al ./build'
+                sh 'ls -al ./'
             }
             post {
                 success {
@@ -52,7 +54,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Deploy') {
             steps {
                 sh 'docker run --name docker-abtest -d -p 17047:17047 abtest'
@@ -68,5 +70,6 @@ pipeline {
                 }
             }
         }
+
     }
 }
