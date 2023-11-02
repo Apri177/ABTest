@@ -38,6 +38,7 @@ const ProjectItem = ({id, name, content, updateDate}) => {
                 }}>
                     last update
                 </p>
+
                 <p style={{
                     margin: "0",
                     fontWeight: "300",

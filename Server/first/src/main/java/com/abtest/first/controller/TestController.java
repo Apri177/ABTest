@@ -29,7 +29,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("")
-@Getter
 public class TestController {
 
     private final ProjectService projectService;
@@ -115,12 +114,12 @@ public class TestController {
         String model = "";
         int pos = 0;
         for( int i = 0; i < 2; i++) {
+
             if (i == 1) {
                 path = test.getImage1().getPath() + test.getImage1().getUploadFilename() + "/";
 
                 model = test.getImage1().getUploadFilename();
-            }
-            else {
+            } else {
                 path = test.getImage2().getPath() + test.getImage2().getUploadFilename() + "/";
                 model = test.getImage2().getUploadFilename();
             }
@@ -129,7 +128,9 @@ public class TestController {
             for (int j = 2; j < csv.get(page).size(); j++) {
                 prompt.append(csv.get(page).get(j));
             }
+
             response.add(returnImage(path + csv.get(page).get(i), String.valueOf(prompt) ,model));
+
         }
 
         return response;

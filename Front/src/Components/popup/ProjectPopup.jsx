@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { close } from "../../store/popupStore"
 import '../../styles/popup.scss'
-import { createProject, getProjects } from "../../util/api"
+import { createProject, getProjects } from "../../util/api/project"
 import { setProjectState } from "../../store/projectStore"
 
 import { toast } from 'react-toastify';

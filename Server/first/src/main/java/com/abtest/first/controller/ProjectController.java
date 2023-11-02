@@ -5,6 +5,8 @@ import com.abtest.first.domain.Test;
 import com.abtest.first.domain.dto.ProjectForm;
 import com.abtest.first.service.ProjectService;
 import com.abtest.first.service.TestService;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +38,14 @@ public class ProjectController {
 
     @GetMapping("/api/project/all")
     public List<Project> getProjectAll() {
+        try {
+            projectService.getAllProjects();
+        } catch (Exception e) {
+            MongoClient mongo = new MongoClient("localhost", 27017);
+            MongoDatabase database = mongo.getDatabase("ABTest");
+            database.createCollection("projects");
+            database.createCollection("tests");
+        }
         return projectService.getAllProjects();
     }
 

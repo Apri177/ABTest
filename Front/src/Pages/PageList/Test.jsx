@@ -67,8 +67,8 @@ const Test = () => {
         const test = getTestById(param.project_id, param.test_name)
         test.then((res) => {
             setSets(res.data.numOfSets)
-
-            console.log(res.data);
+            setTestType(res.data.testType || "vs")
+            
         })
 
         const res = getTestsImage(param.project_id, param.test_name, page)

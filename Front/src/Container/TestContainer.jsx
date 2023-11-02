@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom'
 import TestItem from '../Components/Test/TestItem'
 import { useEffect } from 'react'
 import { setPreProjectState } from '../store/projectStore'
-import { getProjectById } from '../util/api'
+import { getProjectById } from '../util/api/project'
 import { setTestState } from '../store/testStore'
 
 const TestContainer = () => {

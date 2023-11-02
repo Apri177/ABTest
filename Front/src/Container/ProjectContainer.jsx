@@ -3,7 +3,7 @@ import CreateButton from '../Components/Button/CreateButton'
 import Search from '../Components/Project/Search'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getProjects } from '../util/api'
+import { getProjects } from '../util/api/project'
 import { setProjectState } from '../store/projectStore'
 
 
@@ -29,7 +29,7 @@ const ProjectContainer = () => {
             <CreateButton content={"new project"}/>
             <div className="project-contents-container">
                 {
-                    projectState.projects.map((item, temp) => {
+                    projectState.projects && projectState.projects.map((item, temp) => {
                         return (
                             <ProjectItem key={temp} name={item.name} content={item.content} updateDate={item.updateDate} id={item.id}/>
                         )

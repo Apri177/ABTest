@@ -18,6 +18,8 @@ const TestResultContainer = () => {
         testResult : String,
         testSel : String,
         tester : Number,
+        p_value : Number
+        
     })
 
     useEffect(() => {
@@ -107,7 +109,12 @@ const TestResultContainer = () => {
                                 <img src="/images/orange.svg" alt="orange"/> :
                                 <img src="/images/soda.svg" alt="soda"/>
                             }
-                            {Number.parseInt((test.score / (test.numOfSets * test.tester) * 100))} %
+                            {   
+                                test.score > (test.numOfSets * test.tester) / 2 ?
+                                Number.parseInt((test.score / (test.numOfSets * test.tester) * 100)) :
+                                Number.parseInt((1 - test.score / (test.numOfSets * test.tester)) * 100)
+                                
+                            } %
                         </div>
 
                         <p id="left-point">

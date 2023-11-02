@@ -63,6 +63,8 @@
         letter-spacing: -0.03rem;
         text-transform: uppercase;
         color: var(--list-header-font-active, #828282);
+
+        font-size: 1vmax;
         
         #name {
             position: absolute;
@@ -95,7 +97,7 @@
         width: 75vw;
         height: 60vh;
 
-        margin-top: 6vh;
+        margin-top: 7.5vh;
 
         display: flex;
         flex-direction: column;
@@ -116,8 +118,6 @@
             display: flex;
             align-items: center;
             position: relative;
-
-            
 
             #name {
                 width: 10vw;
@@ -191,7 +191,7 @@
             #result {
                 position: absolute;
                 top: 0.5vh;
-                right: 6vw;
+                right: 5vw;
                 width: 4vmin;
             }
         }

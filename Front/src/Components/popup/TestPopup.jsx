@@ -256,6 +256,7 @@ const TestPopup = () => {
                             className="popup-input" 
                             disabled
                             value={images3.name || ""}
+                            accept="application/csv"
                             />
                         </div>
 

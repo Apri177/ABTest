@@ -46,6 +46,9 @@ dependencies {
 
 	// MongoDB
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	// https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver
+	implementation 'org.mongodb:mongo-java-driver:3.12.14'
+
 
 	implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
 	implementation group: 'commons-io', name: 'commons-io', version:'2.4'

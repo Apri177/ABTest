@@ -4,40 +4,54 @@ pipeline {
 
     stages {
 
-        stage('Prepare') {
+//        stage('Prepare') {
+//            steps {
+//                git branch: 'master',
+//                    url: 'https://April_07@bitbucket.org/squeezebits/abtest.git'
+//            }
+//            
+//            post {
+//                success { 
+//                    sh 'echo "Successfully Cloned Repository"'
+//                }
+//                failure {
+//                    sh 'echo "Fail Cloned Repository"'
+//                }
+//            }    
+//        }
+
+//        stage('Build') {
+//            steps {
+//                sh 'chmod +x gradlew'
+//                sh  './gradlew clean build'
+
+
+//                sh 'ls -al ./'
+//            }
+//            post {
+//                success {
+//                    echo 'gradle build success'
+//                }
+
+//                failure {
+//                    echo 'gradle build failed'
+//                }
+//            }
+//        }
+
+        stage('Cleanup') {
             steps {
-                git branch: 'master',
-                    url: 'https://April_07@bitbucket.org/squeezebits/abtest.git'
-            }
-            
-            post {
-                success { 
-                    sh 'echo "Successfully Cloned Repository"'
-                }
-                failure {
-                    sh 'echo "Fail Cloned Repository"'
-                }
-            }    
-        }
-
-        stage('Build') {
-            steps {
-                sh 'chmod +x gradlew'
-                sh  './gradlew clean build'
-
-
-                sh 'ls -al ./'
-            }
-            post {
-                success {
-                    echo 'gradle build success'
-                }
-
-                failure {
-                    echo 'gradle build failed'
+                script {
+                    try {
+                        sh "docker stop docker-abtest"
+                        sh "docker rm docker-abtest"
+                        sh "docker rmi abtest"
+                    } catch(e) {
+                        sh 'exit 0'
+                    }
                 }
             }
-        }
+        }    
 
         stage('Dockerizing'){
             steps{
@@ -58,6 +72,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'docker run --name docker-abtest -d -p 17047:17047 abtest'
+                sh 'docker run --name docker-abtest-mongodb -d -p 27017:27017 mongo:latest'
             }
 
             post {
