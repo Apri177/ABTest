@@ -10,9 +10,10 @@ export const initialState = {
         file2 : String,
         numOfSets : Number,
         tester: Number,
-        testResult: Boolean,
+        testResult: String,
         score: Number,
-        testSel: String
+        testSel: String,
+        p_value : Number,
     }
 }
 

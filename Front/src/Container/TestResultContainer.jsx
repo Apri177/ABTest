@@ -15,15 +15,18 @@ const TestResultContainer = () => {
         name : String,
         numOfSets: Number,
         score: Number,
-        testResult : String,
+        testResult : {
+            p_value : Number,
+            result : String
+        },
         testSel : String,
-        tester : Number,
-        p_value : Number
-        
+        testType : String,
+        tester : Number
     })
 
     useEffect(() => {
         setTest(preTest)
+        console.log(preTest);
     }, [dispatch, preTest, test, param])
 
     return (
@@ -83,12 +86,18 @@ const TestResultContainer = () => {
                         </p>
                         <div id="statis">
                             {
-                                test.testResult ? 
+                                test.testResult.result === "no" ? 
+                                null :
+                                test.testResult.result === test.file1 ? 
                                 <img src="/images/orange.svg" alt="orange" /> :
                                 <img src="/images/soda.svg" alt="soda"/>
                             }
                             {
-                                test.testResult ?
+                                test.testResult.result === "no" ?
+                                <p id="result-desc">
+                                    Not yet statistically significatly preferred. 
+                                </p> :
+                                test.testResult.result === test.file1 ?
                                 <p id="result-desc">
                                     {test.file1} was statistically significantly preferred.        
                                 </p> :
@@ -109,7 +118,8 @@ const TestResultContainer = () => {
                                 <img src="/images/orange.svg" alt="orange"/> :
                                 <img src="/images/soda.svg" alt="soda"/>
                             }
-                            {   
+                            
+                            {
                                 test.score > (test.numOfSets * test.tester) / 2 ?
                                 Number.parseInt((test.score / (test.numOfSets * test.tester) * 100)) :
                                 Number.parseInt((1 - test.score / (test.numOfSets * test.tester)) * 100)
